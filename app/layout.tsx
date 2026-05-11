@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
+// @ts-ignore
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -8,7 +9,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 const dmSans = DM_Sans({
   subsets: ["latin"],
   axes: ["opsz"],
-  weight: ["300", "400", "500", "600"],
+  weight: "variable",
   style: ["normal", "italic"],
   variable: "--font-dm-sans",
   display: "swap",
@@ -17,7 +18,7 @@ const dmSans = DM_Sans({
 const fraunces = Fraunces({
   subsets: ["latin"],
   axes: ["opsz"],
-  weight: ["300", "400", "600", "700"],
+  weight: "variable",
   style: ["normal", "italic"],
   variable: "--font-fraunces",
   display: "swap",
