@@ -8,9 +8,9 @@ import { HomeCTA }          from "@/components/sections/HomeCTA";
 import { getFeaturedProjects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Jane Doe — UI/UX & Product Designer",
+  title: "Yuliia Dudareva — UI/UX & Product Designer",
   description:
-    "UI/UX and Product Designer crafting clear, intentional digital experiences. Currently at Linear.",
+    "UI/UX and Product Designer crafting clear, intentional digital experiences. Based in Munich, Germany.",
 };
 
 export default function HomePage() {

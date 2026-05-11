@@ -26,13 +26,13 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jane Doe — UI/UX & Product Designer",
-    template: "%s — Jane Doe",
+    default: "Yuliia Dudareva — UI/UX & Product Designer",
+    template: "%s — Yuliia Dudareva",
   },
   description:
     "UI/UX and Product Designer crafting clear, intentional digital experiences that connect people and ideas.",
   openGraph: {
-    title: "Jane Doe — UI/UX & Product Designer",
+    title: "Yuliia Dudareva — UI/UX & Product Designer",
     description:
       "UI/UX and Product Designer crafting clear, intentional digital experiences.",
     type: "website",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jane Doe — UI/UX & Product Designer",
+    title: "Yuliia Dudareva — UI/UX & Product Designer",
   },
 };
 

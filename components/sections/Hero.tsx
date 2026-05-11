@@ -92,7 +92,7 @@ export function Hero() {
             variants={fadeUp}
             className="text-body-lg text-stone max-w-[42ch]"
           >
-            I'm Jane — UI/UX &amp; Product Designer. I turn complex problems into
+            I'm Yuliia — UI/UX &amp; Product Designer. I turn complex problems into
             products people actually want to use. Currently at{" "}
             <span className="text-ink font-medium">Linear</span>.
           </motion.p>
