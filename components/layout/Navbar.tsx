@@ -39,9 +39,9 @@ export function Navbar() {
         <Link
           href="/"
           className="font-display font-semibold text-[1.05rem] tracking-tight underline-ember"
-          aria-label="Jane Doe — Home"
+          aria-label="Yuliia Dudareva — Home"
         >
-          Jane Doe
+          Yuliia Dudareva
         </Link>
 
         {/* Links */}
