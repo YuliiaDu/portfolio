@@ -31,10 +31,10 @@ export function Testimonial() {
             transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.1 }}
             className="font-display font-light text-display-md text-ink text-balance leading-snug mb-8"
           >
-            Jane has a rare ability to hold the user's perspective and the
-            business's needs at the same time — and find the design that
-            satisfies both. She shipped more in six months than most designers
-            ship in two years.
+            I had the pleasure of working with Yuliia at gigmit, and she is truly the kind of product designer every team hopes to have.
+Yuliia combines exceptional design skills with impressive speed and a deep understanding of product thinking. She consistently delivered high-quality work, often going beyond the brief by proactively suggesting improvements and anticipating user needs. Her designs were not only visually strong but always grounded in usability and business impact.
+Beyond her talent, Yuliia is incredibly friendly, collaborative, and easy to work with. She brings a positive energy to the team, communicates clearly, and takes full ownership of her work. You can trust her to move fast, think independently, and elevate the product at every stage.
+All in all, Yuliia is an outstanding product designer and a true asset to any product team. I’d work with her again in a heartbeat and highly recommend her.
           </motion.blockquote>
 
           <motion.footer

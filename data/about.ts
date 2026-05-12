@@ -1,40 +1,42 @@
 export const about = {
   headline: "Design is how you say\nwhat you can't just say.",
   intro:
-    "I'm Jane — a UI/UX and product designer with 6 years of experience turning complex problems into clear, purposeful digital products. I work at the intersection of craft and strategy: equally comfortable in a discovery interview as I am in a Figma component library.",
+    "I'm Yuliia — a UI/UX and product designer with 6 years of experience turning complex problems into clear, purposeful digital products. I work at the intersection of craft and strategy: equally comfortable in a discovery interview as I am in a Figma component library.",
   philosophy:
     "Good design disappears. It doesn't announce itself — it simply makes the next step obvious. I believe in working close to the problem, designing with (not for) users, and shipping things that are both useful and beautiful.",
 
   experience: [
     {
-      role:     "Senior Product Designer",
-      company:  "Linear",
-      period:   "2023 — Present",
-      detail:   "Leading design across core product surfaces. Ship weekly.",
-    },
-    {
       role:     "Product Designer",
-      company:  "Notion",
-      period:   "2021 — 2023",
-      detail:   "Owned the document editor and template ecosystem.",
+      company:  "GET A GIG GmbH",
+      period:   "2023 — 2025",
+      detail:   "Led UX design by improving usability, conducting user research and testing, collaborating with cross-functional teams, scaling design systems, and creating prototypes aligned with business and technical goals.",
     },
     {
-      role:     "UX Designer",
-      company:  "Craft",
-      period:   "2019 — 2021",
-      detail:   "Early team member. Designed 0→1 across mobile and web.",
+      role:     "UX/UI Designer",
+      company:  "Freelance projects",
+      period:   "2020 — 2022",
+      detail:   "Designed low- and high-fidelity web and mobile UI prototypes, conducted user research, simplified complex interfaces into scalable user-centered experiences, and supported documentation and layout design tasks.",
+    },
+    {
+      role:     "Marketing & Product Strategy Experience",
+      company:  "Various",
+      period:   "2013 — 2022",
+      detail:   "Led cross-functional teams for SaaS and digital products, developed growth strategies and KPIs with leadership, and executed go-to-market campaigns to drive product adoption and brand visibility.",
     },
   ],
 
   skills: [
-    "Product Strategy",
+    "Design Thinking",
     "User Research",
+    "Prototyping",
     "Interaction Design",
     "Design Systems",
-    "Prototyping",
+    "A/B Testing",
     "Figma",
-    "Framer",
-    "iOS / Android",
+    "Claude Code",
+    "Accessibility",
+    "Responsive Design",
     "Information Architecture",
     "Usability Testing",
   ],

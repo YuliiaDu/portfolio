@@ -48,10 +48,10 @@ export function HomeCTA() {
             </Link>
 
             <a
-              href="mailto:jane@janedoe.com"
+              href="mailto:dudareva.yu@gmail.com"
               className="text-body-sm font-medium text-dark-text hover:text-canvas transition-colors duration-300 underline-ember [&::after]:bg-canvas"
             >
-              jane@janedoe.com
+              dudareva.yu@gmail.com
             </a>
           </motion.div>
         </div>
@@ -68,10 +68,9 @@ export function HomeCTA() {
           </p>
           <div className="flex items-center gap-6">
             {[
-              { href: "https://dribbble.com",  label: "Dribbble"  },
-              { href: "https://linkedin.com",  label: "LinkedIn"  },
-              { href: "https://read.cv",       label: "Read.cv"   },
-              { href: "https://twitter.com",   label: "Twitter"   },
+              { href: "https://dribbble.com/Yuliia_Dudareva",  label: "Dribbble"  },
+              { href: "https://www.linkedin.com/in/yuliia-dudareva/",  label: "LinkedIn"  },
+              { href: "https://www.behance.net/yuliia_dudareva",   label: "Behance"   },
             ].map(({ href, label }) => (
               <a
                 key={label}

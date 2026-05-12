@@ -1,4 +1,4 @@
-# Jane Doe — Portfolio
+# Yuliia Dudareva — Portfolio
 
 A premium, Apple-inspired portfolio built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**.
 
