@@ -7,10 +7,9 @@ const LINKS = [
 ];
 
 const SOCIAL = [
-  { href: "https://dribbble.com",  label: "Dribbble"  },
-  { href: "https://linkedin.com",  label: "LinkedIn"  },
-  { href: "https://twitter.com",   label: "Twitter"   },
-  { href: "https://read.cv",       label: "Read.cv"   },
+  { href: "https://dribbble.com/Yuliia_Dudareva",  label: "Dribbble"  },
+  { href: "https://www.linkedin.com/in/yuliia-dudareva/",  label: "LinkedIn"  },
+  { href: "https://www.behance.net/yuliia_dudareva",   label: "Behance"   },
 ];
 
 export function Footer() {
@@ -21,7 +20,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <p className="font-display font-semibold text-display-md text-canvas mb-3">
-              Jane Doe
+              Yuliia Dudareva
             </p>
             <p className="text-body-sm text-dark-text max-w-[28ch]">
               UI/UX & Product Designer crafting clear, intentional experiences.
@@ -68,7 +67,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8 border-t border-dark-border">
           <p className="text-label text-dark-text">
-            © {new Date().getFullYear()} Jane Doe. All rights reserved.
+            © {new Date().getFullYear()} Yuliia Dudareva. All rights reserved.
           </p>
           <p className="text-label text-dark-text">
             Designed & built with intention.
