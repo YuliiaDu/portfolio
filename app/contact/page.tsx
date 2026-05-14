@@ -74,21 +74,21 @@ export default function ContactPage() {
       <section
         ref={sectionRef}
         onPointerMove={handleCursorMove}
-        className="relative mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-section md:px-10"
+        className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-section md:px-10"
       >
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-3xl"
+          className="max-w-[42rem]"
         >
-          <p className="text-label uppercase tracking-widest text-dark-text mb-5">
+          <p className="text-label uppercase tracking-widest text-stone mb-5">
             Let’s connect
           </p>
-          <h1 className="font-display font-semibold text-display-xl tracking-tight text-canvas max-w-2xl leading-[0.95]">
+          <h1 className="font-display text-display-xl text-canvas leading-none tracking-[-0.03em]">
             Let’s build something together.
           </h1>
-          <p className="mt-6 max-w-2xl text-body-lg text-dark-text">
+          <p className="mt-6 text-body-lg text-stone max-w-[42ch]">
             I design calm, intelligent product experiences with a premium, minimal feel.
             If you’re looking for a thoughtful collaboration, send a note below.
           </p>
@@ -99,7 +99,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
-          className="mt-16 grid gap-8 rounded-[2rem] border border-dark-border bg-dark.surface/95 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.15)] backdrop-blur-xl sm:p-10"
+          className="mt-16 grid gap-8 rounded-[2rem] border border-mist/30 bg-ink/95 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.15)] backdrop-blur-xl sm:p-10"
         >
           <div className="grid gap-6 sm:grid-cols-2">
             <label className="flex flex-col gap-3 text-body-sm text-dark-text">
@@ -110,7 +110,7 @@ export default function ContactPage() {
                 type="text"
                 required
                 placeholder="Your name"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-dark-border bg-white/5 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
               />
             </label>
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-dark-border bg-white/5 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
               />
             </label>
           </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
               rows={6}
               required
               placeholder="Tell me about your project, timeline, and what matters most."
-              className="min-h-[14rem] rounded-[1.5rem] border border-dark-border bg-white/5 px-5 py-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+              className="min-h-[14rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 py-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
             />
           </label>
 
@@ -165,24 +165,6 @@ export default function ContactPage() {
             </motion.button>
           </div>
 
-          <div className="border-t border-dark-border pt-6">
-            <p className="text-label uppercase tracking-widest text-dark-text mb-4">
-              Follow along
-            </p>
-            <div className="flex flex-wrap gap-6">
-              {SOCIAL.map(({ href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-body-sm font-medium text-canvas/90 transition-colors duration-300 hover:text-canvas underline-ember"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
-          </div>
         </motion.form>
       </section>
     </main>

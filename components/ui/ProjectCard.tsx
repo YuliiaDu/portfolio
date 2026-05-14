@@ -26,7 +26,7 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
           `}
         >
           <Image
-            src={project.coverImage}
+            src={project.heroImage ?? project.coverImage}
             alt={project.title}
             fill
             sizes={isFeatured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
