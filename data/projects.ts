@@ -239,7 +239,7 @@ export const projects: Project[] = [
     problem:  "The registration path was losing users early — onboarding completion was only 12.5% and 81.3% of users dropped off before the PRO trial offer.",
     process:  "I led research, flow simplification, and iterative UX design for registration, onboarding, and the PRO trial journey using traffic analysis, A/B testing, and mobile-first validation.",
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
-    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
+    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.657% to 2.08%.",
 
     sections: [
       {
@@ -252,14 +252,11 @@ export const projects: Project[] = [
         type: "text",
         heading: "Research & discovery",
         body: "We analyzed traffic sources, onboarding metrics, device behavior, and form field relevance. That work revealed the greatest opportunities in mobile friction, unclear intent, and a confusing path into the PRO trial.",
-      },
-      {
-        type: "text",
-        body: "",
+        gap: 80,
       },
       {
         type: "comparison",
-        heading: "Results: New Registrations & New Subscriptions",
+        heading: "Registration results",
         comparisons: [
           {
             title: "Onboarding Completion Rate",
@@ -275,6 +272,17 @@ export const projects: Project[] = [
             change: "-14.3%",
             changeType: "decrease",
           },
+        ],
+      },
+      {
+        type: "text",
+        heading: "PRO trial performance",
+        body: "The redesigned PRO trial page reduced decision fatigue, elevated CTA clarity, and used stronger supporting copy to make the value exchange obvious before checkout.",
+      },
+      {
+        type: "comparison",
+        heading: "PRO trial impact",
+        comparisons: [
           {
             title: "Reached Checkout (Click)",
             before: "7.3%",
@@ -290,20 +298,11 @@ export const projects: Project[] = [
             changeType: "increase",
           },
         ],
-        gap: 80,
-        numberFontSize: "text-[2rem]",
-      },
-      {
-        type: "text",
-        heading: "PRO trial performance",
-        body: "The redesigned PRO trial page reduced decision fatigue, elevated CTA clarity, and used stronger supporting copy to make the value exchange obvious before checkout.",
-        gap: 80,
       },
       {
         type: "text",
         heading: "What I learned",
-        body: "Onboarding is more than a starting point — it's a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
-        gap: 80,
+        body: "Onboarding is more than a starting point — it’s a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
       },
     ],
   },
