@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getProject, projects } from "@/data/projects";
 import type { CaseStudySection } from "@/data/projects";
 import WhatIChangedSection from "@/components/ui/WhatIChangedSection";
+import { splitTitle } from "@/lib/utils";
 
 interface ProjectPageProps {
   params: {
@@ -56,7 +57,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   ];
 
   const whatIChangedIndex = project.sections.findIndex(
-    (section) => section.type === "text" && section.heading === "UX & flow enhancements"
+    (section) => section.type === "text" && section.body === ""
   );
 
   const firstSections = whatIChangedIndex >= 0 ? project.sections.slice(0, whatIChangedIndex + 1) : project.sections;
@@ -64,69 +65,86 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="bg-canvas pb-24">
-      <section className="pt-28 pb-16">
+      <section className="pt-28" style={{ paddingBottom: project.slug === "gigmit-registration-onboarding" ? "0" : undefined }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-body-sm font-medium text-stone hover:text-ink transition-colors duration-300 mb-8"
+            className="inline-flex items-center gap-2 text-body-sm font-medium text-stone hover:text-ink transition-colors duration-300 mb-6"
           >
             ← Back to projects
           </Link>
-<!--meta pills-->==$0
-<div class="hero meta reveal in" style="margin-top:28px; transition-delay:08s">
-  <span class="meta-pill year">2022</span>
-  <span class="meta-pill">SaaS</span>
-  <span class="meta-pill">Web Design</span>
-  <span class="meta-pill">Mobile Design</span>
-  <span class="meta-pill">UX Research</span>
-</div>
+
           <div className="grid gap-10 xl:grid-cols-[1.2fr_auto] xl:items-start">
             <div>
-              <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
-                {project.category}
-              </p>
+              {project.slug === "gigmit-registration-onboarding" ? (
+                /* Meta pills */
+                <>
+                  <div className="hero-meta mb-10" style={{ transitionDelay: ".08s" }}>
+                    <span className="meta-pill year">2022</span>
+                    <span className="meta-pill">SaaS</span>
+                    <span className="meta-pill">Web Design</span>
+                    <span className="meta-pill">Mobile Design</span>
+                    <span className="meta-pill">UX Research</span>
+                  </div>
+                </>
+              ) : (
+                <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
+                  {project.category}
+                </p>
+              )}
               <h1 className="font-display font-semibold text-display-lg text-ink max-w-4xl">
-                {project.title}
+                {splitTitle(project.title).map((part, i) => (
+                  <span key={i}>
+                    {i > 0 && <br />}
+                    {i === 1 ? (
+                      <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
+                        {part}
+                      </span>
+                    ) : (
+                      part
+                    )}
+                  </span>
+                ))}
               </h1>
-              <p className="mt-6 text-body-lg text-stone max-w-3xl">
+              <p className="mt-6 mb-10 text-body-lg text-stone max-w-3xl">
                 {project.description}
               </p>
+
+              {/* Hero stats — gigmit only */}
+              {project.slug === "gigmit-registration-onboarding" && (
+                <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "80px" }}>
+                  <div className="h-stat">
+                    <p className="h-stat-val">+189%</p>
+                    <p className="h-stat-lbl">Onboarding completion</p>
+                  </div>
+                  <div className="h-stat">
+                    <p className="h-stat-val">+219%</p>
+                    <p className="h-stat-lbl">Users reaching checkout</p>
+                  </div>
+                  <div className="h-stat">
+                    <p className="h-stat-val">47% faster</p>
+                    <p className="h-stat-lbl">Time to checkout click</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
-        {/* Show video for gigmit homepage redesign, otherwise show hero image */}
-        {project.slug === "gigmit-homepage-redesign" ? (
-          <div className="w-full mt-16">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/wYEDgPEBnZA"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-auto"
+        {heroImage ? (
+            <div className="hero-img-wrap">
+            <img
+              src={heroImage}
+              alt={`${project.title} hero`}
+              className="block w-full h-auto"
             />
           </div>
-        ) : (
-          heroImage ? (
-            <div className="w-full overflow-hidden mt-16">
-              <img
-                src={heroImage}
-                alt={`${project.title} hero`}
-                className="block w-full h-auto"
-              />
-            </div>
-          ) : null
-        )}
+        ) : null}
       </section>
 
-      <section className="pt-16 pb-20">
-        <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-20">
+      <section className="pt-20 pb-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "80px" : undefined }}>
+        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.slug === "gigmit-registration-onboarding" ? "" : "space-y-20"}`}>
           {firstSections.map((section, index) => (
-            <SectionBlock key={`${project.slug}-first-${index}`} section={section} />
+            <SectionBlock key={`${project.slug}-first-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
           ))}
         </div>
       </section>
@@ -136,10 +154,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       ) : null}
 
       {remainingSections.length > 0 ? (
-        <section className="border-t border-mist pt-16">
+        <section className="border-t border-mist pt-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "80px" : undefined }}>
           <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-20">
             {remainingSections.map((section, index) => (
-              <SectionBlock key={`${project.slug}-remaining-${index}`} section={section} />
+              <SectionBlock key={`${project.slug}-remaining-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
             ))}
           </div>
         </section>
@@ -148,10 +166,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   );
 }
 
-function SectionBlock({ section }: { section: CaseStudySection }) {
+function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySection; mb?: number; numberFontSize?: string }) {
   if (section.type === "text") {
     return (
-      <div className="space-y-6">
+      <div className="space-y-6" style={mb ? { marginBottom: `${mb}px` } : undefined}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
@@ -164,7 +182,7 @@ function SectionBlock({ section }: { section: CaseStudySection }) {
 
   if (section.type === "image") {
     return (
-      <div className="rounded-2xl bg-dark-surface shadow-[0_32px_80px_rgba(15,12,10,0.12)] overflow-hidden">
+      <div className="rounded-2xl bg-dark-surface shadow-[0_32px_80px_rgba(15,12,10,0.12)] overflow-hidden" style={mb ? { marginBottom: `${mb}px` } : undefined}>
         {section.heading ? (
           <div className="px-8 py-8">
             <h2 className="font-display font-semibold text-display-md text-canvas">
@@ -194,7 +212,7 @@ function SectionBlock({ section }: { section: CaseStudySection }) {
 
   if (section.type === "metrics") {
     return (
-      <div className="space-y-8">
+      <div className="space-y-8" style={mb ? { marginBottom: `${mb}px` } : undefined}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
@@ -217,49 +235,57 @@ function SectionBlock({ section }: { section: CaseStudySection }) {
   }
 
   if (section.type === "comparison") {
+    const numberSize = numberFontSize ?? section.numberFontSize ?? "text-[2.5rem]";
     return (
-      <div className="space-y-8">
+      <div className="space-y-8" style={mb ? { marginBottom: `${mb}px` } : undefined}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
           </h2>
         ) : null}
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
           {section.comparisons?.map((comp) => (
-            <div key={comp.title} className="rounded-3xl bg-mist border border-mist/80 p-8">
-              <p className="text-label uppercase tracking-widest text-stone mb-6">{comp.title}</p>
-              <div className="grid grid-cols-3 gap-4 items-end">
-                {/* Before */}
-                <div>
-                  <p className="text-body-sm text-stone mb-2">Before</p>
-                  <p className="font-display font-semibold text-[2.5rem] leading-none text-ink">
-                    {comp.before}
+            <div
+              key={comp.title}
+              className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]"
+            >
+              <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-5 sm:pb-6">
+                {/* Group label + metric badge */}
+                <div className="flex items-center justify-between mb-4">
+                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">
+                    {comp.groupLabel}
                   </p>
+                  <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold leading-none bg-[#E8E6E1] text-ink sm:text-[12px] sm:px-3 sm:py-1.5">
+                    {comp.label}
+                  </span>
                 </div>
 
-                {/* Arrow & Change */}
-                <div className="flex flex-col items-center gap-1">
-                  <div
-                    className={`text-[2rem] ${
-                      comp.changeType === "increase" ? "text-green-600" : "text-red-600"
-                    }`}
-                  >
-                    {comp.changeType === "increase" ? "▲" : "▼"}
+                {/* Before | → | After | change — single row */}
+                <div className="flex items-center justify-between gap-2 sm:gap-4">
+                  <div className="flex flex-col items-center gap-1">
+                    <p className="text-[10px] text-stone/50 uppercase tracking-[0.18em]">
+                      Before
+                    </p>
+                    <p className="font-display font-semibold text-xl text-ink leading-none sm:text-[2rem]">
+                      {comp.before}
+                    </p>
                   </div>
-                  <p
-                    className={`text-label font-semibold ${
-                      comp.changeType === "increase" ? "text-green-600" : "text-red-600"
-                    }`}
-                  >
-                    {comp.change}
-                  </p>
-                </div>
 
-                {/* After */}
-                <div>
-                  <p className="text-body-sm text-stone mb-2">After</p>
-                  <p className="font-display font-semibold text-[2.5rem] leading-none text-ink">
-                    {comp.after}
+                  <div className="text-lg leading-none text-[#FF4D00] sm:text-2xl">
+                    →
+                  </div>
+
+                  <div className="flex flex-col items-center gap-1">
+                    <p className="text-[10px] text-stone/50 uppercase tracking-[0.18em]">
+                      After
+                    </p>
+                    <p className="font-display font-semibold text-xl text-ink leading-none sm:text-[2rem]">
+                      {comp.after}
+                    </p>
+                  </div>
+
+                  <p className="text-[11px] font-semibold leading-none text-[#FF4D00] sm:text-label shrink-0">
+                    {comp.change}
                   </p>
                 </div>
               </div>
@@ -272,7 +298,7 @@ function SectionBlock({ section }: { section: CaseStudySection }) {
 
   if (section.type === "quote") {
     return (
-      <figure className="rounded-[2rem] border border-mist bg-white/90 px-8 py-10 text-stone shadow-sm">
+      <figure className="rounded-[2rem] border border-mist bg-white/90 px-8 py-10 text-stone shadow-sm" style={mb ? { marginBottom: `${mb}px` } : undefined}>
         <blockquote className="text-body-lg italic text-ink leading-9">
           “{section.quote}”
         </blockquote>

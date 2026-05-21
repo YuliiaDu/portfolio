@@ -8,9 +8,17 @@ export interface CaseStudySection {
   metrics?: { label: string; value: string }[];
   quote?: string;
   attribution?: string;
-  comparisons?: { title: string; before: string; after: string; change: string; changeType: "increase" | "decrease" }[];
-  gap?: number;   // override section-to-section spacing (px); null/undefined = inherit wrapper
-  numberFontSize?: string; // e.g. "text-[2rem]" or "2.5rem" → applied to before/after number cells
+  comparisons?: {
+    groupLabel: string;           // "Registrations" | "Subscriptions"
+    title: string;
+    before: string;
+    after: string;
+    label: string;                // "completion" | "drop-off" | "reached checkout" | "conversion"
+    change: string;
+    changeType: "increase" | "decrease";
+  }[];
+  gap?: number;
+  numberFontSize?: string;
 }
 
 export interface Project {
@@ -239,7 +247,7 @@ export const projects: Project[] = [
     problem:  "The registration path was losing users early — onboarding completion was only 12.5% and 81.3% of users dropped off before the PRO trial offer.",
     process:  "I led research, flow simplification, and iterative UX design for registration, onboarding, and the PRO trial journey using traffic analysis, A/B testing, and mobile-first validation.",
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
-    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.657% to 2.08%.",
+    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
 
     sections: [
       {
@@ -252,57 +260,62 @@ export const projects: Project[] = [
         type: "text",
         heading: "Research & discovery",
         body: "We analyzed traffic sources, onboarding metrics, device behavior, and form field relevance. That work revealed the greatest opportunities in mobile friction, unclear intent, and a confusing path into the PRO trial.",
-        gap: 80,
-      },
-      {
-        type: "comparison",
-        heading: "Registration results",
-        comparisons: [
-          {
-            title: "Onboarding Completion Rate",
-            before: "12.5%",
-            after: "30.9%",
-            change: "+18.4%",
-            changeType: "increase",
-          },
-          {
-            title: "Drop-off Before Pro Trial Offer",
-            before: "81.3%",
-            after: "67.0%",
-            change: "-14.3%",
-            changeType: "decrease",
-          },
-        ],
       },
       {
         type: "text",
-        heading: "PRO trial performance",
-        body: "The redesigned PRO trial page reduced decision fatigue, elevated CTA clarity, and used stronger supporting copy to make the value exchange obvious before checkout.",
+        body: "",
       },
       {
         type: "comparison",
-        heading: "PRO trial impact",
+        heading: "Results: New Registrations & New Subscriptions",
         comparisons: [
+          // Row 1 — Registrations
           {
-            title: "Reached Checkout (Click)",
+            groupLabel: "Registrations",
+            title: "Onboarding Completion Rate",
+            before: "12.5%",
+            after: "30.9%",
+            label: "completion",
+            change: "+18.4 pp",
+            changeType: "increase",
+          },
+          {
+            groupLabel: "Registrations",
+            title: "Drop-off Before Pro Trial",
+            before: "81.3%",
+            after: "67.0%",
+            label: "drop-off",
+            change: "-14.3 pp",
+            changeType: "decrease",
+          },
+          // Row 2 — Subscriptions
+          {
+            groupLabel: "Subscriptions",
+            title: "Reached Checkout",
             before: "7.3%",
             after: "23.3%",
+            label: "reached checkout",
             change: "+219%",
             changeType: "increase",
           },
           {
-            title: "Overall Conversion Rate",
+            groupLabel: "Subscriptions",
+            title: "Conversion Rate",
             before: "0.66%",
             after: "2.08%",
-            change: "+216.6%",
+            label: "conversion",
+            change: "+217%",
             changeType: "increase",
           },
         ],
+        gap: 80,
+        numberFontSize: "text-[2rem]",
       },
       {
         type: "text",
         heading: "What I learned",
-        body: "Onboarding is more than a starting point — it’s a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
+        body: "Onboarding is more than a starting point — it's a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
+        gap: 80,
       },
     ],
   },
