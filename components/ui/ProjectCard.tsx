@@ -51,7 +51,9 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
               {project.title}
             </h3>
             <p className="text-body-sm text-stone mt-2 max-w-[50ch]">
-              {project.description}
+              {project.description && project.description.length > 112
+                ? project.description.slice(0, 112).trimEnd() + '…'
+                : project.description}
             </p>
           </div>
 

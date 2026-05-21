@@ -93,8 +93,7 @@ export function Hero() {
             className="text-body-lg text-stone max-w-[42ch]"
           >
             I'm Yuliia — UI/UX &amp; Product Designer. I turn complex problems into
-            products people actually want to use. Currently at{" "}
-            <span className="text-ink font-medium">Linear</span>.
+            products people actually want to use. Currently in Munich.
           </motion.p>
 
           <motion.div
@@ -126,33 +125,19 @@ export function Hero() {
         >
           {[
             { value: "6+",  label: "Years experience"    },
-            { value: "40+", label: "Products shipped"    },
-            { value: "3",   label: "Startup exits"       },
+            { value: "UX & UI", label: "Product design"    },
             { value: "B2B & B2C", label: "Domain range"  },
+            { value: "Design × AI", label: "Modern workflows" },
           ].map(({ value, label }) => (
             <div key={label}>
               <p className="font-display font-semibold text-display-md text-ink mb-1">{value}</p>
-              <p className="text-label uppercase tracking-widest text-stone">{label}</p>
+              <p className="text-label uppercase tracking-widest text-stone whitespace-pre-line">{label}</p>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* ── Scroll indicator ──────────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        aria-hidden
-      >
-        <span className="text-label text-stone uppercase tracking-widest">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-stone to-transparent"
-        />
-      </motion.div>
+      
     </section>
   );
 }

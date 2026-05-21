@@ -8,7 +8,7 @@ import { EASE_OUT_EXPO } from "@/lib/motion";
 const TESTIMONIALS = [
   {
     quote:
-      "Yuliia combines exceptional design skills with impressive speed and a deep understanding of product thinking. She consistently delivered high-quality work, often going beyond the brief by proactively suggesting improvements and anticipating user needs. Her designs were not only visually strong but always grounded in usability and business impact.Beyond her talent, Yulia is incredibly friendly, collaborative, and easy to work with. She brings a positive energy to the team, communicates clearly, and takes full ownership of her work. You can trust her to move fast, think independently, and elevate the product at every stage.",
+      "Yuliia combines exceptional design skills with impressive speed and a deep understanding of product thinking. She consistently delivered high-quality work, often going beyond the brief by proactively suggesting improvements and anticipating user needs. Her designs were not only visually strong but always grounded in usability and business impact.",
     name: "Marcus Fitzgerald",
     role: "CEO, gigmit",
   },

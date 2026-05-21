@@ -128,12 +128,32 @@ export default function AboutPage() {
             animate="visible"
             className="grid gap-12 items-center lg:grid-cols-[1.5fr_1fr]"
           >
-            <div className="text-center lg:text-left">
+            <div className="text-left">
               <motion.h1
                 variants={fadeUp}
-                className="font-display font-semibold text-display-lg tracking-tight leading-[1.05] mb-6"
+                className="font-display text-display-xl text-ink text-balance leading-none tracking-[-0.03em] mb-6"
               >
-                Designing thoughtful digital experiences where strategy, design, and technology meet.
+                <span className="block">
+                  Creating{' '}
+                  <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
+                    products
+                  </span>
+                </span>
+
+                <motion.div
+                  variants={fadeUp}
+                  className="flex flex-wrap items-baseline justify-start gap-x-5 gap-y-0"
+                >
+                  <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
+                    people
+                  </span>
+                  <span
+                    className="font-display text-display-xl leading-none tracking-[-0.03em]"
+                    style={{ color: "#FF4D00" }}
+                  >
+                    love.
+                  </span>
+                </motion.div>
               </motion.h1>
               <motion.p
                 variants={fadeUp}
