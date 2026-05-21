@@ -64,8 +64,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const remainingSections = whatIChangedIndex >= 0 ? project.sections.slice(whatIChangedIndex + 1) : [];
 
   return (
-    <main className="bg-canvas pb-24">
-      <section className="pt-28" style={{ paddingBottom: project.slug === "gigmit-registration-onboarding" ? "0" : undefined }}>
+    <main className="bg-canvas">
+      <section className="pt-20 md:pt-28" style={{ paddingBottom: project.slug === "gigmit-registration-onboarding" ? "0" : undefined }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <Link
             href="/projects"
@@ -112,7 +112,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
               {/* Hero stats — gigmit only */}
               {project.slug === "gigmit-registration-onboarding" && (
-                <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "80px" }}>
+                <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
                   <div className="h-stat">
                     <p className="h-stat-val">+189%</p>
                     <p className="h-stat-lbl">Onboarding completion</p>
@@ -131,18 +131,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
         {heroImage ? (
+          <div className="max-w-6xl mx-auto px-6 md:px-10">
             <div className="hero-img-wrap">
-            <img
-              src={heroImage}
-              alt={`${project.title} hero`}
-              className="block w-full h-auto"
-            />
+              <img
+                src={heroImage}
+                alt={`${project.title} hero`}
+                className="block w-full h-auto"
+              />
+            </div>
           </div>
         ) : null}
       </section>
 
-      <section className="pt-20 pb-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "80px" : undefined }}>
-        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.slug === "gigmit-registration-onboarding" ? "" : "space-y-20"}`}>
+      <section className="pt-12 pb-12 md:pt-20 md:pb-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.slug === "gigmit-registration-onboarding" ? "" : "space-y-12 md:space-y-20"}`}>
           {firstSections.map((section, index) => (
             <SectionBlock key={`${project.slug}-first-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
           ))}
@@ -154,8 +156,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       ) : null}
 
       {remainingSections.length > 0 ? (
-        <section className="border-t border-mist pt-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "80px" : undefined }}>
-          <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-20">
+        <section className="border-t border-mist pt-12 md:pt-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+          <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-12 md:space-y-20">
             {remainingSections.map((section, index) => (
               <SectionBlock key={`${project.slug}-remaining-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
             ))}
@@ -166,10 +168,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   );
 }
 
+function mbStyle(mb?: number): React.CSSProperties | undefined {
+  if (!mb) return undefined;
+  // Clamp: roughly half the value on mobile, full value on desktop
+  return { marginBottom: `clamp(${Math.round(mb * 0.5)}px, ${mb * 0.06}vw + ${Math.round(mb * 0.35)}px, ${mb}px)` };
+}
+
 function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySection; mb?: number; numberFontSize?: string }) {
   if (section.type === "text") {
     return (
-      <div className="space-y-6" style={mb ? { marginBottom: `${mb}px` } : undefined}>
+      <div className="space-y-4 md:space-y-6" style={mbStyle(mb)}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
@@ -182,7 +190,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
 
   if (section.type === "image") {
     return (
-      <div className="rounded-2xl bg-dark-surface shadow-[0_32px_80px_rgba(15,12,10,0.12)] overflow-hidden" style={mb ? { marginBottom: `${mb}px` } : undefined}>
+      <div className="rounded-2xl bg-dark-surface shadow-[0_32px_80px_rgba(15,12,10,0.12)] overflow-hidden" style={mbStyle(mb)}>
         {section.heading ? (
           <div className="px-8 py-8">
             <h2 className="font-display font-semibold text-display-md text-canvas">
@@ -212,7 +220,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
 
   if (section.type === "metrics") {
     return (
-      <div className="space-y-8" style={mb ? { marginBottom: `${mb}px` } : undefined}>
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
@@ -221,7 +229,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {section.metrics?.map((metric) => (
             <div key={metric.label} className="rounded-3xl bg-mist border border-mist/80 p-6">
-              <p className="font-display font-semibold text-[2.5rem] leading-none text-[#ff4d00] mb-3">
+              <p className="font-display font-semibold text-[2rem] md:text-[2.5rem] leading-none text-[#ff4d00] mb-3">
                 {metric.value}
               </p>
               <p className="text-body-lg text-ink/90">
@@ -237,7 +245,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
   if (section.type === "comparison") {
     const numberSize = numberFontSize ?? section.numberFontSize ?? "text-[2.5rem]";
     return (
-      <div className="space-y-8" style={mb ? { marginBottom: `${mb}px` } : undefined}>
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
           <h2 className="font-display font-semibold text-display-md text-ink">
             {section.heading}
@@ -298,7 +306,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
 
   if (section.type === "quote") {
     return (
-      <figure className="rounded-[2rem] border border-mist bg-white/90 px-8 py-10 text-stone shadow-sm" style={mb ? { marginBottom: `${mb}px` } : undefined}>
+      <figure className="rounded-[2rem] border border-mist bg-white/90 px-6 py-8 md:px-8 md:py-10 text-stone shadow-sm" style={mbStyle(mb)}>
         <blockquote className="text-body-lg italic text-ink leading-9">
           “{section.quote}”
         </blockquote>

@@ -82,13 +82,15 @@ export default function ContactPage() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-[42rem]"
         >
-          <p className="text-label uppercase tracking-widest text-stone mb-5">
+          <p className="text-label uppercase tracking-widest text-dark-text mb-5">
             Let’s connect
           </p>
-          <h1 className="font-display text-display-xl text-canvas leading-none tracking-[-0.03em]">
-            Let’s build something together.
+          <h1 className="font-display text-display-xl leading-none tracking-[-0.03em]">
+            <span className="block text-canvas">Let's build</span>
+            <span className="block text-canvas italic font-light">something</span>
+            <span className="block" style={{ color: "#FF4D00" }}>together.</span>
           </h1>
-          <p className="mt-6 text-body-lg text-stone max-w-[42ch]">
+          <p className="mt-6 text-body-lg text-dark-text max-w-[42ch]">
             I design calm, intelligent product experiences with a premium, minimal feel.
             If you’re looking for a thoughtful collaboration, send a note below.
           </p>
@@ -110,7 +112,7 @@ export default function ContactPage() {
                 type="text"
                 required
                 placeholder="Your name"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
               />
             </label>
 
@@ -122,7 +124,7 @@ export default function ContactPage() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
               />
             </label>
           </div>
@@ -135,7 +137,7 @@ export default function ContactPage() {
               rows={6}
               required
               placeholder="Tell me about your project, timeline, and what matters most."
-              className="min-h-[14rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 py-5 text-canvas outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+              className="min-h-[14rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 py-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
             />
           </label>
 

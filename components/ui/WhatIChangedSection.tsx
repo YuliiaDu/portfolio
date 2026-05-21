@@ -20,9 +20,9 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
 
   return (
     <>
-      <section className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+      <section className="bg-ink text-canvas pt-16 pb-16 md:pt-[120px] md:pb-[120px]">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-20">
             <div>
               <p className="text-label uppercase tracking-widest text-dark-text mb-3">
                 What I changed
@@ -53,7 +53,7 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-8 md:p-10 flex flex-col flex-1">
+                <div className="p-6 md:p-10 flex flex-col flex-1">
                   <span className="text-label text-dark-text mb-6 block">{card.number}</span>
                   <h3 className="font-display font-semibold text-display-md text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
                     {card.title}

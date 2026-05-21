@@ -13,39 +13,51 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const isDark = pathname === "/contact";
   const { scrollY } = useScroll();
 
-  // Border becomes visible after 80px scroll
+  // On light pages: fade in canvas bg on scroll. On dark pages: always dark bg.
   const borderOpacity = useTransform(scrollY, [0, 80], [0, 1]);
   const bgOpacity     = useTransform(scrollY, [0, 80], [0, 0.85]);
 
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
-      style={{
+      style={isDark ? {
+        borderBottomColor: "rgba(42, 42, 42, 1)",
+        borderBottomWidth: 1,
+        borderBottomStyle: "solid",
+      } : {
         borderBottomColor: `rgba(232, 230, 225, ${borderOpacity.get()})`,
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
       }}
     >
       {/* Blurred background */}
-      <motion.div
-        className="absolute inset-0 backdrop-blur-md"
-        style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.85)" }}
-      />
+      {isDark ? (
+        <div className="absolute inset-0 backdrop-blur-md bg-ink/90" />
+      ) : (
+        <motion.div
+          className="absolute inset-0 backdrop-blur-md"
+          style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.85)" }}
+        />
+      )}
 
       <nav className="relative max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
         {/* Logo / Name */}
         <Link
           href="/"
-          className="font-display font-semibold text-[1.05rem] tracking-tight underline-ember"
+          className={cn(
+            "font-display font-semibold text-[1.05rem] tracking-tight underline-ember transition-colors duration-300",
+            isDark ? "text-canvas hover:text-ember" : ""
+          )}
           aria-label="Yuliia Dudareva — Home"
         >
           Yuliia Dudareva
         </Link>
 
         {/* Links */}
-        <ul className="flex items-center gap-8">
+        <ul className="flex items-center gap-5 md:gap-8">
           {NAV_LINKS.map(({ href, label }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
@@ -54,7 +66,9 @@ export function Navbar() {
                   href={href}
                   className={cn(
                     "relative text-body-sm font-medium transition-colors duration-300",
-                    active ? "text-ink" : "text-stone hover:text-ink"
+                    isDark
+                      ? active ? "text-canvas" : "text-dark-text hover:text-canvas"
+                      : active ? "text-ink"    : "text-stone hover:text-ink"
                   )}
                 >
                   {label}
@@ -74,7 +88,12 @@ export function Navbar() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="hidden md:flex items-center gap-2 text-body-sm font-medium border border-ink px-4 py-2 rounded-full hover:bg-ink hover:text-canvas transition-all duration-300"
+          className={cn(
+            "hidden md:flex items-center gap-2 text-body-sm font-medium px-4 py-2 rounded-full transition-all duration-300",
+            isDark
+              ? "border border-dark-border text-canvas hover:border-ember hover:text-ember"
+              : "border border-ink hover:bg-ink hover:text-canvas"
+          )}
         >
           Let's talk
         </Link>
