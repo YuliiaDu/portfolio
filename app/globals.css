@@ -16,6 +16,18 @@
   /* Scrollbar */
   scrollbar-width: thin;
   scrollbar-color: #C8C5BE #F9F8F6;
+
+  /* Design-token colour variables */
+  --canvas: #F9F8F6;
+  --ink:    #0E0E0E;
+  --stone:  #6B6B6B;
+  --mist:   #E8E6E1;
+  --ember:  #FF4D00;
+  --dark-bg:      #0E0E0E;
+  --dark-surface: #1A1A1A;
+  --dark-border:  #2A2A2A;
+  --dark-text:    #A8A8A8;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -76,13 +88,117 @@ img, video {
 }
 
 /* ─── Utility layers ─────────────────────────── */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  @layer utilities {
+    .text-balance {
+      text-wrap: balance;
+    }
 
-  /* Horizontal rule with label */
-  .rule-label {
+    /* ─── hero-meta pill strip ───────────────────────────── */
+    .hero-meta {
+      @apply inline-flex flex-wrap items-center gap-2;
+    }
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      border: 1px solid var(--mist);
+      padding: 7px 15px;
+      border-radius: 999px;
+    }
+    .meta-pill.year {
+      border-color: var(--ember);
+      color: var(--ember);
+    }
+
+    /* ─── hero-stats ──────────────────────────────────────── */
+    .hero-stats {
+      -webkit-font-smoothing: antialiased;
+      color: var(--ink);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      max-width: 1072px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--mist);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+      opacity: 1;
+      transform: none;
+      transition-delay: .46s;
+    }
+    .h-stat {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 1.5rem;
+      border-right: 1px solid var(--mist);
+    }
+    .h-stat:last-child {
+      border-right: none;
+    }
+    .h-stat-val {
+      -webkit-font-smoothing: antialiased;
+      font-family: var(--font-fraunces);
+      font-weight: 600;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -.025em;
+      color: var(--ink);
+      margin-bottom: 5px;
+    }
+    .h-stat-lbl {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      line-height: 1.6;
+    }
+
+    /* ─── hero-img-wrap ──────────────────────────────────── */
+    .hero-img-wrap {
+      -webkit-font-smoothing: antialiased;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--stone);
+      width: 100%;
+      max-width: 1072px;
+      margin-inline: auto;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #F0EDE8 0%, #E4E0D8 100%);
+      overflow: hidden;
+    }
+    .hero-img-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Horizontal rule with label */
+    .rule-label {
     @apply flex items-center gap-4 text-label uppercase tracking-widest text-stone;
   }
   .rule-label::before,

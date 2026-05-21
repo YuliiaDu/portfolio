@@ -9,6 +9,8 @@ export interface CaseStudySection {
   quote?: string;
   attribution?: string;
   comparisons?: { title: string; before: string; after: string; change: string; changeType: "increase" | "decrease" }[];
+  gap?: number;   // override section-to-section spacing (px); null/undefined = inherit wrapper
+  numberFontSize?: string; // e.g. "text-[2rem]" or "2.5rem" → applied to before/after number cells
 }
 
 export interface Project {
@@ -186,7 +188,7 @@ export const projects: Project[] = [
     title:       "gigmit Registration & Onboarding",
     category:    "UX & Product Design",
     year:        "2022",
-    description: "Redesigned gigmit’s registration and onboarding flow to lift activation and lower drop-off for artists and promoters.",
+    description: "gigmit is a digital platform connecting artists with promoters and venues, simplifying booking for live music events. As Product Designer & UX Researcher, I led a full redesign of the registration and onboarding flow to improve conversion and reduce drop-off.",
     coverImage:  "https://yu-dudareva.notion.site/image/attachment%3A5b4b201f-4e44-46c7-a73d-1794bdca2bb3%3ASurface_Pro_8_-_2.png?table=block&id=28f5f7e8-db24-8066-96fe-caf3b122322a&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
     accentColor: "#FF4D00",
     tags:        ["SaaS", "Conversion", "Onboarding", "Mobile"],
@@ -237,13 +239,14 @@ export const projects: Project[] = [
     problem:  "The registration path was losing users early — onboarding completion was only 12.5% and 81.3% of users dropped off before the PRO trial offer.",
     process:  "I led research, flow simplification, and iterative UX design for registration, onboarding, and the PRO trial journey using traffic analysis, A/B testing, and mobile-first validation.",
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
-    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.657% to 2.08%.",
+    outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
 
     sections: [
       {
         type: "text",
         heading: "The challenge",
-        body: "gigmit’s artist onboarding experience was friction-heavy and misaligned with conversion goals. The flow needed to work harder for mobile traffic, reduce unnecessary fields, and help users understand value before the PRO trial step.",
+        body: "gigmit's artist onboarding experience was friction-heavy and misaligned with conversion goals. The flow needed to work harder for mobile traffic, reduce unnecessary fields, and help users understand value before the PRO trial step.",
+        gap: 80,
       },
       {
         type: "text",
@@ -251,8 +254,12 @@ export const projects: Project[] = [
         body: "We analyzed traffic sources, onboarding metrics, device behavior, and form field relevance. That work revealed the greatest opportunities in mobile friction, unclear intent, and a confusing path into the PRO trial.",
       },
       {
+        type: "text",
+        body: "",
+      },
+      {
         type: "comparison",
-        heading: "Registration results",
+        heading: "Results: New Registrations & New Subscriptions",
         comparisons: [
           {
             title: "Onboarding Completion Rate",
@@ -268,22 +275,6 @@ export const projects: Project[] = [
             change: "-14.3%",
             changeType: "decrease",
           },
-        ],
-      },
-      {
-        type: "text",
-        heading: "UX & flow enhancements",
-        body: "The new experience added a connecting message for external traffic, streamlined mobile onboarding, deferred non-essential fields, introduced a progress indicator, and simplified the PRO trial offer step.",
-      },
-      {
-        type: "text",
-        heading: "PRO trial performance",
-        body: "The redesigned PRO trial page reduced decision fatigue, elevated CTA clarity, and used stronger supporting copy to make the value exchange obvious before checkout.",
-      },
-      {
-        type: "comparison",
-        heading: "PRO trial impact",
-        comparisons: [
           {
             title: "Reached Checkout (Click)",
             before: "7.3%",
@@ -293,17 +284,26 @@ export const projects: Project[] = [
           },
           {
             title: "Overall Conversion Rate",
-            before: "0.657%",
+            before: "0.66%",
             after: "2.08%",
             change: "+216.6%",
             changeType: "increase",
           },
         ],
+        gap: 80,
+        numberFontSize: "text-[2rem]",
+      },
+      {
+        type: "text",
+        heading: "PRO trial performance",
+        body: "The redesigned PRO trial page reduced decision fatigue, elevated CTA clarity, and used stronger supporting copy to make the value exchange obvious before checkout.",
+        gap: 80,
       },
       {
         type: "text",
         heading: "What I learned",
-        body: "Onboarding is more than a starting point — it’s a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
+        body: "Onboarding is more than a starting point — it's a moment to build trust, deliver value, and set users up for success. Small changes in clarity, flow, and motivation can have outsized impact on engagement.",
+        gap: 80,
       },
     ],
   },

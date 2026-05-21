@@ -20,7 +20,7 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
 
   return (
     <>
-      <section className="bg-ink text-canvas py-section">
+      <section className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">
             <div>
