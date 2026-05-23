@@ -65,7 +65,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="bg-canvas">
-      <section className="pt-20 md:pt-28" style={{ paddingBottom: project.slug === "gigmit-registration-onboarding" ? "0" : undefined }}>
+      <section className="pt-20 md:pt-28" style={{ paddingBottom: project.client === "gigmit.com" ? "0" : undefined }}>
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <Link
             href="/projects"
@@ -76,42 +76,57 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           <div className="grid gap-10 xl:grid-cols-[1.2fr_auto] xl:items-start">
             <div>
-              {project.slug === "gigmit-registration-onboarding" ? (
-                /* Meta pills */
-                <>
-                  <div className="hero-meta mb-10" style={{ transitionDelay: ".08s" }}>
-                    <span className="meta-pill year">2022</span>
-                    <span className="meta-pill">SaaS</span>
-                    <span className="meta-pill">Web Design</span>
-                    <span className="meta-pill">Mobile Design</span>
-                    <span className="meta-pill">UX Research</span>
-                  </div>
-                </>
-              ) : (
-                <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
-                  {project.category}
-                </p>
-              )}
-              <h1 className="font-display font-semibold text-display-lg text-ink max-w-4xl">
-                {splitTitle(project.title).map((part, i) => (
-                  <span key={i}>
-                    {i > 0 && <br />}
-                    {i === 1 ? (
-                      <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
-                        {part}
-                      </span>
-                    ) : (
-                      part
-                    )}
-                  </span>
+              {/* Meta pills for all projects: client (highlighted) -> year -> tags */}
+              <div className="hero-meta mb-10" style={{ transitionDelay: ".08s" }}>
+                {project.client ? (
+                  <span className="meta-pill year">{project.client}</span>
+                ) : null}
+                <span className="meta-pill">{project.year}</span>
+                {project.tags && project.tags.map((t) => (
+                  <span key={t} className="meta-pill">{t}</span>
                 ))}
+              </div>
+              <h1 className="font-display font-semibold text-display-lg text-ink max-w-4xl">
+                {(() => {
+                    // Special casing for gigmit title display — only apply to the
+                    // original registration case study so other gigmit entries
+                    // (e.g. homepage-redesign) render their own titles.
+                    if (project.client === "gigmit.com" && project.slug === "registration-onboarding-flow") {
+                    const parts = ["Registration & Onboarding", "Flow"];
+                    return parts.map((part, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {i === 0 ? (
+                          <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
+                            {part}
+                          </span>
+                        ) : (
+                          part
+                        )}
+                      </span>
+                    ));
+                  }
+
+                  return splitTitle(project.title).map((part, i) => (
+                    <span key={i}>
+                      {i > 0 && <br />}
+                      {i === 1 ? (
+                        <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
+                          {part}
+                        </span>
+                      ) : (
+                        part
+                      )}
+                    </span>
+                  ));
+                })()}
               </h1>
               <p className="mt-6 mb-10 text-body-lg text-stone max-w-3xl">
                 {project.description}
               </p>
 
               {/* Hero stats — gigmit only */}
-              {project.slug === "gigmit-registration-onboarding" && (
+              {project.client === "gigmit.com" && (
                 <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
                   <div className="h-stat">
                     <p className="h-stat-val">+189%</p>
@@ -143,8 +158,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         ) : null}
       </section>
 
-      <section className="pt-12 pb-12 md:pt-20 md:pb-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "clamp(48px, 6vw, 80px)" : undefined }}>
-        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.slug === "gigmit-registration-onboarding" ? "" : "space-y-12 md:space-y-20"}`}>
+      <section className="pt-12 pb-12 md:pt-20 md:pb-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.client === "gigmit.com" ? "" : "space-y-12 md:space-y-20"}`}>
           {firstSections.map((section, index) => (
             <SectionBlock key={`${project.slug}-first-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
           ))}
@@ -156,7 +171,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       ) : null}
 
       {remainingSections.length > 0 ? (
-        <section className="border-t border-mist pt-12 md:pt-20" style={{ paddingTop: project.slug === "gigmit-registration-onboarding" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+        <section className="border-t border-mist pt-12 md:pt-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
           <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-12 md:space-y-20">
             {remainingSections.map((section, index) => (
               <SectionBlock key={`${project.slug}-remaining-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />

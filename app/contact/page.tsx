@@ -74,35 +74,36 @@ export default function ContactPage() {
       <section
         ref={sectionRef}
         onPointerMove={handleCursorMove}
-        className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-section md:px-10"
+        className="relative mx-auto min-h-screen max-w-6xl px-6 py-section md:px-10"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-[42rem]"
-        >
+        <div className="mx-auto lg:mx-0 lg:max-w-none lg:grid lg:grid-cols-[1fr_520px] lg:items-center lg:gap-12">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="max-w-[36rem] lg:col-start-1"
+          >
           <p className="text-label uppercase tracking-widest text-dark-text mb-5">
             Let’s connect
           </p>
-          <h1 className="font-display text-display-xl leading-none tracking-[-0.03em]">
+          <h1 className="font-display text-3xl md:text-[86px] leading-none tracking-[-0.03em]">
             <span className="block text-canvas">Let's build</span>
             <span className="block text-canvas italic font-light">something</span>
             <span className="block" style={{ color: "#FF4D00" }}>together.</span>
           </h1>
-          <p className="mt-6 text-body-lg text-dark-text max-w-[42ch]">
+          <p className="mt-6 text-[16px] md:text-body-lg text-dark-text max-w-[42ch]">
             I design calm, intelligent product experiences with a premium, minimal feel.
             If you’re looking for a thoughtful collaboration, send a note below.
           </p>
-        </motion.div>
+          </motion.div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
-          className="mt-16 grid gap-8 rounded-[2rem] border border-mist/30 bg-ink/95 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.15)] backdrop-blur-xl sm:p-10"
-        >
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 32 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
+            className="mt-12 lg:mt-0 grid gap-8 rounded-[2rem] bg-ink/95 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.15)] backdrop-blur-xl sm:p-10 lg:col-start-2"
+          >
           <div className="grid gap-6 sm:grid-cols-2">
             <label className="flex flex-col gap-3 text-body-sm text-dark-text">
               <span className="font-medium text-canvas">Name</span>
@@ -112,7 +113,7 @@ export default function ContactPage() {
                 type="text"
                 required
                 placeholder="Your name"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] form-input placeholder:text-dark-text/70 outline-none"
               />
             </label>
 
@@ -124,7 +125,7 @@ export default function ContactPage() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="min-h-[4.5rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+                className="min-h-[4.5rem] form-input placeholder:text-dark-text/70 outline-none"
               />
             </label>
           </div>
@@ -137,7 +138,7 @@ export default function ContactPage() {
               rows={6}
               required
               placeholder="Tell me about your project, timeline, and what matters most."
-              className="min-h-[14rem] rounded-[1.5rem] border border-mist/30 bg-ink/10 px-5 py-5 text-canvas placeholder:text-dark-text/70 outline-none transition focus:border-ember focus:ring-2 focus:ring-ember/15"
+              className="min-h-[14rem] form-input px-5 py-5 text-canvas placeholder:text-dark-text/70 outline-none"
             />
           </label>
 
@@ -161,13 +162,14 @@ export default function ContactPage() {
               className="relative inline-flex items-center justify-center overflow-hidden rounded-[1.75rem] border border-ember/20 bg-ember px-7 py-4 text-body-sm font-medium text-ink transition-shadow duration-300 hover:shadow-[0_18px_60px_rgba(255,77,0,0.24)]"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-canvas/10 to-transparent opacity-0 transition-opacity duration-400" />
-              <span className="relative">
+              <span className="relative whitespace-nowrap">
                 {status === "sending" ? "Sending..." : status === "sent" ? "Sent" : "Send message"}
               </span>
             </motion.button>
           </div>
 
         </motion.form>
+        </div>
       </section>
     </main>
   );

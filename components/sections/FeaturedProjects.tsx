@@ -83,8 +83,12 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ProjectRow — the main card layout on home
-──────────────────────────────────────────────────────────────── */
+   ProjectRow
+   - Mobile (<774px): full-card image with title/year overlay
+   - Desktop (≥774px): constrained left text column + dominant
+     right image column. Hover flips bg to ink; all text goes
+     canvas. Arrow stays readable in canvas/canvas tones.
+─────────────────────────────────────────────────────────────── */
 interface ProjectRowProps {
   project: Project;
   index:   number;
@@ -92,8 +96,6 @@ interface ProjectRowProps {
 }
 
 function ProjectRow({ project, index, inView }: ProjectRowProps) {
-  const isLarge = index === 0;
-
   return (
     <motion.article
       initial="hidden"
@@ -103,61 +105,75 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group relative grid md:grid-cols-[1fr_auto] gap-0 rounded-3xl overflow-hidden bg-mist hover:bg-ink transition-colors duration-500"
-        style={{ minHeight: isLarge ? "420px" : "280px" }}
+        className="group relative grid gap-0 rounded-3xl overflow-hidden bg-mist hover:bg-ink transition-colors duration-500 ring-1 ring-stone/40 hover:ring-black min-[774px]:grid-cols-[320px_1fr]"
+        style={{ minHeight: 420 }}
       >
-        {/* ── Left: text content ───────────────────────────── */}
-        <div className="relative z-10 flex flex-col justify-between p-8 md:p-10">
-          {/* Top meta */}
-          <div className="flex items-center justify-between mb-auto">
-            <div className="flex items-center gap-3">
-              <span className="text-label text-stone group-hover:text-canvas/50 transition-colors duration-500">
-                {pad(index + 1)} /
-              </span>
-              <span className="text-label uppercase tracking-widest text-stone group-hover:text-canvas/50 transition-colors duration-500">
-                {project.category}
-              </span>
-            </div>
+        {/* ── Mobile: full-card image with title overlay ─── */}
+        <div className="relative min-[774px]:hidden" style={{ minHeight: 260 }}>
+          <Image
+            src={project.coverImage}
+            alt={project.title}
+            fill
+            sizes="100vw"
+            className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
+          />
+          {/* Floating label with project name (no year) */}
+          <div className="absolute left-1/2 bottom-6 transform -translate-x-1/2">
+            <span
+              className={
+                index === 0
+                  ? "font-display text-display-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm max-w-[90vw] truncate"
+                  : "font-display text-body-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm"
+              }
+            >
+              {project.title}
+            </span>
+          </div>
+        </div>
+
+        {/* ── Desktop: left constrained content ─────────── */}
+        <div className="hidden min-[774px]:flex flex-col justify-between p-8 lg:p-10">
+          {/* Top: index + category */}
+          <div className="flex items-center gap-3">
             <span className="text-label text-stone group-hover:text-canvas/40 transition-colors duration-500">
-              {project.year}
+              {pad(index + 1)} /
+            </span>
+            <span className="text-label uppercase tracking-widest text-stone group-hover:text-canvas/40 transition-colors duration-500">
+              {project.category}
             </span>
           </div>
 
-          {/* Main text */}
-          <div className="mt-8">
-            <h3
-              className={`font-display font-semibold text-ink group-hover:text-canvas transition-colors duration-500 mb-3 ${
-                isLarge ? "text-display-lg" : "text-display-md"
-              }`}
-            >
+          {/* Middle: title + description */}
+          <div className="mt-auto mb-auto py-6">
+            <h3 className="font-display font-semibold text-display-md text-ink group-hover:text-canvas transition-colors duration-500 mb-3 line-clamp-2">
               {project.title}
             </h3>
-            <p className="text-body-sm text-stone group-hover:text-canvas/60 transition-colors duration-500 max-w-[48ch]">
+            <p className="text-body-sm text-stone group-hover:text-canvas/60 transition-colors duration-500 line-clamp-3">
               {project.description}
             </p>
           </div>
 
-          {/* Tags + arrow */}
-          <div className="flex items-end justify-between mt-8 gap-4">
+          {/* Bottom: tags + arrow */}
+          <div className="flex items-end justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {project.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-label text-stone bg-canvas/60 group-hover:bg-canvas/10 group-hover:text-canvas/60 px-3 py-1.5 rounded-full transition-colors duration-500"
+                  className="text-label text-stone bg-ink/6 group-hover:bg-canvas/10 group-hover:text-canvas/60 px-3 py-1.5 rounded-full transition-colors duration-500"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            {/* Animated arrow circle */}
-            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-mist group-hover:border-canvas/30 flex items-center justify-center transition-all duration-300">
+            {/* Arrow CTA */}
+            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-stone/30 group-hover:border-black group-hover:bg-ember/10 flex items-center justify-center transition-all duration-300">
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 14 14"
                 fill="none"
-                className="text-ink group-hover:text-canvas transition-colors duration-500 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                className="text-ink group-hover:text-ember transition-colors duration-300 -rotate-45"
               >
                 <path
                   d="M2 7h10M7 2l5 5-5 5"
@@ -171,23 +187,15 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
           </div>
         </div>
 
-        {/* ── Right: cover image ───────────────────────────── */}
-        <div
-          className={`relative overflow-hidden ${
-            isLarge
-              ? "hidden md:block md:w-[400px]"
-              : "hidden md:block md:w-[300px]"
-          }`}
-        >
+        {/* ── Desktop: dominant image column ─────────────── */}
+        <div className="relative overflow-hidden hidden min-[774px]:block">
           <Image
             src={project.coverImage}
             alt={project.title}
             fill
-            sizes="400px"
-            className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105 opacity-80 group-hover:opacity-60"
+            sizes="(min-width: 774px) 65vw, 100vw"
+            className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
           />
-          {/* Gradient blend — left edge merges with card bg */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-mist group-hover:from-ink transition-colors duration-500 z-10" />
         </div>
       </Link>
     </motion.article>

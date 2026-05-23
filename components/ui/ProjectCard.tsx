@@ -32,8 +32,7 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
             sizes={isFeatured ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
             className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
           />
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-all duration-500" />
+          {/* (Removed gradient overlay) */}
 
           {/* Year badge */}
           <span className="absolute top-4 right-4 bg-canvas/90 backdrop-blur-sm text-ink text-label px-3 py-1.5 rounded-full">

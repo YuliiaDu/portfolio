@@ -62,7 +62,6 @@ body {
 :focus-visible {
   outline: 2px solid #FF4D00;
   outline-offset: 3px;
-  border-radius: 3px;
 }
 
 /* ─── Typography base ────────────────────────── */
@@ -113,6 +112,7 @@ img, video {
       border-color: var(--ember);
       color: var(--ember);
     }
+    /* .meta-pill.client removed — use .meta-pill.year for highlighted client pill */
 
     /* ─── hero-stats ──────────────────────────────────────── */
     .hero-stats {
@@ -217,6 +217,31 @@ img, video {
       display: block;
       width: 100%;
       height: auto;
+    }
+
+    /* Form input interaction styles */
+    .form-input {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(232,230,225,0.12); /* subtle default (mist-ish) */
+      background-color: rgba(14,14,14,0.1); /* match bg-ink/10 */
+      padding: 0.75rem 1.25rem;
+      color: var(--canvas);
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease), background-color .18s var(--ease);
+    }
+    .form-input:hover {
+      border-color: rgba(232,230,225,0.28); /* brighter on hover */
+    }
+    .form-input:focus-visible {
+      border-color: rgba(249,248,246,0.95); /* near-white on focus */
+      box-shadow: 0 0 0 6px rgba(255,77,0,0.10); /* subtle ember focus halo */
+      outline: none !important;
+      border-radius: 1.5rem; /* preserve rounded corners when focused */
+    }
+    /* On touch devices, ignore hover brightening to avoid flicker */
+    @media (hover: none) {
+      .form-input:hover {
+        border-color: rgba(232,230,225,0.12);
+      }
     }
 
     /* Horizontal rule with label */

@@ -124,7 +124,7 @@ export function Hero() {
           className="mt-20 md:mt-28 pt-8 border-t border-mist grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { value: "6+",  label: "Years experience"    },
+            { value: "6+ years",  label: "experience"    },
             { value: "UX & UI", label: "Product design"    },
             { value: "B2B & B2C", label: "Domain range"  },
             { value: "Design × AI", label: "Modern workflows" },

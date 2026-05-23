@@ -5,7 +5,7 @@ import { ProcessMarquee }   from "@/components/sections/ProcessMarquee";
 import { Disciplines }      from "@/components/sections/Disciplines";
 import { Testimonial }      from "@/components/sections/Testimonial";
 import { HomeCTA }          from "@/components/sections/HomeCTA";
-import { getFeaturedProjects } from "@/data/projects";
+import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Yuliia Dudareva — UI/UX & Product Designer",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const featured = getFeaturedProjects();
+  const featured = projects.slice(0, 3);
 
   return (
     <>
