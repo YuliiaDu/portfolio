@@ -1,10 +1,15 @@
 export interface CaseStudySection {
-  type: "text" | "image" | "image-pair" | "metrics" | "quote" | "comparison";
+  type: "text" | "image" | "image-pair" | "metrics" | "quote" | "comparison" | "beforeAfter";
   heading?: string;
   body?: string;
   src?: string;
   alt?: string;
   pair?: [{ src: string; alt: string }, { src: string; alt: string }];
+  // beforeAfter section
+  before?: string;
+  after?: string;
+  altBefore?: string;
+  altAfter?: string;
   metrics?: { label: string; value: string }[];
   quote?: string;
   attribution?: string;
@@ -37,6 +42,7 @@ export interface Project {
   role?:       string;
   services?:   string;
   date?:       string;
+  heroStats?: { value: string; label: string }[];
 
   // Case study content
   problem:    string;
@@ -105,6 +111,11 @@ export const projects: Project[] = [
     process:  "I led research, flow simplification, and iterative UX design for registration, onboarding, and the PRO trial journey using traffic analysis, A/B testing, and mobile-first validation.",
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
     outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
+    heroStats: [
+      { value: "+189%", label: "Onboarding completion" },
+      { value: "+219%", label: "Users reaching checkout" },
+      { value: "47% faster", label: "Time to checkout click" },
+    ],
 
     sections: [
       {
@@ -205,7 +216,70 @@ export const projects: Project[] = [
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
     outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
 
-    sections: [],
+    heroStats: [
+      { value: "+79%", label: "Visitors who started registration" },
+      { value: "+108%", label: "Mobile conversion rate" },
+      { value: "-10.6 pp", label: "Drop off" },
+    ],
+
+    sections: [
+      {
+        type: "text",
+        heading: "Challenges",
+        body: "Increase the number of users starting the registration process. Support improvements in the overall registration flow. Prioritise mobile usability and accessibility. Strengthen gigmit’s branding and community-driven message.",
+        gap: 80,
+      },
+      {
+        type: "text",
+        heading: "Process",
+        body: "Pre-Launch Analysis: Reviewed traffic sources and user behaviour using heatmaps, identified friction points and drop-off areas, and analysed niche competitors.\n\nDesign & Content Strategy: Developed a value proposition centred on community, simplified homepage layout and visual hierarchy, added clear CTAs, applied design writing to refine copy, and ensured mobile-first accessibility.\n\nPost-Launch Validation: Measured behaviour with heatmaps and analytics (Amplitude) to verify design impact and iterated where necessary.",
+      },
+      {
+        type: "text",
+        body: "",
+      },
+      {
+        type: "comparison",
+        heading: "Results (Mobile Users)",
+        comparisons: [
+          {
+            groupLabel: "Mobile Users",
+            title: "Visitors who started the registration process",
+            before: "13.4%",
+            after: "24%",
+            label: "started registration",
+            change: "+79%",
+            changeType: "increase",
+          },
+          {
+            groupLabel: "Mobile Users",
+            title: "Overall mobile conversion rate (completed registration)",
+            before: "3.86%",
+            after: "8.02%",
+            label: "conversion",
+            change: "+108%",
+            changeType: "increase",
+          },
+          {
+            groupLabel: "Mobile Users",
+            title: "Drop off",
+            before: "86.62%",
+            after: "76.03%",
+            label: "drop-off",
+            change: "-10.6 pp",
+            changeType: "decrease",
+          },
+        ],
+        gap: 80,
+        numberFontSize: "text-[2rem]",
+      },
+      {
+        type: "text",
+        heading: "What I learned",
+        body: "Redesigning the homepage taught me that clarity and motivation go hand in hand. When users instantly understand what’s offered and why it matters, they’re far more likely to take the next step. Improving sign-ups wasn’t about flashy visuals — it was about empathy, focus, and reducing friction at every click.",
+        gap: 80,
+      },
+    ],
   },
   // Clone 3
   {
@@ -230,7 +304,40 @@ export const projects: Project[] = [
     solution: "A lean, intent-driven onboarding funnel with deferred fields, progress guidance, clearer messaging, and a stronger PRO checkout path to reduce friction and improve conversion.",
     outcome:  "Onboarding completion rose to 30.9%, drop-off before the PRO offer fell by 14.3 points, checkout clicks increased 219%, and conversion grew from 0.66% to 2.08%.",
 
-    sections: [],
+    sections: [
+      {
+        type: "text",
+        heading: "Challenges",
+        body: "Evolve the design system to enable scalable, web-compatible components. Minimise cognitive load to keep users focused on key content. Optimise layouts and interactions for responsive, cross-device performance.",
+        gap: 80,
+      },
+      {
+        type: "text",
+        heading: "Process",
+        body: "1. Audit & Analysis: Reviewed the existing desktop interface to identify usability issues, visual inconsistencies, and opportunities for simplification.\n\n2. Design System Expansion: Refined and extended the design system to create modular, web-compatible components that maintained visual consistency across devices.\n\n3. Layout & Interaction Design: Adapted layouts and interaction patterns for responsive behaviour, ensuring a seamless experience across screen sizes.\n\n4. Simplification & Focus: Reduced cognitive load by clarifying hierarchy, minimising visual noise, and emphasising core content.",
+      },
+      {
+        type: "text",
+        heading: "Result",
+        body: "The redesigned interface improved clarity and responsiveness; the new component library enabled faster iteration and consistent cross-device behaviour. The redesign is displayed in the images and validated through user feedback.",
+        gap: 80,
+      },
+      {
+        type: "text",
+        heading: "What I learned",
+        body: "I learned how to adapt complex desktop interfaces into flexible, responsive web experiences while maintaining visual consistency and usability. The project strengthened my skills in scalable design systems, responsive layouts, and simplifying interfaces to reduce cognitive load.",
+        gap: 80,
+      },
+      {
+        type: "beforeAfter",
+        heading: "Screenshots — before & after",
+        before: "/images/any2info/any2info_1.png",
+        after: "/images/any2info/any2info_2.png",
+        altBefore: "Any2info before redesign",
+        altAfter: "Any2info after redesign",
+        gap: 80,
+      },
+    ],
   },
   // Clone 4
   {

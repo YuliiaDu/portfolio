@@ -14,6 +14,8 @@ export default function ContactPage() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-10% 0px" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [touched, setTouched] = useState<{ email?: boolean }>({});
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -53,9 +55,67 @@ export default function ContactPage() {
     event.preventDefault();
     if (status !== "idle") return;
 
+    // Validate email before sending
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const email = String(formData.get("email") || "").trim();
+
+    const emailValid = validateEmail(email);
+    setTouched((t) => ({ ...t, email: true }));
+    if (!emailValid) {
+      setEmailError("Please enter a valid email address");
+      return;
+    }
+
+    setEmailError(null);
     setStatus("sending");
-    window.setTimeout(() => setStatus("sent"), 850);
+
+    // Post to server — reuse existing formData
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: String(formData.get('name') || ''),
+        email: String(formData.get('email') || ''),
+        message: String(formData.get('message') || ''),
+      }),
+    })
+      .then(async (res) => {
+        const json = await res.json();
+        if (!res.ok) {
+          if (res.status === 400 && json.error === 'Invalid input') {
+            setEmailError('Please enter a valid email address');
+            setStatus('idle');
+            return;
+          }
+          throw new Error(json.error || 'Unknown error');
+        }
+        setStatus('sent');
+        form.reset();
+        setTouched({});
+      })
+      .catch((err) => {
+        console.error('Send failed', err);
+        setStatus('idle');
+        // Optionally surface a general error message
+      });
   };
+
+  const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const val = e.target.value.trim();
+    setTouched((t) => ({ ...t, email: true }));
+    if (!validateEmail(val)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError(null);
+    }
+  };
+
+  function validateEmail(email: string) {
+    // Simple RFC-5322-ish validation
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-ink text-canvas">
@@ -125,8 +185,16 @@ export default function ContactPage() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="min-h-[4.5rem] form-input placeholder:text-dark-text/70 outline-none"
+                aria-invalid={!!emailError}
+                aria-describedby={emailError ? 'email-error' : undefined}
+                onBlur={handleEmailBlur}
+                className={`min-h-[4.5rem] form-input placeholder:text-dark-text/70 outline-none ${emailError ? 'error' : ''}`}
               />
+              {emailError && (
+                <p id="email-error" role="alert" className="form-error-text">
+                  {emailError}
+                </p>
+              )}
             </label>
           </div>
 
@@ -159,7 +227,9 @@ export default function ContactPage() {
               style={{ x: buttonX, y: buttonY }}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
-              className="relative inline-flex items-center justify-center overflow-hidden rounded-[1.75rem] border border-ember/20 bg-ember px-7 py-4 text-body-sm font-medium text-ink transition-shadow duration-300 hover:shadow-[0_18px_60px_rgba(255,77,0,0.24)]"
+              disabled={status === 'sending'}
+              aria-busy={status === 'sending'}
+              className={`relative inline-flex items-center justify-center overflow-hidden rounded-[1.75rem] border border-ember/20 bg-ember px-7 py-4 text-body-sm font-medium text-ink transition-shadow duration-300 hover:shadow-[0_18px_60px_rgba(255,77,0,0.24)] ${status === 'sending' ? 'opacity-70 pointer-events-none' : ''}`}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-canvas/10 to-transparent opacity-0 transition-opacity duration-400" />
               <span className="relative whitespace-nowrap">

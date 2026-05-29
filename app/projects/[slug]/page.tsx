@@ -125,21 +125,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 {project.description}
               </p>
 
-              {/* Hero stats — gigmit only */}
-              {project.client === "gigmit.com" && (
+              {/* Hero stats — use project.heroStats when available */}
+              {project.client === "gigmit.com" && project.heroStats && (
                 <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
-                  <div className="h-stat">
-                    <p className="h-stat-val">+189%</p>
-                    <p className="h-stat-lbl">Onboarding completion</p>
-                  </div>
-                  <div className="h-stat">
-                    <p className="h-stat-val">+219%</p>
-                    <p className="h-stat-lbl">Users reaching checkout</p>
-                  </div>
-                  <div className="h-stat">
-                    <p className="h-stat-val">47% faster</p>
-                    <p className="h-stat-lbl">Time to checkout click</p>
-                  </div>
+                  {project.heroStats.map((s) => (
+                    <div key={s.label} className="h-stat">
+                      <p className="h-stat-val">{s.value}</p>
+                      <p className="h-stat-lbl">{s.label}</p>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -314,6 +308,32 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (section.type === "beforeAfter") {
+    return (
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
+        {section.heading ? (
+          <h2 className="font-display font-semibold text-display-md text-ink">
+            {section.heading}
+          </h2>
+        ) : null}
+
+        <div className="rounded-2xl overflow-hidden bg-ink text-canvas border border-dark-border">
+          <div className="max-w-6xl mx-auto px-6 md:px-10 py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              <div className="rounded-xl overflow-hidden bg-[#0b0907]">
+                <img src={section.before} alt={section.altBefore ?? "Before"} className="w-full h-auto block" />
+              </div>
+              <div className="rounded-xl overflow-hidden bg-[#0b0907]">
+                <img src={section.after} alt={section.altAfter ?? "After"} className="w-full h-auto block" />
+              </div>
+            </div>
+            <p className="mt-6 text-body-sm text-dark-text">Before vs after — highlights of the visual and UX improvements.</p>
+          </div>
         </div>
       </div>
     );

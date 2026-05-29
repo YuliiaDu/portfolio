@@ -244,6 +244,20 @@ img, video {
       }
     }
 
+    /* Error state for form inputs */
+    .form-input.error {
+      border-color: rgba(255,90,90,0.95); /* warm red - high contrast */
+      box-shadow: 0 0 0 6px rgba(255,90,90,0.06);
+    }
+
+    .form-error-text {
+      color: rgba(255,90,90,0.95);
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.4;
+      transition: color .18s var(--ease);
+    }
+
     /* Horizontal rule with label */
     .rule-label {
     @apply flex items-center gap-4 text-label uppercase tracking-widest text-stone;
