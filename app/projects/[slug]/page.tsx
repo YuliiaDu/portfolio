@@ -25,36 +25,37 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   const slides = project.imageSlider ?? [];
   const heroImage = project.heroImage;
-  const highlightCards = [
+  const defaultHighlightCards = [
     {
       number: "01",
       title: "Research-led onboarding",
       body: "Traffic source analysis, onboarding metrics, and device behavior revealed the key points where artists abandoned the flow.",
-      image: "/images/gigmit/WID_Projects_gigmit_Onboarding_1.png",
+      image: "/images/gigmit/gigmit_Onboarding_1.png",
       alt: "gigmit onboarding redesign overview",
     },
     {
       number: "02",
       title: "Mobile-first signup",
       body: "I simplified the registration path for mobile users, deferred non-essential fields, and added clear progress guidance.",
-      image: "/images/gigmit/WID_Projects_gigmit_Onboarding_2.png",
+      image: "/images/gigmit/gigmit_Onboarding_2.png",
       alt: "gigmit mobile-first registration screens",
     },
     {
       number: "03",
       title: "PRO trial conversion",
       body: "The PRO trial step was clarified with stronger hierarchy, better copy, and a smoother path to checkout.",
-      image: "/images/gigmit/WID_Projects_gigmit_Onboarding_3.png",
+      image: "/images/gigmit/gigmit_Onboarding_3.png",
       alt: "gigmit PRO trial comparison",
     },
     {
       number: "04",
       title: "Validated impact",
       body: "A/B testing and user feedback confirmed the redesign improved completion, lowered drop-off, and lifted checkout engagement.",
-      image: "/images/gigmit/WID_Projects_gigmit_Onboarding_4.png",
+      image: "/images/gigmit/gigmit_Onboarding_4.png",
       alt: "gigmit onboarding validation screens",
     },
   ];
+  const highlightCards = project.highlightCards ?? defaultHighlightCards;
 
   const whatIChangedIndex = project.sections.findIndex(
     (section) => section.type === "text" && section.body === ""

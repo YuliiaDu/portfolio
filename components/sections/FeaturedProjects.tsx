@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { type Project } from "@/data/projects";
 import { fadeUp, EASE_OUT_EXPO } from "@/lib/motion";
-import { pad } from "@/lib/utils";
+import { pad, splitTitle } from "@/lib/utils";
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -105,7 +105,7 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group relative grid gap-0 rounded-3xl overflow-hidden bg-mist hover:bg-ink transition-colors duration-500 ring-1 ring-stone/40 hover:ring-black min-[774px]:grid-cols-[320px_1fr]"
+        className="group relative grid gap-0 rounded-3xl overflow-hidden bg-ink transition-colors duration-500 ring-1 ring-white/10 hover:ring-white/20 min-[774px]:grid-cols-[320px_1fr]"
         style={{ minHeight: 420 }}
       >
         {/* ── Mobile: full-card image with title overlay ─── */}
@@ -122,7 +122,7 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
             <span
               className={
                 index === 0
-                  ? "font-display text-display-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm max-w-[90vw] truncate"
+                  ? "font-display text-display-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm max-w-[90vw]"
                   : "font-display text-body-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm"
               }
             >
@@ -135,20 +135,33 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
         <div className="hidden min-[774px]:flex flex-col justify-between p-8 lg:p-10">
           {/* Top: index + category */}
           <div className="flex items-center gap-3">
-            <span className="text-label text-stone group-hover:text-canvas/40 transition-colors duration-500">
+            <span className="text-label text-canvas/60 group-hover:text-canvas/80 transition-colors duration-500">
               {pad(index + 1)} /
             </span>
-            <span className="text-label uppercase tracking-widest text-stone group-hover:text-canvas/40 transition-colors duration-500">
+            <span className="text-label uppercase tracking-widest text-canvas/60 group-hover:text-canvas/80 transition-colors duration-500">
               {project.category}
             </span>
           </div>
 
           {/* Middle: title + description */}
           <div className="mt-auto mb-auto py-6">
-            <h3 className="font-display font-semibold text-display-md text-ink group-hover:text-canvas transition-colors duration-500 mb-3 line-clamp-2">
-              {project.title}
+            <h3 className="font-display text-display-md mb-3">
+              {splitTitle(project.title).map((part, i) => (
+                <span key={i}>
+                  {i > 0 && <br />}
+                  {i === 0 ? (
+                    <span className="font-semibold text-white group-hover:text-white transition-colors duration-500">
+                      {part}
+                    </span>
+                  ) : (
+                    <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
+                      {part}
+                    </span>
+                  )}
+                </span>
+              ))}
             </h3>
-            <p className="text-body-sm text-stone group-hover:text-canvas/60 transition-colors duration-500 line-clamp-3">
+            <p className="text-body-sm text-canvas/75 group-hover:text-canvas/90 transition-colors duration-500 line-clamp-3">
               {project.description}
             </p>
           </div>
@@ -159,7 +172,7 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
               {project.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="text-label text-stone bg-ink/6 group-hover:bg-canvas/10 group-hover:text-canvas/60 px-3 py-1.5 rounded-full transition-colors duration-500"
+                  className="text-label text-canvas/75 bg-canvas/10 group-hover:bg-canvas/20 group-hover:text-white px-3 py-1.5 rounded-full transition-colors duration-500"
                 >
                   {tag}
                 </span>
@@ -167,13 +180,13 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
             </div>
 
             {/* Arrow CTA */}
-            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-stone/30 group-hover:border-black group-hover:bg-ember/10 flex items-center justify-center transition-all duration-300">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-canvas/30 group-hover:border-ember group-hover:bg-ember/10 flex items-center justify-center transition-all duration-300">
               <svg
                 width="14"
                 height="14"
                 viewBox="0 0 14 14"
                 fill="none"
-                className="text-ink group-hover:text-ember transition-colors duration-300 -rotate-45"
+                className="text-canvas group-hover:text-ember transition-colors duration-300 -rotate-45"
               >
                 <path
                   d="M2 7h10M7 2l5 5-5 5"

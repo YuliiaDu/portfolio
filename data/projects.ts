@@ -43,6 +43,13 @@ export interface Project {
   services?:   string;
   date?:       string;
   heroStats?: { value: string; label: string }[];
+  highlightCards?: {
+    number: string;
+    title: string;
+    body: string;
+    image: string;
+    alt: string;
+  }[];
 
   // Case study content
   problem:    string;
@@ -60,7 +67,7 @@ export const projects: Project[] = [
     category:    "UX & Product Design",
     year:        "2022",
     description: "gigmit is a digital platform connecting artists with promoters and venues, simplifying booking for live music events. As Product Designer & UX Researcher, I led a full redesign of the registration and onboarding flow to improve conversion and reduce drop-off.",
-    coverImage:  "https://yu-dudareva.notion.site/image/attachment%3A5b4b201f-4e44-46c7-a73d-1794bdca2bb3%3ASurface_Pro_8_-_2.png?table=block&id=28f5f7e8-db24-8066-96fe-caf3b122322a&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
+    coverImage:  "/images/gigmit/Projects_gigmit_Onboarding_Hero_Preview.png",
     accentColor: "#FF4D00",
     tags:        ["SaaS", "Conversion", "Onboarding", "Mobile"],
     featured:    false,
@@ -68,7 +75,7 @@ export const projects: Project[] = [
     role:        "Senior Product Designer, UX Researcher",
     services:    "SaaS, Web Design, Mobile Design, Research",
     date:        "2022",
-    heroImage:   "/images/gigmit/Projects_gigmit_Onboarding_Hero.png",
+    heroImage:   "/images/gigmit/Projects_gigmit_Onboarding_Hero_Preview.png",
     imageSlider: [
       {
         src: "https://yu-dudareva.notion.site/image/attachment%3Aab44451a-e83d-47f3-a446-41d54ed37043%3Aimage.png?table=block&id=28f5f7e8-db24-80d0-ae3d-ec55b57012e3&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
@@ -194,7 +201,7 @@ export const projects: Project[] = [
     category:    "UX & Product Design",
     year:        "2024",
     description: "gigmit is a digital platform connecting artists with promoters and venues, simplifying booking for live music events. As Product Designer & UX Researcher, I led a full redesign of the registration and onboarding flow to improve conversion and reduce drop-off.",
-    coverImage:  "https://yu-dudareva.notion.site/image/attachment%3A04f85aff-9528-4dcc-a57f-50698d0f7441%3Ahomepage_cover_mobile.png?table=block&id=2955f7e8-db24-8012-9bda-e746ab8c5702&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2000&userId=&cache=v2&imgBuildSrc=requestProxiedImageUrl",
+    coverImage:  "/images/gigmit/Projects_gigmit_Homepage_Hero_Preview.png",
     accentColor: "#FF4D00",
     tags:        ["SaaS", "Web Design", "Mobile", "Landing Page"],
     featured:    false,
@@ -202,7 +209,7 @@ export const projects: Project[] = [
     role:        "Senior Product Designer, UX Researcher",
     services:    "SaaS, Web Design, Mobile Design, Research",
     date:        "2024",
-    heroImage:   "/images/gigmit/Projects_gigmit_Onboarding_Hero.png",
+    heroImage:   "/images/gigmit/Projects_gigmit_Homepage_Hero_Preview.png",
     imageSlider: [
       {
         src: "https://yu-dudareva.notion.site/image/attachment%3Aab44451a-e83d-47f3-a446-41d54ed37043%3Aimage.png?table=block&id=28f5f7e8-db24-80d0-ae3d-ec55b57012e3&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
@@ -220,6 +227,37 @@ export const projects: Project[] = [
       { value: "+79%", label: "Visitors who started registration" },
       { value: "+108%", label: "Mobile conversion rate" },
       { value: "-10.6 pp", label: "Drop off" },
+    ],
+
+    highlightCards: [
+      {
+        number: "01",
+        title: "Redesigned mobile homepage",
+        body: "Clear user segmentation, simplified layout, and improved contrast and readability — with strong visual hierarchy and action-oriented CTAs.",
+        image: "/images/gigmit/WID_Projects_gigmit_Homepage_1.png",
+        alt: "gigmit mobile homepage redesign — after",
+      },
+      {
+        number: "02",
+        title: "Before: the original homepage",
+        body: "Unclear user segmentation, overloaded layout, low readability, weak visual hierarchy, outdated visual style, and unfocused CTAs.",
+        image: "/images/gigmit/WID_Projects_gigmit_Homepage_2.png",
+        alt: "gigmit mobile homepage — before redesign",
+      },
+      {
+        number: "03",
+        title: "Desktop redesign",
+        body: "Responsive desktop layout with clear value proposition, community-led messaging, testimonials, and structured sections for artists and promoters.",
+        image: "/images/gigmit/WID_Projects_gigmit_Homepage_3.png",
+        alt: "gigmit desktop homepage redesign screens",
+      },
+      {
+        number: "04",
+        title: "Validated by data",
+        body: "The redesign significantly increased users reaching the registration stage. Conversion rate for account creation more than doubled compared to the previous version.",
+        image: "/images/gigmit/WID_Projects_gigmit_Homepage_4.png",
+        alt: "gigmit homepage redesign analytics results",
+      },
     ],
 
     sections: [
@@ -288,7 +326,7 @@ export const projects: Project[] = [
     category:    "UX & Product Design",
     year:        "2022",
     description: "gigmit is a digital platform connecting artists with promoters and venues, simplifying booking for live music events. As Product Designer & UX Researcher, I led a full redesign of the registration and onboarding flow to improve conversion and reduce drop-off.",
-    coverImage:  "https://yu-dudareva.notion.site/image/attachment%3A5b4b201f-4e44-46c7-a73d-1794bdca2bb3%3ASurface_Pro_8_-_2.png?table=block&id=28f5f7e8-db24-8066-96fe-caf3b122322a&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
+    coverImage:  "/images/any2info/Projects_ANY2INFO_Hero_Preview.png",
     accentColor: "#FF4D00",
     tags:        ["SaaS", "Responsive", "Web"],
     featured:    false,
@@ -296,7 +334,7 @@ export const projects: Project[] = [
     role:        "UX/UI Designer",
     services:    "SaaS, Web, Design System, Redesign",
     date:        "2021",
-    heroImage:   "/images/gigmit/Projects_gigmit_Onboarding_Hero.png",
+    heroImage:   "/images/any2info/Projects_ANY2INFO_Hero_Preview.png",
     imageSlider: [],
 
     problem:  "The registration path was losing users early — onboarding completion was only 12.5% and 81.3% of users dropped off before the PRO trial offer.",

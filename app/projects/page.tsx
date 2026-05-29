@@ -9,8 +9,10 @@ export default function ProjectsPage() {
           <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
             Selected work
           </p>
-          <h1 className="font-display font-semibold text-display-lg text-ink max-w-4xl">
-            Meaningful product and experience design for conversion-led digital tools.
+          <h1 className="font-display text-display-xl text-ink leading-none tracking-[-0.03em]">
+            <span className="block font-semibold">Meaningful product</span>
+            <span className="block italic font-light">and experience design</span>
+            <span className="block font-semibold">for conversion-led digital tools.</span>
           </h1>
           <p className="mt-6 text-body-lg text-stone max-w-3xl">
             A curated collection of case studies across onboarding, mobile-first SaaS, and product design systems — all built to drive clarity, confidence, and measurable outcomes.
