@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/yuliia/portfolio/app/layout\":[\"static/media/3a2db63706419a56-s.p.woff2\",\"static/media/c9cac29382a46c9d-s.p.woff2\",\"static/media/45d0fdf0988e07ff-s.p.woff2\",\"static/media/6e8c7cb283336a9d-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
