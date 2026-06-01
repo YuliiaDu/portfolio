@@ -33,11 +33,6 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
             className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
           />
           {/* (Removed gradient overlay) */}
-
-          {/* Year badge */}
-          <span className="absolute top-4 right-4 bg-canvas/90 backdrop-blur-sm text-ink text-label px-3 py-1.5 rounded-full">
-            {project.year}
-          </span>
         </div>
 
         {/* Meta */}

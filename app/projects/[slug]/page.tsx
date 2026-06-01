@@ -5,6 +5,11 @@ import { getProject, projects } from "@/data/projects";
 import type { CaseStudySection } from "@/data/projects";
 import WhatIChangedSection from "@/components/ui/WhatIChangedSection";
 import { splitTitle } from "@/lib/utils";
+import BeforeAfterGrid from "@/components/ui/BeforeAfterGrid";
+import CompetitiveAnalysis from "@/components/research/CompetitiveAnalysis";
+import UserInterviewSynthesis from "@/components/research/UserInterviewSynthesis";
+import PersonaCards from "@/components/research/PersonaCards";
+import UserJourneyMap from "@/components/research/UserJourneyMap";
 
 interface ProjectPageProps {
   params: {
@@ -314,6 +319,36 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     );
   }
 
+  if (section.type === "research-objectives") {
+    return (
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
+        {section.heading ? (
+          <h2 className="font-display font-semibold text-display-md text-ink">
+            {section.heading}
+          </h2>
+        ) : null}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {section.objectives?.map((obj, idx) => (
+            <div key={obj.title} className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]">
+              <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-6">
+                <div className="flex items-start justify-between mb-4">
+                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">Objective</p>
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-ember text-canvas font-semibold">{String(idx + 1).padStart(2, '0')}</span>
+                </div>
+
+                <div className="space-y-2">
+                  <h4 className="font-display font-semibold text-ink">{obj.title}</h4>
+                  <p className="text-body-sm text-stone">{obj.body}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (section.type === "beforeAfter") {
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
@@ -325,14 +360,19 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
 
         <div className="rounded-2xl overflow-hidden bg-ink text-canvas border border-dark-border">
           <div className="max-w-6xl mx-auto px-6 md:px-10 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <div className="rounded-xl overflow-hidden bg-[#0b0907]">
-                <img src={section.before} alt={section.altBefore ?? "Before"} className="w-full h-auto block" />
+            {Array.isArray(section.before) && Array.isArray(section.after) ? (
+              // Use a client component to make images clickable and expandable
+              <BeforeAfterGrid before={section.before} after={section.after} altBefore={section.altBefore} altAfter={section.altAfter} />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div className="rounded-xl overflow-hidden bg-[#0b0907]">
+                  <img src={section.before as string} alt={section.altBefore ?? "Before"} className="w-full h-auto block" />
+                </div>
+                <div className="rounded-xl overflow-hidden bg-[#0b0907]">
+                  <img src={section.after as string} alt={section.altAfter ?? "After"} className="w-full h-auto block" />
+                </div>
               </div>
-              <div className="rounded-xl overflow-hidden bg-[#0b0907]">
-                <img src={section.after} alt={section.altAfter ?? "After"} className="w-full h-auto block" />
-              </div>
-            </div>
+            )}
             <p className="mt-6 text-body-sm text-dark-text">Before vs after — highlights of the visual and UX improvements.</p>
           </div>
         </div>
@@ -354,7 +394,37 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
       </figure>
     );
   }
+  if (section.type === "research-competitive-analysis") {
+    return (
+      <div style={mbStyle(mb)}>
+        <CompetitiveAnalysis />
+      </div>
+    );
+  }
 
+  if (section.type === "research-interviews") {
+    return (
+      <div style={mbStyle(mb)}>
+        <UserInterviewSynthesis />
+      </div>
+    );
+  }
+
+  if (section.type === "research-personas") {
+    return (
+      <div style={mbStyle(mb)}>
+        <PersonaCards />
+      </div>
+    );
+  }
+
+  if (section.type === "research-journey-map") {
+    return (
+      <div style={mbStyle(mb)}>
+        <UserJourneyMap />
+      </div>
+    );
+  }
   return null;
 }
 
