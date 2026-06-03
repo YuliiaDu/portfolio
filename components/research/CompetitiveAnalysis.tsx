@@ -110,10 +110,10 @@ export default function CompetitiveAnalysis() {
   ];
 
   return (
-    <div className="space-y-16">
-      {/* Metrics Table */}
+    <div className="space-y-12">
+      {/* Website Analytics Benchmark */}
       <div className="space-y-6">
-        <h3 className="font-display text-display-lg font-semibold text-ink">Website Analytics Benchmark</h3>
+        <p className="text-body-lg text-ink"><strong>Website Analytics Benchmark</strong></p>
         <div className="overflow-x-auto rounded-lg border border-mist bg-white/50 backdrop-blur-sm">
           <table className="w-full text-sm">
             <thead>
@@ -127,17 +127,13 @@ export default function CompetitiveAnalysis() {
             </thead>
             <tbody>
               {competitors.map((c, idx) => {
-                const bounceValue = parseFloat(String(c.bounceRate).replace('%', '')) || 0;
-                const bounceClass = bounceValue <= 35 ? 'text-green-600 font-medium' : 'text-stone';
                 return (
                   <tr key={idx} className="border-b border-mist/40 hover:bg-blue-50/30 transition-colors">
                     <td className="px-6 py-4 font-semibold text-ink text-sm">{c.name}</td>
-                    <td className="px-6 py-4 text-sm text-ink">{c.avgTime}</td>
-                    <td className="px-6 py-4 text-sm text-ink">{c.deepOfVisit}</td>
-                    <td className="px-6 py-4">
-                      <span className={bounceClass}>{c.bounceRate}</span>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-ink">{c.monthlyVisits}</td>
+                    <td className="px-6 py-4 text-sm text-stone">{c.avgTime}</td>
+                    <td className="px-6 py-4 text-sm text-stone">{c.deepOfVisit}</td>
+                    <td className="px-6 py-4 text-sm text-stone">{c.bounceRate}</td>
+                    <td className="px-6 py-4 text-sm text-stone">{c.monthlyVisits}</td>
                   </tr>
                 );
               })}
@@ -145,15 +141,12 @@ export default function CompetitiveAnalysis() {
           </table>
         </div>
         <div className="mt-4 flex flex-wrap gap-4 text-sm text-stone">
-          <div>
-            <span className="font-semibold text-ink">Key Insight:</span> Cian.ru dominates with highest monthly traffic (29.40M) and lowest bounce rate (32.53%)
-          </div>
         </div>
       </div>
 
-      {/* Features Comparison */}
+      {/* Feature Comparison Across Platforms Table */}
       <div className="space-y-6">
-        <h3 className="font-display text-display-lg font-semibold text-ink">Feature Comparison Across Platforms</h3>
+        <p className="text-body-lg text-ink"><strong>Feature Comparison Across Platforms</strong></p>
         <div className="overflow-x-auto rounded-lg border border-mist bg-white/50 backdrop-blur-sm">
           <table className="w-full text-sm">
             <thead>
@@ -171,26 +164,32 @@ export default function CompetitiveAnalysis() {
               {features.map((f, idx) => (
                   <tr key={idx} className="border-b border-mist/40 hover:bg-white/3 transition-colors">
                     <td className="px-6 py-4 font-semibold text-ink text-sm">{f.feature}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.cian}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.yandex}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.realty}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.vrbo}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.homestay}</td>
-                    <td className="px-6 py-4 text-center text-sm text-ink">{f.hometogo}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.cian}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.yandex}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.realty}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.vrbo}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.homestay}</td>
+                    <td className="px-6 py-4 text-center text-sm text-stone">{f.hometogo}</td>
                   </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="mt-4 space-y-2 text-sm text-stone">
-          <div>
-            <span className="font-semibold text-ink">Differentiation Opportunity:</span> Only Homestay.com offers payment at check-in—a key user pain point
+      </div>
+
+      {/* Combined Insights Block */}
+      <aside className="rounded-2xl bg-ink text-canvas p-6">
+        <h4 className="font-semibold mb-3">Key Insights (from competitive analysis)</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div className="space-y-2">
+            <p><strong>Market leader:</strong> Cian.ru dominates with highest monthly traffic (29.40M) and lowest bounce rate (32.53%).</p>
           </div>
-          <div>
-            <span className="font-semibold text-ink">Map Integration:</span> VRBO and Hometogo lead with map-based search, preferred by 4 of 5 interview participants
+          <div className="space-y-2">
+            <p><strong>Differentiation opportunity:</strong> Only Homestay.com offers payment at check-in—a key user pain point.</p>
+            <p><strong>Map integration:</strong> VRBO and Hometogo lead with map-based search, preferred by 4 of 5 interview participants.</p>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
   );
 }

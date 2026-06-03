@@ -5,7 +5,7 @@ export default function PersonaCards() {
     {
       name: 'Oliver Berzins',
       avatar: '👨‍🏫',
-      age: 31,
+      age: 32,
       maritalStatus: 'Married',
       children: '1 Son',
       occupation: 'Fitness Trainer',
@@ -75,16 +75,16 @@ export default function PersonaCards() {
 
             <div className="border-t border-mist/60 pt-4">
               <div className="hidden xl:flex flex-wrap gap-x-4 gap-y-2 text-xs">
-                <span><span className="font-semibold text-stone uppercase">AGE</span> <span className="text-ink">{persona.age}</span></span>
-                <span><span className="font-semibold text-stone uppercase">STATUS</span> <span className="text-ink">{persona.maritalStatus}</span></span>
-                <span><span className="font-semibold text-stone uppercase">CHILDREN</span> <span className="text-ink">{persona.children}</span></span>
-                <span><span className="font-semibold text-stone uppercase">TECH LEVEL</span> <span className="text-ink">{persona.techLevel}</span></span>
+                <span><span className="font-semibold text-stone uppercase">AGE</span> <span className="font-semibold text-ink">{persona.age}</span></span>
+                <span><span className="font-semibold text-stone uppercase">STATUS</span> <span className="font-semibold text-ink">{persona.maritalStatus}</span></span>
+                <span><span className="font-semibold text-stone uppercase">CHILDREN</span> <span className="font-semibold text-ink">{persona.children}</span></span>
+                <span><span className="font-semibold text-stone uppercase">TECH LEVEL</span> <span className="font-semibold text-ink">{persona.techLevel}</span></span>
               </div>
               <div className="flex xl:hidden flex-col space-y-2">
-                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">AGE</span><span className="text-ink text-sm">{persona.age}</span></div>
-                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">STATUS</span><span className="text-ink text-sm">{persona.maritalStatus}</span></div>
-                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">CHILDREN</span><span className="text-ink text-sm">{persona.children}</span></div>
-                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">TECH LEVEL</span><span className="text-ink text-sm">{persona.techLevel}</span></div>
+                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">AGE</span><span className="font-semibold text-ink text-sm">{persona.age}</span></div>
+                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">STATUS</span><span className="font-semibold text-ink text-sm">{persona.maritalStatus}</span></div>
+                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">CHILDREN</span><span className="font-semibold text-ink text-sm">{persona.children}</span></div>
+                <div className="flex justify-between"><span className="font-semibold text-stone uppercase text-xs">TECH LEVEL</span><span className="font-semibold text-ink text-sm">{persona.techLevel}</span></div>
               </div>
             </div>
           </div>
@@ -94,45 +94,52 @@ export default function PersonaCards() {
         <div className="xl:col-span-4 space-y-6">
           {/* Bio */}
             <div className="rounded-2xl border border-mist bg-white/5 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-3">Biography</h4>
-              <p className="text-body-lg leading-relaxed text-ink max-w-full md:max-w-4xl break-words">{persona.bio}</p>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Biography</h4>
+                <p className="text-body-sm text-stone">{persona.bio}</p>
+              </div>
             </div>
 
           {/* Causes & Motivations Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Causes */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Causes</h4>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Causes</h4>
                 <ul className="space-y-3">
                   {persona.causes.map((cause, idx) => (
                     <li key={idx} className="flex gap-3 items-start">
                       <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="12" cy="12" r="8" stroke="#FF4D00" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                          <circle cx="12" cy="12" r="3" fill="#FF4D00" />
+                          <circle cx="11" cy="11" r="8" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M21 21l-4.35-4.35" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
                       <span className="text-body-sm text-ink break-words">{cause}</span>
                     </li>
                   ))}
                 </ul>
+              </div>
             </div>
 
             {/* Goals */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Goals</h4>
-              <ul className="space-y-3">
-                {persona.goals.map((goal, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
-                    <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L14.5 8.5H21L16 12L18 18.5L12 15L6 18.5L8 12L3 8.5H9.5L12 2Z" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-body-sm text-ink break-words">{goal}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Goals</h4>
+                <ul className="space-y-3">
+                  {persona.goals.map((goal, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="8" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <circle cx="12" cy="12" r="3" fill="#FF4D00" />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-ink break-words">{goal}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -140,37 +147,41 @@ export default function PersonaCards() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Core Needs */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Core Needs</h4>
-              <ul className="space-y-2">
-                {persona.coreNeeds.map((need, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
-                    <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2v8m0 4v4M4 12h16" stroke="#FF4D00" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-body-sm text-ink break-words">{need}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Core Needs</h4>
+                <ul className="space-y-2">
+                  {persona.coreNeeds.map((need, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2v8m0 4v4M4 12h16" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-ink break-words">{need}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Risks */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Risks & Barriers</h4>
-              <ul className="space-y-3">
-                {persona.risks.map((risk, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
-                    <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2v8" stroke="#FF4D00" strokeWidth="2" strokeLinecap="round" />
-                        <circle cx="12" cy="16" r="1.5" fill="#FF4D00" />
-                      </svg>
-                    </span>
-                    <span className="text-body-sm text-ink break-words">{risk}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Risks & Barriers</h4>
+                <ul className="space-y-3">
+                  {persona.risks.map((risk, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2v8" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" />
+                          <circle cx="12" cy="16" r="1.5" fill="#FF4D00" />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-ink break-words">{risk}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -178,36 +189,40 @@ export default function PersonaCards() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Motivators */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Key Motivators</h4>
-              <ul className="space-y-2">
-                {persona.motivators.map((motivator, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
-                    <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2l2.5 8.5h7.5l-6 4.5 2.5 8.5-6-5.5-6 5.5 2.5-8.5-6-4.5h7.5L12 2z" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-body-sm text-ink break-words">{motivator}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Key Motivators</h4>
+                <ul className="space-y-2">
+                  {persona.motivators.map((motivator, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2l2.5 8.5h7.5l-6 4.5 2.5 8.5-6-5.5-6 5.5 2.5-8.5-6-4.5h7.5L12 2z" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-ink break-words">{motivator}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* KPI */}
             <div className="rounded-xl border border-mist bg-white/50 backdrop-blur-sm p-4 md:p-6">
-              <h4 className="text-sm font-semibold text-stone uppercase tracking-wide mb-4">Success Metrics (KPI)</h4>
-              <ul className="space-y-2">
-                {persona.kpi.map((metric, idx) => (
-                  <li key={idx} className="flex gap-3 items-start">
-                    <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12l5 5 9-9" stroke="#FF4D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    <span className="text-body-sm text-ink break-words">{metric}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="space-y-2">
+                <h4 className="font-display font-semibold text-ink">Success Metrics (KPI)</h4>
+                <ul className="space-y-2">
+                  {persona.kpi.map((metric, idx) => (
+                    <li key={idx} className="flex gap-3 items-start">
+                      <span className="inline-flex items-center justify-center w-6 h-6 flex-shrink-0" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 12l5 5 9-9" stroke="#FF4D00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="text-body-sm text-ink break-words">{metric}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

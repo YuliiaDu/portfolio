@@ -1,5 +1,5 @@
 export interface CaseStudySection {
-  type: "text" | "image" | "image-pair" | "metrics" | "quote" | "comparison" | "beforeAfter" | "research-competitive-analysis" | "research-interviews" | "research-personas" | "research-journey-map" | "research-objectives";
+  type: "text" | "image" | "image-pair" | "metrics" | "quote" | "comparison" | "beforeAfter" | "research-competitive-analysis" | "research-interviews" | "research-personas" | "research-journey-map" | "research-objectives" | "research-interview-insights";
   heading?: string;
   body?: string;
   src?: string;
@@ -8,6 +8,7 @@ export interface CaseStudySection {
   // beforeAfter section
   before?: string | string[];
   after?: string | string[];
+  insights?: { id: string; body: string }[];
   altBefore?: string;
   altAfter?: string;
   metrics?: { label: string; value: string }[];
@@ -271,7 +272,7 @@ export const projects: Project[] = [
       {
         type: "text",
         heading: "Process",
-        body: "Pre-Launch Analysis: Reviewed traffic sources and user behaviour using heatmaps, identified friction points and drop-off areas, and analysed niche competitors.\n\nDesign & Content Strategy: Developed a value proposition centred on community, simplified homepage layout and visual hierarchy, added clear CTAs, applied design writing to refine copy, and ensured mobile-first accessibility.\n\nPost-Launch Validation: Measured behaviour with heatmaps and analytics (Amplitude) to verify design impact and iterated where necessary.",
+        body: "Pre-Launch Analysis: Reviewed traffic sources and user behaviour using heatmaps, identified friction points and drop-off areas, and analysed niche competitors.  Design & Content Strategy: Developed a value proposition centred on community, simplified homepage layout and visual hierarchy, added clear CTAs, applied design writing to refine copy, and ensured mobile-first accessibility.  Post-Launch Validation: Measured behaviour with heatmaps and analytics (Amplitude) to verify design impact and iterated where necessary.",
       },
       {
         type: "text",
@@ -353,7 +354,7 @@ export const projects: Project[] = [
       {
         type: "text",
         heading: "Process",
-        body: "1. Audit & Analysis: Reviewed the existing desktop interface to identify usability issues, visual inconsistencies, and opportunities for simplification.\n\n2. Design System Expansion: Refined and extended the design system to create modular, web-compatible components that maintained visual consistency across devices.\n\n3. Layout & Interaction Design: Adapted layouts and interaction patterns for responsive behaviour, ensuring a seamless experience across screen sizes.\n\n4. Simplification & Focus: Reduced cognitive load by clarifying hierarchy, minimising visual noise, and emphasising core content.",
+        body: "1. Audit & Analysis: Reviewed the existing desktop interface to identify usability issues, visual inconsistencies, and opportunities for simplification.  2. Design System Expansion: Refined and extended the design system to create modular, web-compatible components that maintained visual consistency across devices.  3. Layout & Interaction Design: Adapted layouts and interaction patterns for responsive behaviour, ensuring a seamless experience across screen sizes.  4. Simplification & Focus: Reduced cognitive load by clarifying hierarchy, minimising visual noise, and emphasising core content.",
       },
       {
         type: "text",
@@ -390,7 +391,7 @@ export const projects: Project[] = [
     title:       "Accommodation Platform Discovery Research",
     category:    "UX Research",
     year:        "2021",
-    description: "Mixed-methods research to validate market opportunity and inform product strategy for a peer-to-peer accommodation booking platform. Conducted competitor benchmarking, user interviews, and proto-persona development to identify target audience needs and platform requirements.",
+    description: "The sharing economy has reshaped accommodation, dominated by Airbnb, though gaps remain in niche markets. A startup entered the space with an experience-led concept but lacked validated user insights. This research aimed to test core assumptions and guide product decisions with evidence.",
     coverImage:  "https://yu-dudareva.notion.site/image/attachment%3A5b4b201f-4e44-46c7-a73d-1794bdca2bb3%3ASurface_Pro_8_-_2.png?table=block&id=28f5f7e8-db24-8066-96fe-caf3b122322a&spaceId=c87162e1-ae7d-4bb7-aba4-230b446fcf5c&width=2048&userId=&cache=v2",
     accentColor: "#FF4D00",
     tags:        ["Discovery Research", "Qualitative Research", "Product Strategy"],
@@ -399,7 +400,7 @@ export const projects: Project[] = [
     role:        "Lead UX Researcher",
     services:    "Discovery Research, User Interviews, Competitive Analysis, Proto-Persona Development",
     date:        "2021",
-    heroImage:   "/images/ux-research/ux-research-hero.svg",
+    heroImage:   "/images/ux-research/UX_research_hero_image.png",
     imageSlider: [],
 
     problem:  "A newly funded accommodation booking startup needed to validate market demand, identify their primary user segments, and determine which platform features were essential for early-stage product-market fit. The founders had an intuition about the market but lacked empirical user and competitive data to guide product prioritization.",
@@ -416,12 +417,6 @@ export const projects: Project[] = [
 
     sections: [
       {
-        type: "text",
-        heading: "Research Context",
-        body: "The accommodation market has experienced dramatic growth in the sharing economy. Platforms like Airbnb and Booking.com dominate the global market, but fragmentation exists in specific regions and use cases. Our client—a well-funded startup—aimed to enter this space with a differentiated value proposition focused on authentic, experience-driven stays.\n\nDespite strong market indicators and investor confidence, the founding team lacked direct user insights. Their assumptions about who would use the platform, what features mattered most, and what pain points they could address remained largely untested. The research program was designed to validate these assumptions and provide empirical evidence for product decisions.",
-        gap: 80,
-      },
-      {
         type: "research-objectives",
         heading: "Research Objectives",
         objectives: [
@@ -435,17 +430,27 @@ export const projects: Project[] = [
       {
         type: "text",
         heading: "Methodology & Approach",
-        body: "**Research Methods:**\n- Desk Research: Market sizing, platform trends, growth patterns\n- Competitor Benchmarking: Feature analysis, UX patterns, pricing strategies, user reviews\n- Semi-Structured User Interviews: 5 participants, 60–90 minutes each\n- Thematic Analysis: Open coding, pattern identification, insight synthesis\n\n**Participant Profile:**\nRecruited 5 frequent travelers (2–4 trips/year) with recent experience booking accommodations. Ages 28–52, mix of leisure and business travel, international and domestic. Recruited through LinkedIn, travel forums, and referral networks to ensure diverse perspectives.\n\n**Research Timeline:**\n- Week 1–2: Desk research and competitive analysis\n- Week 3–4: Interview recruitment and preparation\n- Week 5–6: Conduct interviews and initial note synthesis\n- Week 7–8: Thematic analysis, insight mapping, proto-persona development, stakeholder reporting",
-        gap: 80,
-      },
-      {
-        type: "text",
-        heading: "Key Findings from User Interviews",
-        body: "**Finding 1: Booking Process Friction\nUsers expressed frustration with repetitive data entry across platforms. When switching between Airbnb, Booking.com, and direct hotel websites, they complained about entering address, payment, and preference information multiple times. Quote: \"I've saved payment info on three different platforms, and I still have to re-enter everything on a new site.\" This suggests an opportunity for streamlined onboarding and persistent user profiles.\n\n**Finding 2: Trust and Authenticity Concerns\nParticipants noted that user reviews on major platforms often feel performative or curated. There's skepticism about whether ratings reflect genuine experiences. One participant described: \"I read the 5-star reviews, but I'm looking for the 3-star reviews to understand real trade-offs.\" Users desire more transparent, nuanced feedback mechanisms.\n\n**Finding 3: Feature Overload vs. Decision Support\nLarge platforms like Airbnb offer extensive filtering options (price, amenities, host rating, etc.), but users feel overwhelmed by choice. They revealed a preference for curated, personalized recommendations over exhaustive search results. Several participants mentioned feeling \"decision paralyzed\" after viewing 50+ listings.\n\n**Finding 4: Loyalty Constraints\nUsers typically book through their established platform due to accumulated reviews, saved preferences, and payment methods—not necessarily because it best meets their needs. New platforms face a significant adoption barrier: the switching cost of reconstructing a trusted profile.",
+        body: "This study employed a mixed-methods approach to validate the market opportunity and define product strategy for an accommodation booking platform.<br/><br/>1. <strong>Competitor benchmarking</strong> was conducted to analyze existing accommodation platforms, identify key UX patterns, and uncover market gaps.<br/><br/>2. <strong>Proto-personas development</strong> was based on initial assumptions to define target user segments and guide the research focus.<br/><br/>3. <strong>Qualitative user interviews</strong> were conducted to explore real user needs, motivations, and pain points in the accommodation booking process.<br/><br/>4. <strong>Synthesis and validation</strong> of findings were performed to refine proto-personas and translate insights into platform requirements and product strategy.",
         gap: 80,
       },
       {
         type: "research-competitive-analysis",
+        heading: "Competitor benchmarking",
+        gap: 80,
+      },
+      {
+        type: "research-personas",
+        heading: "Building proto-persona",
+        gap: 80,
+      },
+      {
+        type: "research-interview-insights",
+        insights: [
+          { id: "01", body: "Interviewee 5 had a case where she had to wait to check in from 8 am until 3pm, but this information was not given before paying for the reservation." },
+          { id: "02", body: "Interviewee 2 had a case where the reservation included breakfast, but it ended up costing money and the kitchen could not be used at all." },
+          { id: "03", body: "Interviewee 2 had a case where they asked to pay an additional fee (tourist tax) at check-in, which was not included in the price on the website." },
+          { id: "04", body: "Interviewee 4 cares about both the map and the list. He is guided by the list because it is just in front of his eyes, but he cares about the location - that's why the map prevails over the list." },
+        ],
         gap: 80,
       },
       {
@@ -453,41 +458,14 @@ export const projects: Project[] = [
         gap: 80,
       },
       {
-        type: "research-personas",
-        gap: 80,
-      },
-      {
-        type: "text",
-        heading: "User Pain Points & Opportunities",
-        body: "**Identified Pain Points:**\n1. Repetitive data entry and profile fragmentation across platforms\n2. Overwhelming choice with insufficient quality signals and curation\n3. Lack of transparency in pricing and policies at checkout\n4. Limited trust mechanisms and review authenticity concerns\n5. Poor post-booking communication and host relationships\n6. Difficulty finding accommodations aligned with personal values (sustainability, community, accessibility)\n\n**Mapped Opportunities:**\n1. Seamless cross-platform data sync and profile portability\n2. AI-driven personalized recommendations with explainability (\"Why this stay?\")\n3. Transparent, all-in pricing from search onwards\n4. Verified host profiles with multi-dimensional trust signals\n5. Post-booking community and host engagement platform\n6. Values-based filtering and curation (eco-certified, minority-owned, accessible properties)\n\nThese opportunities became the foundation of the product specification document and feature prioritization framework.",
-        gap: 80,
-      },
-      {
         type: "research-journey-map",
+        heading: "User Journey Map — Accommodation Booking",
         gap: 80,
       },
       {
         type: "text",
-        heading: "Synthesis & Strategic Recommendations",
-        body: "**Recommendation 1: Lead with Curation, Not Inventory**\nInstead of competing on breadth (Booking.com) or community narrative (Airbnb), launch with a highly curated collection of premium, vetted properties. This allows differentiation despite smaller initial scale and builds a reputation for quality.\n\n**Recommendation 2: Transparency as a Core Value**\nAll-in pricing, transparent cancellation policies, and detailed host backgrounds should be visible at search—not hidden until checkout. This builds trust and reduces friction.\n\n**Recommendation 3: Community & Values-Driven Design**\nEnable hosts and guests to express values (sustainability, accessibility, cultural heritage). Build filtering and recommendation systems around these signals. This attracts conscious travelers and supports underrepresented hosts.\n\n**Recommendation 4: Reduce Onboarding Friction**\nImplement OAuth integrations with major platforms and payment providers. Allow quick profile import from competitors. Minimize required fields at signup. Reduce cognitive load at decision time.\n\n**Recommendation 5: Focus Initial Marketing on Differentiation**\nTarget conscious travelers and niche communities (eco-tourism, LGBTQ+ travel, accessibility advocates) where your differentiated value is strongest rather than competing head-to-head with Airbnb.",
-        gap: 80,
-      },
-      {
-        type: "text",
-        heading: "Impact & Business Outcomes",
-        body: "The research program directly influenced product strategy and go-to-market decisions:\n\n**Product Development:**\n- Proto-personas shaped the initial feature prioritization framework\n- Pain points identified drove the decision to implement all-in pricing and transparent policies\n- Opportunity areas informed the investment in values-based filtering and curation tools\n\n**Feature Prioritization:**\n- Research validated the importance of trust signals (verified hosts, review quality) → led to custom review synthesis algorithm\n- Authentic experiences opportunity → inspired \"Host Stories\" and community engagement features\n- Pricing transparency insight → resulted in all-in pricing displayed at search results\n\n**Go-to-Market Strategy:**\n- User pain point with choice overload → informed decision to launch with curated catalog (500 properties) vs. open marketplace\n- Persona insights → identified target initial user segment (conscious travelers, ages 28–45)\n- Competitive analysis → shaped positioning as \"Curated, Transparent, Community-Driven\" vs. competing on scale\n\n**Quantified Impact:**\n- Research findings reduced feature scope ambiguity by 65%, enabling faster development cycles\n- Proto-personas became the reference model for all subsequent design work\n- Competitive positioning informed by this research led to 3x engagement rate with target user segment vs. generic marketing",
-        gap: 80,
-      },
-      {
-        type: "text",
-        heading: "Limitations & Research Considerations",
-        body: "**Sample Size & Representativeness:**\nWith 5 interview participants, this research is exploratory rather than confirmatory. Findings suggest hypotheses but should be validated with larger, more diverse samples. The sample was relatively affluent and well-traveled; findings may not generalize to budget travelers or first-time users.\n\n**Selection Bias:**\nParticipants were recruited through LinkedIn and travel communities, likely introducing a bias toward digitally-savvy, engaged travelers. The findings may overrepresent pain points relevant to power users.\n\n**Temporal Validity:**\nThis research was conducted in 2021. The accommodation platform landscape has evolved significantly (increased remote work travel, post-COVID patterns, regulatory changes). Some findings may be dated.\n\n**Methodological Trade-offs:**\nThis was discovery research, not validation research. While interviews and competitive analysis provided rich insights, quantitative validation surveys would strengthen the findings. A/B testing of recommendations post-launch would measure true impact.\n\n**Recommendations for Future Research:**\n- Conduct quantitative validation surveys with 200+ participants to validate findings at scale\n- Test proto-personas with diverse user segments (budget travelers, accessibility users, international travelers)\n- Implement post-launch analytics and user testing to measure whether research-informed features actually address identified pain points",
-        gap: 80,
-      },
-      {
-        type: "text",
-        heading: "Reflection & Learning",
-        body: "This project reinforced several foundational principles of UX research that I continue to apply:\n\n**The Power of Listening Over Assuming:**\nThe founding team entered with strong hypotheses about what users wanted. Several of these were invalidated or complicated by real user conversations. For example, they assumed features were the primary differentiation; research revealed that trust, transparency, and curation mattered more. This humility—remaining open to what users actually need—is essential.\n\n**Research is a Stakeholder Tool, Not Just a Design Input:**\nStakeholders needed confidence in product decisions. Research artifacts (personas, competitive analysis, pain point mappings) became tools for alignment and decision-making. The translation from raw insights to actionable recommendations was as important as the insights themselves.\n\n**Qual + Quant Integration:**\nWhile this research was primarily qualitative, its impact was maximized by combining it with competitive benchmarking and market research. Single-method research misses important context. Triangulation—validating insights across multiple methods—builds credibility.\n\n**The Research Process Builds Culture:**\nInvolving stakeholders in synthesis sessions and persona workshops created buy-in. People who participated in the research process became evangelists for user-centered thinking, even before the product launched.\n\n**Growth Area:**\nIn retrospect, I would have conducted more structured analysis of competitor UX patterns (heatmapping, interaction flows, accessibility audits) rather than relying on subjective assessments. More rigorous competitive research would have strengthened positioning recommendations.\n\n**Biggest Takeaway:**\nEven when a strategy seems complete based on market intuition, empirical research reveals nuances and opportunities that pure logic misses. This research became the decision-making bedrock for the entire product strategy, proving the ROI of dedicating time upfront to understanding users.",
+        heading: "What I learned",
+        body: "Even when a solution seems complete, there’s always room for improvement. Continuous learning and iteration are essential to creating meaningful and effective user experiences.",
         gap: 80,
       },
     ],

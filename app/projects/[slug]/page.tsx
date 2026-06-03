@@ -10,6 +10,7 @@ import CompetitiveAnalysis from "@/components/research/CompetitiveAnalysis";
 import UserInterviewSynthesis from "@/components/research/UserInterviewSynthesis";
 import PersonaCards from "@/components/research/PersonaCards";
 import UserJourneyMap from "@/components/research/UserJourneyMap";
+import { InterviewInsights } from "@/components/research/InterviewInsights";
 
 interface ProjectPageProps {
   params: {
@@ -159,11 +160,21 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       <section className="pt-12 pb-12 md:pt-20 md:pb-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
-        <div className={`max-w-6xl mx-auto px-6 md:px-10 ${project.client === "gigmit.com" ? "" : "space-y-12 md:space-y-20"}`}>
-          {firstSections.map((section, index) => (
-            <SectionBlock key={`${project.slug}-first-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
-          ))}
-        </div>
+        {groupSections(firstSections).map((group, groupIndex) =>
+          group.fullBleed ? (
+            <div key={`${project.slug}-first-fb-${groupIndex}`}>
+              {group.sections.map((section, index) => (
+                <SectionBlock key={`${project.slug}-first-fb-${groupIndex}-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
+              ))}
+            </div>
+          ) : (
+            <div key={`${project.slug}-first-g-${groupIndex}`} className={`max-w-6xl mx-auto px-6 md:px-10 ${project.client === "gigmit.com" ? "" : "space-y-12 md:space-y-20"}`}>
+              {group.sections.map((section, index) => (
+                <SectionBlock key={`${project.slug}-first-g-${groupIndex}-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
+              ))}
+            </div>
+          )
+        )}
       </section>
 
       {whatIChangedIndex >= 0 ? (
@@ -172,15 +183,41 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
       {remainingSections.length > 0 ? (
         <section className="border-t border-mist pt-12 md:pt-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
-          <div className="max-w-6xl mx-auto px-6 md:px-10 space-y-12 md:space-y-20">
-            {remainingSections.map((section, index) => (
-              <SectionBlock key={`${project.slug}-remaining-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
-            ))}
-          </div>
+          {groupSections(remainingSections).map((group, groupIndex) =>
+            group.fullBleed ? (
+              <div key={`${project.slug}-rem-fb-${groupIndex}`}>
+                {group.sections.map((section, index) => (
+                  <SectionBlock key={`${project.slug}-rem-fb-${groupIndex}-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
+                ))}
+              </div>
+            ) : (
+              <div key={`${project.slug}-rem-g-${groupIndex}`} className="max-w-6xl mx-auto px-6 md:px-10 space-y-12 md:space-y-20">
+                {group.sections.map((section, index) => (
+                  <SectionBlock key={`${project.slug}-rem-g-${groupIndex}-${index}`} section={section} mb={section.gap} numberFontSize={section.numberFontSize} />
+                ))}
+              </div>
+            )
+          )}
         </section>
       ) : null}
     </main>
   );
+}
+
+const FULL_BLEED_TYPES = new Set(["research-interview-insights"]);
+
+function groupSections(sections: CaseStudySection[]): { fullBleed: boolean; sections: CaseStudySection[] }[] {
+  const groups: { fullBleed: boolean; sections: CaseStudySection[] }[] = [];
+  for (const section of sections) {
+    const isFullBleed = FULL_BLEED_TYPES.has(section.type);
+    const last = groups[groups.length - 1];
+    if (last && last.fullBleed === isFullBleed) {
+      last.sections.push(section);
+    } else {
+      groups.push({ fullBleed: isFullBleed, sections: [section] });
+    }
+  }
+  return groups;
 }
 
 function mbStyle(mb?: number): React.CSSProperties | undefined {
@@ -198,7 +235,12 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
             {section.heading}
           </h2>
         ) : null}
-        <p className="text-body-lg text-stone max-w-4xl leading-8">{section.body}</p>
+        {section.body ? (
+          <div
+            className="text-body-lg text-stone max-w-4xl leading-8"
+            dangerouslySetInnerHTML={{ __html: section.body }}
+          />
+        ) : null}
       </div>
     );
   }
@@ -396,7 +438,12 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
   }
   if (section.type === "research-competitive-analysis") {
     return (
-      <div style={mbStyle(mb)}>
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
+        {section.heading ? (
+          <h2 className="font-display font-semibold text-display-md text-ink">
+            {section.heading}
+          </h2>
+        ) : null}
         <CompetitiveAnalysis />
       </div>
     );
@@ -410,9 +457,22 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     );
   }
 
-  if (section.type === "research-personas") {
+  if (section.type === "research-interview-insights") {
     return (
       <div style={mbStyle(mb)}>
+        <InterviewInsights insights={section.insights ?? []} />
+      </div>
+    );
+  }
+
+  if (section.type === "research-personas") {
+    return (
+      <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
+        {section.heading ? (
+          <h2 className="font-display font-semibold text-display-md text-ink">
+            {section.heading}
+          </h2>
+        ) : null}
         <PersonaCards />
       </div>
     );
