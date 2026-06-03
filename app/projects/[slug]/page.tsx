@@ -11,6 +11,7 @@ import UserInterviewSynthesis from "@/components/research/UserInterviewSynthesis
 import PersonaCards from "@/components/research/PersonaCards";
 import UserJourneyMap from "@/components/research/UserJourneyMap";
 import { InterviewInsights } from "@/components/research/InterviewInsights";
+import NextProject from "@/components/ui/NextProject";
 
 interface ProjectPageProps {
   params: {
@@ -200,6 +201,13 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           )}
         </section>
       ) : null}
+
+      {/* Next Project Navigation */}
+      <section style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="max-w-6xl mx-auto px-6 md:px-10">
+          <NextProject currentSlug={project.slug} />
+        </div>
+      </section>
     </main>
   );
 }

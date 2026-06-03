@@ -10,9 +10,9 @@ export default function ProjectsPage() {
             Selected work
           </p>
           <h1 className="font-display text-display-xl text-ink leading-none tracking-[-0.03em]">
-            <span className="block font-semibold">Meaningful product</span>
-            <span className="block italic font-light">and experience design</span>
-            <span className="block font-semibold">for conversion-led digital tools.</span>
+            <span className="block font-semibold">Turning Complexity</span>
+            <span className="block italic font-light">into</span>
+            <span className="block font-semibold">Clarity</span>
           </h1>
           <p className="mt-6 text-body-lg text-stone max-w-3xl">
             A curated collection of case studies across onboarding, mobile-first SaaS, and product design systems — all built to drive clarity, confidence, and measurable outcomes.

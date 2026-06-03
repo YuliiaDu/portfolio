@@ -327,7 +327,7 @@ export const projects: Project[] = [
     title:       "SaaS no-code tool",
     category:    "UX & Product Design",
     year:        "2022",
-    description: "gigmit is a digital platform connecting artists with promoters and venues, simplifying booking for live music events. As Product Designer & UX Researcher, I led a full redesign of the registration and onboarding flow to improve conversion and reduce drop-off.",
+    description: "SaaS no-code development tool for creating complex applications for business-specific processes. With Any2Info you can build completely customized apps to provide your customers and employees with the right information at the right time.",
     coverImage:  "/images/any2info/Projects_ANY2INFO_Hero_Preview.png",
     accentColor: "#FF4D00",
     tags:        ["SaaS", "Responsive", "Web"],
