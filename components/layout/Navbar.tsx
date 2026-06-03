@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/buttons/Button";
 
 const NAV_LINKS = [
   { href: "/projects", label: "Projects" },
@@ -86,17 +87,15 @@ export function Navbar() {
         </ul>
 
         {/* CTA */}
-        <Link
+        <Button
           href="/contact"
-          className={cn(
-            "hidden md:flex items-center gap-2 text-body-sm font-medium px-4 py-2 rounded-full transition-all duration-300",
-            isDark
-              ? "border border-dark-border text-canvas hover:border-ember hover:text-ember"
-              : "border border-ink hover:bg-ink hover:text-canvas"
-          )}
+          variant="secondary-dark"
+          size="md"
+          dark={isDark}
+          className="hidden md:flex items-center gap-2"
         >
           Let's talk
-        </Link>
+        </Button>
       </nav>
     </motion.header>
   );

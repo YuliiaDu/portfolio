@@ -14,15 +14,15 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Yuliia is one of the most proactive and efficient product designers I've collaborated with. As a Lead Developer, 1 appreciated her ability to blend aesthetics with usability and business goals. She moves fast, thinks independently, and is a joy to have in the room. Any product team would be lucky to have her.",
-    name: "Andreas Kürbis",
-    role: "Senior Full-Stack Engineer, gigmit",
+      "Yuliia is very experienced in all things marketing. Self starter, doesn't need hand holding, continues pushing the projects to completion, good communicator. Pleasure to work with!",
+    name: "Natalie Luneva",
+    role: "Exit Planning, M&A Advisor & Business Broker.",
   },
   {
     quote:
-      "Yulia is very experienced in all things marketing. Self starter, doesn't need hand holding, continues pushing the projects to completion, good communicator. Pleasure to work with!",
-    name: "Natalie Luneva",
-    role: "Exit Planning, M&A Advisor & Business Broker.",
+      "Yuliia is one of the most proactive and efficient product designers I've collaborated with. As a Lead Developer, 1 appreciated her ability to blend aesthetics with usability and business goals. She moves fast, thinks independently, and is a joy to have in the room. Any product team would be lucky to have her.",
+    name: "Andreas Kürbis",
+    role: "Senior Full-Stack Engineer, gigmit",
   },
 ];
 

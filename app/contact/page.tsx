@@ -214,8 +214,8 @@ export default function ContactPage() {
             <div>
               <p className="text-body-sm text-dark-text">
                 Prefer direct email?{' '}
-                <a href="mailto:dudareva.yu@gmail.com" className="font-medium text-canvas underline-ember">
-                  dudareva.yu@gmail.com
+                <a href="mailto:yudu.design@gmail.com" className="font-medium text-canvas underline-ember">
+                  yudu.design@gmail.com
                 </a>
               </p>
             </div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
               whileTap={{ scale: 0.98 }}
               disabled={status === 'sending'}
               aria-busy={status === 'sending'}
-              className={`relative inline-flex items-center justify-center overflow-hidden rounded-[1.75rem] border border-ember/20 bg-ember px-7 py-4 text-body-sm font-medium text-ink transition-shadow duration-300 hover:shadow-[0_18px_60px_rgba(255,77,0,0.24)] ${status === 'sending' ? 'opacity-70 pointer-events-none' : ''}`}
+              className={`relative inline-flex items-center justify-center overflow-hidden rounded-full bg-ember text-canvas px-6 py-3.5 text-body-sm font-medium transition-all duration-300 hover:bg-canvas hover:text-ink ${status === 'sending' ? 'opacity-70 pointer-events-none' : ''}`}
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-canvas/10 to-transparent opacity-0 transition-opacity duration-400" />
               <span className="relative whitespace-nowrap">

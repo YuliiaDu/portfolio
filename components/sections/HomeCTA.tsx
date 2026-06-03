@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import { Button } from "@/components/buttons/Button";
 
 export function HomeCTA() {
   const ref    = useRef<HTMLDivElement>(null);
@@ -39,19 +40,20 @@ export function HomeCTA() {
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.15 }}
             className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
           >
-            <Link
+            <Button
               href="/contact"
-              className="group inline-flex items-center gap-3 bg-ember text-canvas text-body-sm font-medium px-7 py-4 rounded-full hover:bg-canvas hover:text-ink transition-all duration-400"
+              variant="primary-accent"
+              size="lg"
+              arrow
             >
               Start a conversation
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
+            </Button>
 
             <a
-              href="mailto:dudareva.yu@gmail.com"
+              href="mailto:yudu.design@gmail.com"
               className="text-body-sm font-medium text-dark-text hover:text-canvas transition-colors duration-300 underline-ember [&::after]:bg-canvas"
             >
-              dudareva.yu@gmail.com
+              yudu.design@gmail.com
             </a>
           </motion.div>
         </div>

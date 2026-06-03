@@ -12,6 +12,7 @@ import PersonaCards from "@/components/research/PersonaCards";
 import UserJourneyMap from "@/components/research/UserJourneyMap";
 import { InterviewInsights } from "@/components/research/InterviewInsights";
 import NextProject from "@/components/ui/NextProject";
+import { Button } from "@/components/buttons/Button";
 
 interface ProjectPageProps {
   params: {

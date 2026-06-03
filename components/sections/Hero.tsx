@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { EASE_OUT_EXPO, fadeUp, staggerContainer } from "@/lib/motion";
+import { Button } from "@/components/buttons/Button";
 
 export function Hero() {
   return (
@@ -100,19 +100,12 @@ export function Hero() {
             variants={fadeUp}
             className="flex items-center gap-4 flex-shrink-0"
           >
-            <Link
-              href="/projects"
-              className="group inline-flex items-center gap-3 bg-ink text-canvas text-body-sm font-medium px-6 py-3.5 rounded-full hover:bg-stone transition-colors duration-300"
-            >
+            <Button href="/projects" variant="primary" size="lg" arrow>
               View my work
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
-            <Link
-              href="/about"
-              className="text-body-sm font-medium text-stone underline-ember hover:text-ink transition-colors duration-300"
-            >
+            </Button>
+            <Button href="/about" variant="link">
               About me
-            </Link>
+            </Button>
           </motion.div>
         </motion.div>
 
@@ -124,9 +117,9 @@ export function Hero() {
           className="mt-20 md:mt-28 pt-8 border-t border-mist grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { value: "6+ years",  label: "experience"    },
             { value: "UX & UI", label: "Product design"    },
             { value: "B2B & B2C", label: "Domain range"  },
+            { value: "6+ years",  label: "experience"    },
             { value: "Design × AI", label: "Modern workflows" },
           ].map(({ value, label }) => (
             <div key={label}>

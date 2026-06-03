@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { type Project } from "@/data/projects";
 import { fadeUp } from "@/lib/motion";
+import { Button } from "@/components/buttons/Button";
 
 interface ProjectCardProps {
   project: Project;
@@ -53,23 +54,7 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
 
           {/* Arrow */}
           <div className="flex-shrink-0 mt-1">
-            <div className="w-9 h-9 rounded-full border border-mist flex items-center justify-center group-hover:bg-ink group-hover:border-ink transition-all duration-300">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                className="text-ink group-hover:text-canvas transition-colors duration-300 -rotate-45"
-              >
-                <path
-                  d="M2 7h10M7 2l5 5-5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <Button href={`/projects/${project.slug}`} variant="secondary-dark" iconOnly />
           </div>
         </div>
 

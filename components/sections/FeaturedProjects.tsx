@@ -8,6 +8,7 @@ import { useInView } from "framer-motion";
 import { type Project } from "@/data/projects";
 import { fadeUp, EASE_OUT_EXPO } from "@/lib/motion";
 import { pad, splitTitle } from "@/lib/utils";
+import { Button } from "@/components/buttons/Button";
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -41,13 +42,9 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
             transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.2 }}
           >
-            <Link
-              href="/projects"
-              className="hidden md:inline-flex items-center gap-2 text-body-sm font-medium text-stone hover:text-ink transition-colors duration-300 underline-ember"
-            >
+            <Button href="/projects" variant="link">
               All projects
-              <span>→</span>
-            </Link>
+            </Button>
           </motion.div>
         </div>
 
@@ -70,12 +67,13 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           transition={{ delay: 0.8, duration: 0.5 }}
           className="mt-12 flex md:hidden"
         >
-          <Link
+          <Button
             href="/projects"
-            className="w-full text-center border border-mist text-body-sm font-medium text-stone py-4 rounded-full hover:border-ink hover:text-ink transition-all duration-300"
+            variant="link"
+            className="w-full text-center"
           >
-            View all projects →
-          </Link>
+            View all projects
+          </Button>
         </motion.div>
       </div>
     </section>
@@ -180,23 +178,7 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
             </div>
 
             {/* Arrow CTA */}
-            <div className="flex-shrink-0 w-10 h-10 rounded-full border border-canvas/30 group-hover:border-ember group-hover:bg-ember/10 flex items-center justify-center transition-all duration-300">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                className="text-canvas group-hover:text-ember transition-colors duration-300 -rotate-45"
-              >
-                <path
-                  d="M2 7h10M7 2l5 5-5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+            <Button href={`/projects/${project.slug}`} variant="secondary-accent" iconOnly />
           </div>
         </div>
 

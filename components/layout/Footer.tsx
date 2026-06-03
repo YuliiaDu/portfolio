@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/buttons/Button";
 
 const LINKS = [
   { href: "/projects", label: "Projects" },
@@ -28,12 +29,14 @@ export function Footer() {
             <p className="mt-2 text-body-sm text-dark-text leading-relaxed">
               UI/UX & Product Designer crafting clear,<br className="hidden sm:block" /> intentional digital experiences.
             </p>
-            <Link
+            <Button
               href="/contact"
-              className="mt-5 inline-flex items-center gap-2 text-body-sm font-medium text-canvas border border-dark-border rounded-full px-4 py-2 hover:border-ember hover:text-ember transition-all duration-300"
+              variant="secondary-accent"
+              size="md"
+              className="mt-5"
             >
-              Get in touch →
-            </Link>
+              Get in touch
+            </Button>
           </div>
 
           {/* Nav + Social — 2-col on mobile, inline on desktop */}
