@@ -105,7 +105,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     return parts.map((part, i) => (
                       <span key={i}>
                         {i > 0 && <br />}
-                        {i === 0 ? (
+                        {i === 1 ? (
                           <span style={{ fontStyle: "italic", fontWeight: 300, color: "#FF4D00" }}>
                             {part}
                           </span>
@@ -133,21 +133,22 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <p className="mt-6 mb-10 text-body-lg text-stone max-w-3xl">
                 {project.description}
               </p>
-
-              {/* Hero stats — use project.heroStats when available */}
-              {project.client === "gigmit.com" && project.heroStats && (
-                <div className="hero-stats max-w-[1072px] mx-auto" style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
-                  {project.heroStats.map((s) => (
-                    <div key={s.label} className="h-stat">
-                      <p className="h-stat-val">{s.value}</p>
-                      <p className="h-stat-lbl">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
         </div>
+        {/* Hero stats — use project.heroStats when available */}
+        {project.client === "gigmit.com" && project.heroStats && (
+          <div className="max-w-6xl mx-auto px-6 md:px-10">
+            <div className="hero-stats" style={{ marginBottom: "clamp(40px, 6vw, 80px)" }}>
+              {project.heroStats.map((s) => (
+                <div key={s.label} className="h-stat">
+                  <p className="h-stat-val">{s.value}</p>
+                  <p className="h-stat-lbl">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         {heroImage ? (
           <div className="max-w-6xl mx-auto px-6 md:px-10">
             <div className="hero-img-wrap">

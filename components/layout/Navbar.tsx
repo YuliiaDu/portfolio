@@ -36,11 +36,11 @@ export function Navbar() {
     >
       {/* Blurred background */}
       {isDark ? (
-        <div className="absolute inset-0 backdrop-blur-md bg-ink/90" />
+        <div className="absolute inset-0 backdrop-blur-2xl bg-ink/60" />
       ) : (
         <motion.div
-          className="absolute inset-0 backdrop-blur-md"
-          style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.85)" }}
+          className="absolute inset-0 backdrop-blur-2xl"
+          style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.5)" }}
         />
       )}
 

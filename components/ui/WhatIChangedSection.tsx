@@ -27,7 +27,7 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
               <p className="text-label uppercase tracking-widest text-dark-text mb-3">
                 What I changed
               </p>
-              <h2 className="font-display font-semibold text-display-lg text-canvas">
+              <h2 className="font-display font-semibold text-display-md text-canvas">
                 Key redesign moments from gigmit onboarding
               </h2>
             </div>

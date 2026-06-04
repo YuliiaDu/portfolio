@@ -179,7 +179,7 @@ export default function AboutPage() {
               </div>
 
               <div className="absolute left-4 bottom-4 rounded-3xl border border-canvas/10 bg-ink/70 px-4 py-3 backdrop-blur-sm">
-                <p className="text-label uppercase tracking-[0.32em] text-canvas/80">Yuliia Dudareva</p>
+                <p className="text-label uppercase tracking-[0.2em] text-canvas/80">Yuliia Dudareva</p>
                 <p className="mt-1 text-body-sm text-canvas/80">Senior Product Designer</p>
               </div>
             </motion.div>

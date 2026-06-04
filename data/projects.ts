@@ -191,7 +191,7 @@ export const projects: Project[] = [
       {
         type: "text",
         heading: "What I learned",
-        body: "Redesigning the homepage taught me that **clarity and motivation go hand in hand**. When users instantly understand what’s offered and why it matters, they’re far more likely to take the next step. Improving sign-ups wasn’t about flashy visuals — it was about empathy, focus, and reducing friction at every click.",
+        body: "Redesigning the homepage taught me that clarity and motivation go hand in hand. When users instantly understand what’s offered and why it matters, they’re far more likely to take the next step. Improving sign-ups wasn’t about flashy visuals — it was about empathy, focus, and reducing friction at every click.",
         gap: 80,
       },
     ],

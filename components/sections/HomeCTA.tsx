@@ -57,35 +57,6 @@ export function HomeCTA() {
             </a>
           </motion.div>
         </div>
-
-        {/* ── Divider + social strip ─────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-16 pt-8 border-t border-dark-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-        >
-          <p className="text-label uppercase tracking-widest text-dark-text">
-            Follow along
-          </p>
-          <div className="flex items-center gap-6">
-            {[
-              { href: "https://dribbble.com/Yuliia_Dudareva",  label: "Dribbble"  },
-              { href: "https://www.linkedin.com/in/yuliia-dudareva/",  label: "LinkedIn"  },
-              { href: "https://www.behance.net/yuliia_dudareva",   label: "Behance"   },
-            ].map(({ href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-body-sm text-dark-text hover:text-canvas transition-colors duration-300 underline-ember [&::after]:bg-canvas"
-              >
-                {label}
-              </a>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -100,19 +100,19 @@ img, video {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      font-size: .72rem;
+      font-size: .75rem;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--stone);
-      border: 1px solid var(--mist);
-      padding: 7px 15px;
-      border-radius: 999px;
+      background-color: rgba(232, 230, 225, 0.4);
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      transition: background-color .5s, color .5s;
     }
     .meta-pill.year {
-      border-color: var(--ember);
-      color: var(--ember);
+      /* Same styling as other pills - no highlight */
     }
-    /* .meta-pill.client removed — use .meta-pill.year for highlighted client pill */
+    /* .meta-pill.client removed — all pills use same light grey styling */
 
     /* ─── hero-stats ──────────────────────────────────────── */
     .hero-stats {

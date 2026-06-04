@@ -14,7 +14,10 @@ export default function NextProject({ currentSlug }: NextProjectProps) {
   const nextProject = projects[nextIndex];
 
   return (
-    <div className="group block rounded-2xl bg-ink text-canvas border border-dark-border overflow-hidden transition-all duration-300">
+    <Link
+      href={`/projects/${nextProject.slug}`}
+      className="group block rounded-2xl bg-ink text-canvas border border-dark-border overflow-hidden transition-all duration-300"
+    >
       <div className="flex items-center justify-between p-6 md:p-8">
         {/* Left side: Label and title */}
         <div className="flex flex-col">
@@ -33,6 +36,6 @@ export default function NextProject({ currentSlug }: NextProjectProps) {
           iconOnly
         />
       </div>
-    </div>
+    </Link>
   );
 }
