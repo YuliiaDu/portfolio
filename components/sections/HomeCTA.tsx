@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
 import { Button } from "@/components/buttons/Button";
+import { Heading } from "@/components/ui/Heading";
 
 export function HomeCTA() {
   const ref    = useRef<HTMLDivElement>(null);
@@ -23,10 +24,10 @@ export function HomeCTA() {
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             className="max-w-xl"
           >
-            <h2 className="font-display font-semibold text-display-lg text-canvas mb-4">
+            <Heading level={2} className="text-canvas mb-4">
               Have a project{" "}
               <span className="italic font-light text-dark-text">in mind?</span>
-            </h2>
+            </Heading>
             <p className="text-body-sm text-dark-text">
               I take on a small number of projects each quarter. If you're
               building something thoughtful, let's talk.

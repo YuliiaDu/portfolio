@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { fadeUp, EASE_OUT_EXPO } from "@/lib/motion";
+import { Heading } from "@/components/ui/Heading";
 
 interface InterviewInsight {
   id: string;
@@ -31,9 +32,7 @@ export function InterviewInsights({ insights }: InterviewInsightsProps) {
             <p className="text-label uppercase tracking-widest text-dark-text mb-3">
               Interview Findings
             </p>
-            <h2 className="font-display font-semibold text-display-lg text-canvas">
-              Some insights from user interviews
-            </h2>
+            <Heading level={2} className="text-canvas">Some insights from user interviews</Heading>
           </motion.div>
         </div>
         {/* Grid */}

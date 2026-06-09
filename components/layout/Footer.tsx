@@ -8,8 +8,8 @@ const LINKS = [
 ];
 
 const SOCIAL = [
-  { href: "https://dribbble.com/Yuliia_Dudareva",         label: "Dribbble"  },
   { href: "https://www.linkedin.com/in/yuliia-dudareva/", label: "LinkedIn"  },
+  { href: "https://dribbble.com/Yuliia_Dudareva",         label: "Dribbble"  },
   { href: "https://www.behance.net/yuliia_dudareva",      label: "Behance"   },
 ];
 

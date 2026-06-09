@@ -1,5 +1,7 @@
 'use client';
 
+import { Heading } from "@/components/ui/Heading";
+
 export default function UserInterviewSynthesis() {
   const findings = [
     {
@@ -84,7 +86,7 @@ export default function UserInterviewSynthesis() {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="font-display text-display-md font-semibold text-ink mb-1">Research Hypothesis Validation Matrix</h3>
+        <Heading level={3} className="mb-1">Research Hypothesis Validation Matrix</Heading>
         <p className="text-body-sm text-stone mb-4">Synthesized data from <span className="font-semibold text-ink">5 user interviews</span> validating core assumptions about user behavior and feature prioritization.</p>
       </div>
 

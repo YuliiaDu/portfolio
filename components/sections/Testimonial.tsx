@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { EASE_OUT_EXPO } from "@/lib/motion";
+import { Heading } from "@/components/ui/Heading";
 
 const TESTIMONIALS = [
   {
@@ -46,23 +47,26 @@ function TestimonialCard({
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay }}
-      className="flex flex-col rounded-3xl border border-mist bg-white/60 p-8 md:p-10"
+      className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]"
     >
-      {/* Quote mark */}
-      <div className="flex items-end gap-[5px] mb-6" aria-hidden>
-        <span className="block w-[3px] h-7 rounded-full bg-mist" />
-        <span className="block w-[3px] h-7 rounded-full bg-mist" />
+      <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-6 flex flex-col h-full">
+        {/* Quote icon */}
+        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-ember mb-4" aria-hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-canvas">
+            <path d="M3 21c3-5 9-5 12 0M3 10c3-5 9-5 12 0M14 21c3-5 9-5 12 0M14 10c3-5 9-5 12 0" />
+          </svg>
+        </div>
+
+        {/* Quote text */}
+        <blockquote className="font-display font-light text-[0.95rem] leading-[1.7] text-ink flex-1 mb-6">
+          {quote}
+        </blockquote>
+
+        <footer className="pt-4 border-t border-ember">
+          <cite className="not-italic text-body-sm font-medium text-ink block">{name}</cite>
+          <span className="text-label text-stone">{role}</span>
+        </footer>
       </div>
-
-      {/* Quote text */}
-      <blockquote className="font-display font-light text-[0.975rem] leading-[1.8] text-ink flex-1 mb-8">
-        {quote}
-      </blockquote>
-
-      <footer className="pt-6 border-t border-mist">
-        <cite className="not-italic text-body-sm font-medium text-ink block">{name}</cite>
-        <span className="text-label text-stone">{role}</span>
-      </footer>
     </motion.div>
   );
 }
@@ -83,13 +87,11 @@ export function Testimonial() {
           className="mb-12 md:mb-16"
         >
           <p className="text-label uppercase tracking-widest text-stone mb-3">Kind words</p>
-          <h2 className="font-display font-semibold text-display-md text-ink max-w-xl">
-            What collaborators say
-          </h2>
+          <Heading level={2} className="max-w-xl text-ink">Recommendations</Heading>
         </motion.div>
 
         {/* 3-column grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {TESTIMONIALS.map((t, i) => (
             <TestimonialCard key={t.name} {...t} delay={i * 0.12} />
           ))}

@@ -13,6 +13,7 @@ import UserJourneyMap from "@/components/research/UserJourneyMap";
 import { InterviewInsights } from "@/components/research/InterviewInsights";
 import NextProject from "@/components/ui/NextProject";
 import { Button } from "@/components/buttons/Button";
+import { Heading } from "@/components/ui/Heading";
 
 interface ProjectPageProps {
   params: {
@@ -181,7 +182,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       {whatIChangedIndex >= 0 ? (
-        <WhatIChangedSection key="what-i-changed" cards={highlightCards} />
+        <WhatIChangedSection 
+          key="what-i-changed" 
+          cards={highlightCards} 
+          heading={project.whatIChangedHeading}
+          description={project.whatIChangedDescription}
+        />
       ) : null}
 
       {remainingSections.length > 0 ? (
@@ -241,9 +247,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-4 md:space-y-6" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
         {section.body ? (
           <div
@@ -260,9 +264,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
       <div className="rounded-2xl bg-dark-surface shadow-[0_32px_80px_rgba(15,12,10,0.12)] overflow-hidden" style={mbStyle(mb)}>
         {section.heading ? (
           <div className="px-8 py-8">
-            <h2 className="font-display font-semibold text-display-md text-canvas">
-              {section.heading}
-            </h2>
+            <Heading level={2} className="text-canvas">{section.heading}</Heading>
           </div>
         ) : null}
 
@@ -289,9 +291,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {section.metrics?.map((metric) => (
@@ -314,11 +314,9 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
           {section.comparisons?.map((comp) => (
             <div
               key={comp.title}
@@ -326,42 +324,40 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
             >
               <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-5 sm:pb-6">
                 {/* Group label + metric badge */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3">
                   <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">
                     {comp.groupLabel}
                   </p>
-                  <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold leading-none bg-[#E8E6E1] text-ink sm:text-[12px] sm:px-3 sm:py-1.5">
+                  <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold leading-none bg-white/60 text-ink sm:text-[12px]">
                     {comp.label}
                   </span>
                 </div>
 
-                {/* Before | → | After | change — single row */}
-                <div className="flex items-center justify-between gap-2 sm:gap-4">
-                  <div className="flex flex-col items-center gap-1">
-                    <p className="text-[10px] text-stone/50 uppercase tracking-[0.18em]">
-                      Before
-                    </p>
-                    <p className="font-display font-semibold text-xl text-ink leading-none sm:text-[2rem]">
-                      {comp.before}
-                    </p>
-                  </div>
+                {/* Change — hero number */}
+                <p className={`font-display font-bold leading-none mb-2 ${
+                  comp.changeType === "increase"
+                    ? "text-[#FF4D00]"
+                    : "text-stone"
+                } text-[2.5rem] sm:text-[3.25rem]`}>
+                  {comp.change}
+                </p>
 
-                  <div className="text-lg leading-none text-[#FF4D00] sm:text-2xl">
-                    →
-                  </div>
+                {/* Title */}
+                <p className="text-body-sm text-ink font-medium mb-4 leading-snug">
+                  {comp.title}
+                </p>
 
-                  <div className="flex flex-col items-center gap-1">
-                    <p className="text-[10px] text-stone/50 uppercase tracking-[0.18em]">
-                      After
-                    </p>
-                    <p className="font-display font-semibold text-xl text-ink leading-none sm:text-[2rem]">
-                      {comp.after}
-                    </p>
+                {/* Before / After compact row */}
+                <div className="flex items-center gap-3 pt-3 border-t border-mist/60">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-stone/50 uppercase tracking-[0.12em]">Before</span>
+                    <span className="text-body-sm font-semibold text-ink">{comp.before}</span>
                   </div>
-
-                  <p className="text-[11px] font-semibold leading-none text-[#FF4D00] sm:text-label shrink-0">
-                    {comp.change}
-                  </p>
+                  <span className="text-stone/30">→</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-stone/50 uppercase tracking-[0.12em]">After</span>
+                    <span className="text-body-sm font-semibold text-ink">{comp.after}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -375,9 +371,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
@@ -385,7 +379,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
             <div key={obj.title} className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]">
               <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-6">
                 <div className="flex items-start justify-between mb-4">
-                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">Objective</p>
+                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">Challenge</p>
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-ember text-canvas font-semibold">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
 
@@ -405,9 +399,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
 
         <div className="rounded-2xl overflow-hidden bg-ink text-canvas border border-dark-border">
@@ -450,9 +442,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
         <CompetitiveAnalysis />
       </div>
@@ -479,9 +469,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
     return (
       <div className="space-y-6 md:space-y-8" style={mbStyle(mb)}>
         {section.heading ? (
-          <h2 className="font-display font-semibold text-display-md text-ink">
-            {section.heading}
-          </h2>
+          <Heading level={2}>{section.heading}</Heading>
         ) : null}
         <PersonaCards />
       </div>

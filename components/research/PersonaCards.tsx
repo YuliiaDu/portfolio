@@ -1,5 +1,7 @@
 'use client';
 
+import { Heading } from "@/components/ui/Heading";
+
 export default function PersonaCards() {
   const personas = [
     {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { fadeUp, EASE_OUT_EXPO } from "@/lib/motion";
+import { Heading } from "@/components/ui/Heading";
 
 const DISCIPLINES = [
   {
@@ -50,9 +51,7 @@ export function Disciplines() {
             <p className="text-label uppercase tracking-widest text-dark-text mb-3">
               What I do
             </p>
-            <h2 className="font-display font-semibold text-display-lg text-canvas">
-              My disciplines
-            </h2>
+            <Heading level={2} className="text-canvas">My disciplines</Heading>
           </motion.div>
 
           <motion.p
@@ -94,9 +93,9 @@ function DisciplineCard({
       className="group bg-dark-surface hover:bg-dark-border p-8 md:p-10 transition-colors duration-300 cursor-default"
     >
       <span className="text-label text-dark-text mb-6 block">{discipline.number}</span>
-      <h3 className="font-display font-semibold text-display-md text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
+      <Heading level={3} className="text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
         {discipline.title}
-      </h3>
+      </Heading>
       <p className="text-body-sm text-dark-text leading-relaxed max-w-[36ch]">
         {discipline.body}
       </p>

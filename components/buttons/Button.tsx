@@ -9,8 +9,11 @@ interface ButtonProps {
   size?: "sm" | "md" | "lg";
   arrow?: boolean;
   iconOnly?: boolean;
+  arrowUpRight?: boolean;
   dark?: boolean;
   className?: string;
+  target?: string;
+  rel?: string;
 }
 
 export function Button({ 
@@ -20,8 +23,11 @@ export function Button({
   size = "md",
   arrow = false,
   iconOnly = false,
+  arrowUpRight = false,
   dark = false,
-  className = ""
+  className = "",
+  target,
+  rel
 }: ButtonProps) {
   const baseClasses = "group inline-flex items-center font-medium rounded-full transition-all duration-300";
   
@@ -58,13 +64,13 @@ export function Button({
       ? "text-ink group-hover:text-canvas" 
       : "text-canvas group-hover:text-ember";
     return (
-      <Link href={href} className={iconVariantClass}>
+      <Link href={href} className={iconVariantClass} target={target} rel={rel}>
         <svg
           width="14"
           height="14"
           viewBox="0 0 14 14"
           fill="none"
-          className={`${iconColorClass} transition-colors duration-300 -rotate-45`}
+          className={`${iconColorClass} transition-colors duration-300 ${arrowUpRight ? "-rotate-45" : ""}`}
         >
           <path
             d="M2 7h10M7 2l5 5-5 5"
@@ -80,7 +86,7 @@ export function Button({
 
   if (variant === "link") {
     return (
-      <Link href={href} className={linkClasses}>
+      <Link href={href} className={linkClasses} target={target} rel={rel}>
         {children}
       </Link>
     );
@@ -90,6 +96,8 @@ export function Button({
     <Link
       href={href}
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      target={target}
+      rel={rel}
     >
       {children}
       {arrow && (

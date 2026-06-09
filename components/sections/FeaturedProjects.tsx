@@ -9,6 +9,7 @@ import { type Project } from "@/data/projects";
 import { fadeUp, EASE_OUT_EXPO } from "@/lib/motion";
 import { pad, splitTitle } from "@/lib/utils";
 import { Button } from "@/components/buttons/Button";
+import { Heading } from "@/components/ui/Heading";
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -32,9 +33,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             <p className="text-label uppercase tracking-widest text-stone mb-3">
               Selected work
             </p>
-            <h2 className="font-display font-semibold text-display-lg text-ink">
-              Projects
-            </h2>
+            <Heading level={2}>Projects</Heading>
           </motion.div>
 
           <motion.div
@@ -143,12 +142,12 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
 
           {/* Middle: title + description */}
           <div className="mt-auto mb-auto py-6">
-            <h3 className="font-display text-display-md mb-3">
+            <Heading level={3} className="mb-3 text-white group-hover:text-white transition-colors duration-500">
               {splitTitle(project.title).map((part, i) => (
                 <span key={i}>
                   {i > 0 && <br />}
                   {i === 0 ? (
-                    <span className="font-semibold text-white group-hover:text-white transition-colors duration-500">
+                    <span className="font-semibold">
                       {part}
                     </span>
                   ) : (
@@ -158,7 +157,7 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
                   )}
                 </span>
               ))}
-            </h3>
+            </Heading>
             <p className="text-body-sm text-canvas/75 group-hover:text-canvas/90 transition-colors duration-500 line-clamp-3">
               {project.description}
             </p>

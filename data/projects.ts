@@ -52,6 +52,8 @@ export interface Project {
     image: string;
     alt: string;
   }[];
+  whatIChangedHeading?: string;
+  whatIChangedDescription?: string;
 
   // Case study content
   problem:    string;
@@ -128,15 +130,20 @@ export const projects: Project[] = [
 
     sections: [
       {
-        type: "text",
-        heading: "The challenge",
-        body: "gigmit's artist onboarding experience was friction-heavy and misaligned with conversion goals. The flow needed to work harder for mobile traffic, reduce unnecessary fields, and help users understand value before the PRO trial step.",
+        type: "research-objectives",
+        heading: "Challenges",
+        objectives: [
+          { title: "Increase registrations", body: "Grow the number of users starting and completing the registration process" },
+          { title: "Reduce friction", body: "Simplify the mobile-first flow by deferring non-essential fields and reducing cognitive load" },
+          { title: "Reduce drop-off", body: "Lower abandonment before the PRO trial offer through clearer messaging and progress guidance" },
+          { title: "Align with business goals", body: "Tighten the onboarding path to improve conversion from sign-up to trial and checkout" },
+        ],
         gap: 80,
       },
       {
         type: "text",
-        heading: "Research & discovery",
-        body: "We analyzed traffic sources, onboarding metrics, device behavior, and form field relevance. That work revealed the greatest opportunities in mobile friction, unclear intent, and a confusing path into the PRO trial.",
+        heading: "Process",
+        body: "I led research and iterative design across two workstreams to reduce friction and improve conversion.<br/><br/>1. <strong>Registration & Onboarding</strong> — Analysed traffic sources and onboarding metrics, then streamlined the mobile-first flow with deferred fields, a progress indicator, and a simplified PRO trial step. Validated each iteration through A/B testing and behavioural data.<br/><br/>2. <strong>PRO Trial Page</strong> — Used heatmaps, session replays, and funnel analysis to identify drop-off points. Simplified the form, reworked visual hierarchy, and optimised CTAs — with a mobile-first approach throughout.",
       },
       {
         type: "text",
@@ -262,17 +269,26 @@ export const projects: Project[] = [
       },
     ],
 
+    whatIChangedHeading: "Key redesign moments from gigmit homepage",
+    whatIChangedDescription: "Key design decisions shaped by user research and a stronger community-driven value proposition — showcased through the redesigned homepage.",
+
     sections: [
       {
-        type: "text",
+        type: "research-objectives",
         heading: "Challenges",
-        body: "Increase the number of users starting the registration process. Support improvements in the overall registration flow. Prioritise mobile usability and accessibility. Strengthen gigmit’s branding and community-driven message.",
+        objectives: [
+          { title: "Increase registrations", body: "Increase the number of users starting the registration process" },
+          { title: "Better Sign-Up experience", body: "Support improvements in the overall registration flow" },
+          { title: "Mobile first", body: "Prioritize mobile usability and accessibility" },
+          { title: "Brand & community growth", body: "Strengthen gigmit's branding and community-driven message" },
+        ],
         gap: 80,
       },
       {
         type: "text",
         heading: "Process",
-        body: "Pre-Launch Analysis: Reviewed traffic sources and user behaviour using heatmaps, identified friction points and drop-off areas, and analysed niche competitors.  Design & Content Strategy: Developed a value proposition centred on community, simplified homepage layout and visual hierarchy, added clear CTAs, applied design writing to refine copy, and ensured mobile-first accessibility.  Post-Launch Validation: Measured behaviour with heatmaps and analytics (Amplitude) to verify design impact and iterated where necessary.",
+        body: "This project followed a structured approach to validate the market opportunity and improve the homepage design.<br/><br/>1. <strong>Pre-Launch Analysis</strong> reviewed traffic sources and user behaviour using heatmaps, identified friction points and drop-off areas, and analysed niche competitors.<br/><br/>2. <strong>Design & Content Strategy</strong> developed a value proposition centred on community, simplified homepage layout and visual hierarchy, added clear CTAs, applied design writing to refine copy, and ensured mobile-first accessibility.<br/><br/>3. <strong>Post-Launch Validation</strong> measured behaviour with heatmaps and analytics (Amplitude) to verify design impact and iterated where necessary.",
+        gap: 0,
       },
       {
         type: "text",
@@ -280,7 +296,7 @@ export const projects: Project[] = [
       },
       {
         type: "comparison",
-        heading: "Results (Mobile Users)",
+        heading: "Results",
         comparisons: [
           {
             groupLabel: "Mobile Users",
@@ -308,6 +324,15 @@ export const projects: Project[] = [
             label: "drop-off",
             change: "-10.6 pp",
             changeType: "decrease",
+          },
+          {
+            groupLabel: "All Users",
+            title: "Overall conversion rate (completed registration)",
+            before: "4.66%",
+            after: "9.42%",
+            label: "conversion",
+            change: "+102%",
+            changeType: "increase",
           },
         ],
         gap: 80,
@@ -346,15 +371,21 @@ export const projects: Project[] = [
 
     sections: [
       {
-        type: "text",
+        type: "research-objectives",
         heading: "Challenges",
-        body: "Evolve the design system to enable scalable, web-compatible components. Minimise cognitive load to keep users focused on key content. Optimise layouts and interactions for responsive, cross-device performance.",
+        objectives: [
+          { title: "Evolve the design system", body: "Extend the existing design system to enable scalable, web-compatible components across all devices" },
+          { title: "Reduce cognitive load", body: "Simplify complex desktop patterns and minimise visual noise to keep users focused on core tasks" },
+          { title: "Optimise for responsive", body: "Adapt layouts and interactions for seamless cross-device performance and usability" },
+          { title: "Clarify hierarchy", body: "Establish a clear visual hierarchy that guides users naturally through key workflows" },
+        ],
         gap: 80,
       },
       {
         type: "text",
         heading: "Process",
-        body: "1. Audit & Analysis: Reviewed the existing desktop interface to identify usability issues, visual inconsistencies, and opportunities for simplification.  2. Design System Expansion: Refined and extended the design system to create modular, web-compatible components that maintained visual consistency across devices.  3. Layout & Interaction Design: Adapted layouts and interaction patterns for responsive behaviour, ensuring a seamless experience across screen sizes.  4. Simplification & Focus: Reduced cognitive load by clarifying hierarchy, minimising visual noise, and emphasising core content.",
+        body: "The project followed a structured, research-driven approach to transform a complex desktop tool into a modern responsive experience.<br/><br/>1. <strong>Audit & Analysis</strong> reviewed the existing desktop interface to identify usability issues, visual inconsistencies, and simplification opportunities across the core workflows.<br/><br/>2. <strong>Design System Expansion</strong> refined and extended the component library to create modular, web-compatible patterns that maintained visual consistency across screen sizes.<br/><br/>3. <strong>Layout & Interaction Design</strong> adapted layouts and interaction patterns for responsive behaviour, ensuring a seamless experience from desktop to mobile.<br/><br/>4. <strong>Simplification & Focus</strong> reduced cognitive load by clarifying hierarchy, minimising visual noise, and emphasising core content for each user scenario.",
+        gap: 80,
       },
       {
         type: "text",

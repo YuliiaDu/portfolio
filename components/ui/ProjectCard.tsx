@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { type Project } from "@/data/projects";
 import { fadeUp } from "@/lib/motion";
 import { Button } from "@/components/buttons/Button";
+import { Heading } from "@/components/ui/Heading";
 
 interface ProjectCardProps {
   project: Project;
@@ -42,9 +43,9 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
             <p className="text-label uppercase tracking-widest text-stone mb-1.5">
               {project.category}
             </p>
-            <h3 className="font-display font-semibold text-display-md text-ink group-hover:text-stone transition-colors duration-300">
+            <Heading level={3} className="text-ink group-hover:text-stone transition-colors duration-300">
               {project.title}
-            </h3>
+            </Heading>
             <p className="text-body-sm text-stone mt-2 max-w-[50ch]">
               {project.description && project.description.length > 112
                 ? project.description.slice(0, 112).trimEnd() + '…'
@@ -54,7 +55,7 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
 
           {/* Arrow */}
           <div className="flex-shrink-0 mt-1">
-            <Button href={`/projects/${project.slug}`} variant="secondary-dark" iconOnly />
+            <Button href={`/projects/${project.slug}`} variant="secondary-dark" iconOnly arrowUpRight />
           </div>
         </div>
 

@@ -19,7 +19,7 @@ export function Navbar() {
 
   // On light pages: fade in canvas bg on scroll. On dark pages: always dark bg.
   const borderOpacity = useTransform(scrollY, [0, 80], [0, 1]);
-  const bgOpacity     = useTransform(scrollY, [0, 80], [0, 0.85]);
+  const bgOpacity     = useTransform(scrollY, [0, 80], [0, 1]);
 
   return (
     <motion.header
@@ -36,11 +36,11 @@ export function Navbar() {
     >
       {/* Blurred background */}
       {isDark ? (
-        <div className="absolute inset-0 backdrop-blur-2xl bg-ink/60" />
+        <div className="absolute inset-0 backdrop-blur-2xl bg-ink/80" />
       ) : (
         <motion.div
           className="absolute inset-0 backdrop-blur-2xl"
-          style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.5)" }}
+          style={{ opacity: bgOpacity, backgroundColor: "rgba(249,248,246,0.9)" }}
         />
       )}
 
@@ -62,7 +62,7 @@ export function Navbar() {
           {NAV_LINKS.map(({ href, label }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
-              <li key={href}>
+              <li key={href} className="group">
                 <Link
                   href={href}
                   className={cn(
@@ -79,6 +79,9 @@ export function Navbar() {
                       className="absolute -bottom-0.5 left-0 right-0 h-px bg-ember"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
+                  )}
+                  {!active && (
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-ember scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
                   )}
                 </Link>
               </li>

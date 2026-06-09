@@ -178,14 +178,16 @@ export default function CompetitiveAnalysis() {
       </div>
 
       {/* Combined Insights Block */}
-      <aside className="rounded-2xl bg-ink text-canvas p-6">
-        <h4 className="font-semibold mb-3">Key Insights (from competitive analysis)</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+      <aside className="rounded-2xl bg-ink text-canvas p-6 md:p-8">
+        <h4 className="font-semibold mb-6">Key Insights (from competitive analysis)</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
           <div className="space-y-2">
             <p><strong>Market leader:</strong> Cian.ru dominates with highest monthly traffic (29.40M) and lowest bounce rate (32.53%).</p>
           </div>
           <div className="space-y-2">
-            <p><strong>Differentiation opportunity:</strong> Only Homestay.com offers payment at check-in—a key user pain point.</p>
+            <p><strong>Differentiation opportunity:</strong> Only Homestay.com offers payment at check-in — a key user pain point.</p>
+          </div>
+          <div className="space-y-2">
             <p><strong>Map integration:</strong> VRBO and Hometogo lead with map-based search, preferred by 4 of 5 interview participants.</p>
           </div>
         </div>

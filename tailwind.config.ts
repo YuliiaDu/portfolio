@@ -32,6 +32,7 @@ const config: Config = {
         "display-xl": ["clamp(3.5rem, 8vw, 7rem)",   { lineHeight: "0.95", letterSpacing: "-0.03em" }],
         "display-lg": ["clamp(2.5rem, 5vw, 4.5rem)",  { lineHeight: "1.0",  letterSpacing: "-0.025em" }],
         "display-md": ["clamp(1.75rem, 3vw, 2.75rem)",{ lineHeight: "1.1",  letterSpacing: "-0.02em" }],
+        "display-sm": ["clamp(1.35rem, 2.5vw, 1.75rem)",{ lineHeight: "1.2",  letterSpacing: "-0.015em" }],
         "body-lg":    ["clamp(1.05rem, 1.5vw, 1.2rem)",{ lineHeight: "1.7", letterSpacing: "0" }],
         "body-sm":    ["0.875rem",                    { lineHeight: "1.6",  letterSpacing: "0.01em" }],
         "label":      ["0.75rem",                     { lineHeight: "1",    letterSpacing: "0.1em" }],

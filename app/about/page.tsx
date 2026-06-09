@@ -5,7 +5,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { EASE_OUT_EXPO, fadeUp, staggerContainer } from "@/lib/motion";
 import { HomeCTA } from "@/components/sections/HomeCTA";
+import { Button } from "@/components/buttons/Button";
 import portraitImage from "@/data/yu_dudareva_photo.jpeg";
+import { Heading } from "@/components/ui/Heading";
 
 const EXPERTISE = [
   {
@@ -129,23 +131,24 @@ export default function AboutPage() {
             className="grid gap-12 items-center lg:grid-cols-[1.5fr_1fr]"
           >
             <div className="text-left">
-              <motion.h1
-                variants={fadeUp}
-                className="font-display text-display-xl text-ink text-balance leading-none tracking-[-0.03em] mb-6"
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+                className="mb-6"
               >
-                <span className="block">
-                  Creating{' '}
-                  <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
-                    products
-                  </span>
-                </span>
-
+                <motion.h1
+                  variants={fadeUp}
+                  className="font-display text-display-xl text-ink text-balance leading-none tracking-[-0.03em]"
+                >
+                  Creating products
+                </motion.h1>
                 <motion.div
                   variants={fadeUp}
-                  className="flex flex-wrap items-baseline justify-start gap-x-5 gap-y-0"
+                  className="flex flex-wrap items-baseline gap-x-5 gap-y-0"
                 >
                   <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
-                    people
+                    people&nbsp;
                   </span>
                   <span
                     className="font-display text-display-xl leading-none tracking-[-0.03em]"
@@ -154,13 +157,26 @@ export default function AboutPage() {
                     love.
                   </span>
                 </motion.div>
-              </motion.h1>
+              </motion.div>
               <motion.p
                 variants={fadeUp}
                 className="mx-auto max-w-3xl text-body-lg text-stone leading-relaxed lg:mx-0"
               >
                 Senior Product & UX/UI Designer with a marketing background, combining business insight with user-centered, scalable design and modern AI-driven workflows.
               </motion.p>
+
+              <motion.div variants={fadeUp} className="mt-8">
+                <Button
+                  href="https://www.linkedin.com/in/yuliia-dudareva/"
+                  variant="primary"
+                  size="lg"
+                  arrow
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Connect on LinkedIn
+                </Button>
+              </motion.div>
             </div>
 
             <motion.div
@@ -196,7 +212,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
             className="max-w-4xl"
           >
-            <h2 className="font-display font-semibold text-display-md mb-8">My Journey</h2>
+            <Heading level={2} className="mb-8">My Journey</Heading>
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -262,9 +278,9 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.6, ease: EASE_OUT_EXPO }}
                 className="group bg-dark-surface hover:bg-dark-border p-8 md:p-10 transition-colors duration-300 cursor-default"
               >
-                <h3 className="font-display font-semibold text-display-md text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
+                <Heading level={3} className="text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
                   {item.title}
-                </h3>
+                </Heading>
                 <p className="text-body-sm text-dark-text leading-relaxed max-w-[36ch]">
                   {item.description}
                 </p>
@@ -283,7 +299,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="max-w-4xl"
           >
-            <h2 className="font-display font-semibold text-display-md mb-8">My Approach</h2>
+            <Heading level={2} className="mb-8">My Approach</Heading>
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -322,9 +338,7 @@ export default function AboutPage() {
               <p className="text-label uppercase tracking-widest text-dark-text mb-3">
                 Skills & tools
               </p>
-              <h2 className="font-display font-semibold text-display-lg text-canvas">
-                My capabilities
-              </h2>
+              <Heading level={2} className="text-canvas">My capabilities</Heading>
             </motion.div>
 
             <motion.p
@@ -347,9 +361,9 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.6, ease: EASE_OUT_EXPO }}
                 className="group bg-dark-surface hover:bg-dark-border p-8 md:p-10 transition-colors duration-300 cursor-default"
               >
-                <h3 className="font-display font-semibold text-display-md text-canvas mb-6 group-hover:text-ember transition-colors duration-300">
+                <Heading level={3} className="text-canvas mb-6 group-hover:text-ember transition-colors duration-300">
                   {skillGroup.category}
-                </h3>
+                </Heading>
                 <div className="flex flex-wrap gap-2">
                   {skillGroup.skills.map((skill) => (
                     <motion.span
@@ -376,7 +390,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="font-display font-semibold text-display-md mb-4">Timeline</h2>
+            <Heading level={2} className="mb-4">Timeline</Heading>
             <p className="text-body-lg text-stone">Key milestones in my design journey.</p>
           </motion.div>
 

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Heading } from "@/components/ui/Heading";
 
 interface WhatIChangedCard {
   number: string;
@@ -13,9 +14,11 @@ interface WhatIChangedCard {
 
 interface WhatIChangedSectionProps {
   cards: WhatIChangedCard[];
+  heading?: string;
+  description?: string;
 }
 
-export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps) {
+export default function WhatIChangedSection({ cards, heading, description }: WhatIChangedSectionProps) {
   const [openImage, setOpenImage] = useState<WhatIChangedCard | null>(null);
 
   return (
@@ -27,12 +30,12 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
               <p className="text-label uppercase tracking-widest text-dark-text mb-3">
                 What I changed
               </p>
-              <h2 className="font-display font-semibold text-display-md text-canvas">
-                Key redesign moments from gigmit onboarding
-              </h2>
+              <Heading level={2} className="text-canvas">
+                {heading || "Key redesign moments from gigmit onboarding"}
+              </Heading>
             </div>
             <p className="text-body-sm text-dark-text max-w-[38ch] md:text-right">
-              Four focus areas grounded in research, flow, conversion, and validation — each illustrated with a key gigmit screen.
+              {description || "Four focus areas grounded in research, flow, conversion, and validation — each illustrated with a key gigmit screen."}
             </p>
           </div>
 
@@ -55,9 +58,9 @@ export default function WhatIChangedSection({ cards }: WhatIChangedSectionProps)
                 </div>
                 <div className="p-6 md:p-10 flex flex-col flex-1">
                   <span className="text-label text-dark-text mb-6 block">{card.number}</span>
-                  <h3 className="font-display font-semibold text-display-md text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
+                  <Heading level={3} className="text-canvas mb-4 group-hover:text-ember transition-colors duration-300">
                     {card.title}
-                  </h3>
+                  </Heading>
                   <p className="text-body-sm text-dark-text leading-relaxed flex-1">
                     {card.body}
                   </p>

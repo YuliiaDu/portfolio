@@ -1,5 +1,7 @@
 "use client";
 
+import { Heading } from "@/components/ui/Heading";
+
 export default function UserJourneyMap() {
   const journeyPhases = [
     {
@@ -93,7 +95,7 @@ export default function UserJourneyMap() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="font-display text-display-lg font-semibold text-ink mb-2">User Journey Map — Accommodation Booking</h3>
+        <Heading level={3} className="mb-2">User Journey Map — Accommodation Booking</Heading>
         <p className="text-body-md text-stone max-w-3xl">A condensed, professional journey map derived from research notes. Phases are laid out left → right; each column contains goals, emotion, actions, touchpoints, problems, and solutions rendered in the site design language.</p>
       </div>
 

@@ -1,5 +1,11 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { staggerContainer, fadeUp } from "@/lib/motion";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { projects } from "@/data/projects";
+import ImageSlider from "@/components/ui/ImageSlider";
+import { designConcepts } from "@/data/design-concepts";
 
 export default function ProjectsPage() {
   return (
@@ -9,17 +15,33 @@ export default function ProjectsPage() {
           <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
             Selected work
           </p>
-          <h1 className="font-display text-display-xl text-ink leading-none tracking-[-0.03em]">
-            <span className="block font-semibold">Turning complexity</span>
-            <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
-              into&nbsp;</span>
-            <span
-              className="font-display text-display-xl leading-none tracking-[-0.03em]"
-              style={{ color: "#FF4D00" }}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="mb-6"
+          >
+            <motion.h1
+              variants={fadeUp}
+              className="font-display text-display-xl text-ink text-balance leading-none tracking-[-0.03em]"
             >
-              clarity.
-            </span>
-          </h1>
+              Turning complexity
+            </motion.h1>
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-wrap items-baseline gap-x-5 gap-y-0"
+            >
+              <span className="font-display text-display-xl text-ink italic font-light leading-none tracking-[-0.03em]">
+                into&nbsp;
+              </span>
+              <span
+                className="font-display text-display-xl leading-none tracking-[-0.03em]"
+                style={{ color: "#FF4D00" }}
+              >
+                clarity.
+              </span>
+            </motion.div>
+          </motion.div>
           <p className="mt-6 text-body-lg text-stone max-w-3xl">
             A curated collection of case studies across onboarding, mobile-first SaaS, and product design systems — all built to drive clarity, confidence, and measurable outcomes.
           </p>
@@ -35,6 +57,8 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+
+      <ImageSlider concepts={designConcepts} />
     </main>
   );
 }
