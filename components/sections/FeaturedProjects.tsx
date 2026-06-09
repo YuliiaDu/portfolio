@@ -115,16 +115,10 @@ function ProjectRow({ project, index, inView }: ProjectRowProps) {
             className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-105"
           />
           {/* Floating label with project name (no year) */}
-          <div className="absolute left-1/2 bottom-6 transform -translate-x-1/2">
-            <span
-              className={
-                index === 0
-                  ? "font-display text-display-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm max-w-[90vw]"
-                  : "font-display text-body-sm bg-ink/70 text-canvas px-4 py-2 rounded-full backdrop-blur-sm"
-              }
-            >
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <p className="font-display text-body-sm bg-ink/70 text-canvas px-4 py-2.5 rounded-2xl backdrop-blur-sm text-center w-full">
               {project.title}
-            </span>
+            </p>
           </div>
         </div>
 

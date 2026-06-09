@@ -39,7 +39,7 @@ export function ProjectCard({ project, index, variant = "grid" }: ProjectCardPro
 
         {/* Meta */}
         <div className="flex items-start justify-between gap-4">
-          <div>
+          <div className="min-w-0 flex-1">
             <p className="text-label uppercase tracking-widest text-stone mb-1.5">
               {project.category}
             </p>
