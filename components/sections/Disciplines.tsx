@@ -38,7 +38,7 @@ export function Disciplines() {
   const inView = useInView(ref, { once: true, margin: "-8% 0px" });
 
   return (
-    <section ref={ref} className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+    <section ref={ref} className="bg-ink text-canvas py-section">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
 
         {/* Header */}

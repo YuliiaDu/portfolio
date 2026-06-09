@@ -23,7 +23,7 @@ export default function WhatIChangedSection({ cards, heading, description }: Wha
 
   return (
     <>
-      <section className="bg-ink text-canvas pt-16 pb-16 md:pt-[120px] md:pb-[120px]">
+      <section className="bg-ink text-canvas py-section">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-20">
             <div>

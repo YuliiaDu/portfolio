@@ -195,7 +195,7 @@ export default function AboutPage() {
               </div>
 
               <div className="absolute left-4 bottom-4 rounded-3xl border border-canvas/10 bg-ink/70 px-4 py-3 backdrop-blur-sm">
-                <p className="text-label uppercase tracking-[0.2em] text-canvas/80">Yuliia Dudareva</p>
+                <p className="text-label uppercase tracking-widest text-canvas/80">Yuliia Dudareva</p>
                 <p className="mt-1 text-body-sm text-canvas/80">Senior Product Designer</p>
               </div>
             </motion.div>
@@ -241,7 +241,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Expertise Grid ───────────────────── */}
-      <section ref={expertiseRef} className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+      <section ref={expertiseRef} className="bg-ink text-canvas py-section">
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">
@@ -326,7 +326,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Skills & Tools ───────────────────── */}
-      <section ref={skillsRef} className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+      <section ref={skillsRef} className="bg-ink text-canvas py-section">
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">

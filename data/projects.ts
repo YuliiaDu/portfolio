@@ -151,7 +151,7 @@ export const projects: Project[] = [
       },
       {
         type: "comparison",
-        heading: "Results: New Registrations & New Subscriptions",
+        heading: "Results",
         comparisons: [
           // Row 1 — Registrations
           {

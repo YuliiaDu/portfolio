@@ -20,7 +20,7 @@ export function InterviewInsights({ insights }: InterviewInsightsProps) {
   const inView = useInView(ref, { once: true, margin: "-8% 0px" });
 
   return (
-    <section ref={ref} className="bg-ink text-canvas py-section" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+    <section ref={ref} className="bg-ink text-canvas py-section">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-20">

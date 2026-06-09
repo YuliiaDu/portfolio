@@ -21,7 +21,7 @@ export default function NextProject({ currentSlug }: NextProjectProps) {
       <div className="flex items-center justify-between p-6 md:p-8">
         {/* Left side: Label and title */}
         <div className="flex flex-col">
-          <span className="text-label uppercase tracking-[0.14em] text-dark-text mb-2">
+          <span className="text-label uppercase tracking-widest text-dark-text mb-2">
             NEXT PROJECT
           </span>
           <h3 className="font-display font-semibold text-canvas text-2xl md:text-3xl transition-colors">

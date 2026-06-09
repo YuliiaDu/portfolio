@@ -38,7 +38,7 @@ const config: Config = {
         "label":      ["0.75rem",                     { lineHeight: "1",    letterSpacing: "0.1em" }],
       },
       spacing: {
-        section: "clamp(5rem, 10vw, 9rem)",
+        section: "clamp(5rem, 10vw, 7.5rem)",
       },
       borderRadius: {
         "2xl": "1rem",

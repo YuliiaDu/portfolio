@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { Heading } from "@/components/ui/Heading";
 
 export interface DesignConcept {
@@ -18,23 +19,16 @@ interface ImageSliderProps {
 export default function ImageSlider({ concepts }: ImageSliderProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
   const concept = concepts[activeIndex];
   const totalImages = concept?.images.length ?? 0;
 
-  const goTo = useCallback(
-    (idx: number) => {
-      if (isAnimating) return;
-      setIsAnimating(true);
-      setActiveIndex(idx);
-      setImageIndex(0);
-      setTimeout(() => setIsAnimating(false), 400);
-    },
-    [isAnimating]
-  );
+  const goTo = useCallback((idx: number) => {
+    setActiveIndex(idx);
+    setImageIndex(0);
+  }, []);
 
   const goNext = useCallback(() => {
     if (activeIndex < concepts.length - 1) goTo(activeIndex + 1);
@@ -73,10 +67,21 @@ export default function ImageSlider({ concepts }: ImageSliderProps) {
     }
   };
 
+  // Preload next concept image for instant transitions
+  useEffect(() => {
+    const nextIdx =
+      activeIndex < concepts.length - 1 ? activeIndex + 1 : 0;
+    const c = concepts[nextIdx];
+    if (c?.images[0]?.src) {
+      const img = new window.Image();
+      img.src = c.images[0].src;
+    }
+  }, [activeIndex, concepts]);
+
   if (!concept) return null;
 
   return (
-    <section className="bg-ink text-canvas py-16 md:py-[120px] overflow-hidden">
+    <section className="bg-ink text-canvas py-section overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         {/* Section label */}
         <p className="text-label uppercase tracking-widest text-dark-text mb-3">
@@ -143,15 +148,25 @@ export default function ImageSlider({ concepts }: ImageSliderProps) {
           {/* Image display */}
           <div className="relative rounded-2xl overflow-hidden bg-[#0b0907] border border-dark-border">
             <div className="relative aspect-[16/10] md:aspect-[16/9] w-full">
-              <Image
-                key={`${activeIndex}-${imageIndex}`}
-                src={concept.images[imageIndex]?.src ?? ""}
-                alt={concept.images[imageIndex]?.alt ?? concept.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="object-contain transition-opacity duration-300"
-                priority
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`${activeIndex}-${imageIndex}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={concept.images[imageIndex]?.src ?? ""}
+                    alt={concept.images[imageIndex]?.alt ?? concept.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    className="object-contain"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             {/* Image counter & navigation */}

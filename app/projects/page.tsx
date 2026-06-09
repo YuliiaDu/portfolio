@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <main className="bg-canvas">
       <section className="pt-28 pb-14">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
-          <p className="text-label uppercase tracking-[0.28em] text-stone mb-4">
+          <p className="text-label uppercase tracking-widest text-stone mb-4">
             Selected work
           </p>
           <motion.div

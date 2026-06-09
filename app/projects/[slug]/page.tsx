@@ -163,7 +163,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         ) : null}
       </section>
 
-      <section className="pt-12 pb-12 md:pt-20 md:pb-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+      <section className="py-section">
         {groupSections(firstSections).map((group, groupIndex) =>
           group.fullBleed ? (
             <div key={`${project.slug}-first-fb-${groupIndex}`}>
@@ -191,7 +191,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       ) : null}
 
       {remainingSections.length > 0 ? (
-        <section className="border-t border-mist pt-12 md:pt-20" style={{ paddingTop: project.client === "gigmit.com" ? "clamp(48px, 6vw, 80px)" : undefined }}>
+        <section className="border-t border-mist py-section">
           {groupSections(remainingSections).map((group, groupIndex) =>
             group.fullBleed ? (
               <div key={`${project.slug}-rem-fb-${groupIndex}`}>
@@ -211,7 +211,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       ) : null}
 
       {/* Next Project Navigation */}
-      <section style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+      <section className="py-section">
         <div className="max-w-6xl mx-auto px-6 md:px-10">
           <NextProject currentSlug={project.slug} />
         </div>
@@ -325,7 +325,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
               <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-5 sm:pb-6">
                 {/* Group label + metric badge */}
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">
+                  <p className="text-label text-[#FF4D00] uppercase tracking-widest">
                     {comp.groupLabel}
                   </p>
                   <span className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold leading-none bg-white/60 text-ink sm:text-[12px]">
@@ -350,12 +350,12 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
                 {/* Before / After compact row */}
                 <div className="flex items-center gap-3 pt-3 border-t border-mist/60">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] text-stone/50 uppercase tracking-[0.12em]">Before</span>
+                    <span className="text-[10px] text-stone/50 uppercase tracking-widest">Before</span>
                     <span className="text-body-sm font-semibold text-ink">{comp.before}</span>
                   </div>
                   <span className="text-stone/30">→</span>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] text-stone/50 uppercase tracking-[0.12em]">After</span>
+                    <span className="text-[10px] text-stone/50 uppercase tracking-widest">After</span>
                     <span className="text-body-sm font-semibold text-ink">{comp.after}</span>
                   </div>
                 </div>
@@ -379,7 +379,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
             <div key={obj.title} className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]">
               <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-6">
                 <div className="flex items-start justify-between mb-4">
-                  <p className="text-label text-[#FF4D00] uppercase tracking-[0.14em]">Challenge</p>
+                  <p className="text-label text-[#FF4D00] uppercase tracking-widest">Challenge</p>
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-ember text-canvas font-semibold">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
 
