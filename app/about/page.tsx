@@ -61,17 +61,22 @@ const TIMELINE = [
   },
   {
     year: "2022",
-    title: "Multidisciplinary Growth",
+    title: "Multidisciplinary growth",
     description: "Expanded my skill set across product thinking, UI systems, and cross-functional collaboration, strengthening both craft and strategic impact.",
   },
   {
     year: "2020",
-    title: "Transition into UX/UI Design",
+    title: "Transition into UX/UI design",
     description: "Shifted focus from marketing into UX/UI design, building a strong foundation in user-centered design, interaction, and digital product development.",
   },
   {
+    year: "2018",
+    title: "Marketing Lead",
+    description: "Advanced into a leadership role, managing marketing projects, guiding teams, and driving user acquisition and retention strategies for a portfolio of SaaS clients.",
+  },
+  {
     year: "2013",
-    title: "Beginning of My Marketing Journey",
+    title: "Beginning of my marketing journey",
     description: "Started my career in marketing, developing early expertise in communication, branding, and understanding user behavior and business needs.",
   },
 ];
