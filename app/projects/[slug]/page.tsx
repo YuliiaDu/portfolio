@@ -378,8 +378,7 @@ function SectionBlock({ section, mb, numberFontSize }: { section: CaseStudySecti
           {section.objectives?.map((obj, idx) => (
             <div key={obj.title} className="group relative overflow-hidden rounded-2xl border border-mist bg-[#E8E6E1] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_48px_rgba(15,12,10,0.1)]">
               <div className="px-5 pt-5 sm:px-6 sm:pt-6 pb-6">
-                <div className="flex items-start justify-between mb-4">
-                  <p className="text-label text-[#FF4D00] uppercase tracking-widest">Challenge</p>
+                <div className="flex items-center gap-3 mb-4">
                   <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-ember text-canvas font-semibold">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
 

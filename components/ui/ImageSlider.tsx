@@ -113,41 +113,58 @@ export default function ImageSlider({ concepts }: ImageSliderProps) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Navigation arrows */}
-          <button
-            type="button"
-            onClick={goPrev}
-            disabled={activeIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 -translate-x-2 md:-translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-              activeIndex === 0
-                ? "opacity-20 cursor-not-allowed"
-                : "opacity-70 hover:opacity-100 bg-white/10 hover:bg-white/20 cursor-pointer"
-            }`}
-            aria-label="Previous concept"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={goNext}
-            disabled={activeIndex === concepts.length - 1}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 translate-x-2 md:translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-              activeIndex === concepts.length - 1
-                ? "opacity-20 cursor-not-allowed"
-                : "opacity-70 hover:opacity-100 bg-white/10 hover:bg-white/20 cursor-pointer"
-            }`}
-            aria-label="Next concept"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+          {/* Concept info */}
+          <div className="mb-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-start">
+            <div>
+              <Heading level={3} className="text-canvas">
+                {concept.title}
+              </Heading>
+              {concept.subtitle && (
+                <p className="text-label text-ember uppercase tracking-widest mt-2">
+                  {concept.subtitle}
+                </p>
+              )}
+              <p className="text-body-sm text-dark-text mt-3 max-w-2xl leading-relaxed">
+                {concept.description}
+              </p>
+            </div>
+          </div>
 
           {/* Image display */}
-          <div className="relative rounded-2xl overflow-hidden bg-[#0b0907] border border-dark-border">
-            <div className="relative aspect-[16/10] md:aspect-[16/9] w-full">
+          <div className="relative rounded-2xl bg-[#0b0907] border border-dark-border">
+            {/* Navigation arrows - positioned relative to the outer container */}
+            <button
+              type="button"
+              onClick={goPrev}
+              disabled={activeIndex === 0}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 -translate-x-2 md:-translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                activeIndex === 0
+                  ? "hidden"
+                  : "opacity-70 hover:opacity-100 bg-white/10 hover:bg-white/20 cursor-pointer"
+              }`}
+              aria-label="Previous concept"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={goNext}
+              disabled={activeIndex === concepts.length - 1}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 translate-x-2 md:translate-x-6 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                activeIndex === concepts.length - 1
+                  ? "hidden"
+                  : "opacity-70 hover:opacity-100 bg-white/10 hover:bg-white/20 cursor-pointer"
+              }`}
+              aria-label="Next concept"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+            <div className="relative aspect-[16/10] md:aspect-[16/9] w-full overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${activeIndex}-${imageIndex}`}
@@ -167,86 +184,37 @@ export default function ImageSlider({ concepts }: ImageSliderProps) {
                   />
                 </motion.div>
               </AnimatePresence>
-            </div>
 
-            {/* Image counter & navigation */}
-            {totalImages > 1 && (
-              <div className="absolute bottom-4 right-4 flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={prevImage}
-                  disabled={imageIndex === 0}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center bg-black/40 text-white backdrop-blur-sm transition ${
-                    imageIndex === 0 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/60 cursor-pointer"
-                  }`}
-                  aria-label="Previous image"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
-                </button>
-                <span className="text-body-xs text-white/80 font-mono tabular-nums min-w-[4ch] text-center">
-                  {String(imageIndex + 1).padStart(2, "0")}/{String(totalImages).padStart(2, "0")}
-                </span>
-                <button
-                  type="button"
-                  onClick={nextImage}
-                  disabled={imageIndex === totalImages - 1}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center bg-black/40 text-white backdrop-blur-sm transition ${
-                    imageIndex === totalImages - 1 ? "opacity-30 cursor-not-allowed" : "hover:bg-black/60 cursor-pointer"
-                  }`}
-                  aria-label="Next image"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
-                </button>
-              </div>
-            )}
-
-            {/* Dot indicators */}
-            {totalImages > 1 && (
-              <div className="absolute bottom-4 left-4 flex gap-1.5">
-                {Array.from({ length: totalImages }).map((_, i) => (
+              {/* Image counter & navigation */}
+              {totalImages > 1 && (
+                <div className="absolute bottom-4 right-4 flex items-center gap-2">
                   <button
-                    key={i}
                     type="button"
-                    onClick={() => setImageIndex(i)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === imageIndex ? "bg-ember w-5" : "bg-white/40 hover:bg-white/70"
+                    onClick={prevImage}
+                    disabled={imageIndex === 0}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center bg-black/40 text-white backdrop-blur-sm transition ${
+                      imageIndex === 0 ? "hidden" : "hover:bg-black/60 cursor-pointer"
                     }`}
-                    aria-label={`Go to image ${i + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Concept info */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-start">
-            <div>
-              <Heading level={3} className="text-canvas">
-                {concept.title}
-              </Heading>
-              {concept.subtitle && (
-                <p className="text-label text-ember uppercase tracking-widest mt-2">
-                  {concept.subtitle}
-                </p>
+                    aria-label="Previous image"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6" /></svg>
+                  </button>
+                  <span className="text-body-xs text-white/80 font-mono tabular-nums min-w-[4ch] text-center">
+                    {String(imageIndex + 1).padStart(2, "0")}/{String(totalImages).padStart(2, "0")}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={nextImage}
+                    disabled={imageIndex === totalImages - 1}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center bg-black/40 text-white backdrop-blur-sm transition ${
+                      imageIndex === totalImages - 1 ? "hidden" : "hover:bg-black/60 cursor-pointer"
+                    }`}
+                    aria-label="Next image"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6" /></svg>
+                  </button>
+                </div>
               )}
-              <p className="text-body-sm text-dark-text mt-3 max-w-2xl leading-relaxed">
-                {concept.description}
-              </p>
-            </div>
-
-            {/* Project dots navigation */}
-            <div className="flex items-center gap-2 self-center md:self-auto">
-              {concepts.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => goTo(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    idx === activeIndex ? "bg-ember scale-125" : "bg-dark-border hover:bg-dark-text"
-                  }`}
-                  aria-label={`Go to concept ${idx + 1}`}
-                />
-              ))}
             </div>
           </div>
         </div>

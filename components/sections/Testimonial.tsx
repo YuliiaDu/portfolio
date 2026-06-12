@@ -17,7 +17,7 @@ const TESTIMONIALS = [
     quote:
       "Yuliia is very experienced in all things marketing. Self starter, doesn't need hand holding, continues pushing the projects to completion, good communicator. Pleasure to work with!",
     name: "Natalie Luneva",
-    role: "Exit Planning, M&A Advisor & Business Broker.",
+    role: "M&A Advisor & Business Broker",
   },
   {
     quote:
