@@ -40,10 +40,19 @@ export const metadata: Metadata = {
       "Portfolio, case studies, AI-powered products, SaaS and mobile apps.",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/preview_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Yuliia Dudareva — UI/UX & Product Designer Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Yuliia Dudareva — UI/UX & Product Designer",
+    images: ["/preview_image.png"],
   },
   keywords: [
     "Product Designer Germany",
