@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/preview_image.png",
+        url: "/preview_image1.png",
         width: 1200,
         height: 630,
         alt: "Yuliia Dudareva — UI/UX & Product Designer Portfolio",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Yuliia Dudareva — UI/UX & Product Designer",
-    images: ["/preview_image.png"],
+    images: ["/preview_image1.png"],
   },
 };
 
