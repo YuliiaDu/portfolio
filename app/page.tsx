@@ -11,6 +11,25 @@ export const metadata: Metadata = {
   title: "Yuliia Dudareva — UI/UX & Product Designer",
   description:
     "UI/UX and Product Designer crafting clear, intentional digital experiences. Based in Munich, Germany.",
+  openGraph: {
+    title: "Yuliia Dudareva — UI/UX & Product Designer",
+    description: "UI/UX and Product Designer crafting clear, intentional digital experiences. Based in Munich, Germany.",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/preview_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Yuliia Dudareva — UI/UX & Product Designer Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yuliia Dudareva — UI/UX & Product Designer",
+    images: ["/preview_image.png"],
+  },
 };
 
 export default function HomePage() {
