@@ -39,6 +39,8 @@ export const metadata: Metadata = {
     title: "Yuliia Dudareva — UI/UX & Product Designer",
     description:
       "Portfolio, case studies, AI-powered products, SaaS and mobile apps.",
+    url: "https://yudu.design",
+    siteName: "Yuliia Dudareva Portfolio",
     type: "website",
     locale: "en_US",
     images: [

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { getProject, projects } from "@/data/projects";
 import type { CaseStudySection } from "@/data/projects";
 import WhatIChangedSection from "@/components/ui/WhatIChangedSection";
@@ -14,6 +15,35 @@ import { InterviewInsights } from "@/components/research/InterviewInsights";
 import NextProject from "@/components/ui/NextProject";
 import { Button } from "@/components/buttons/Button";
 import { Heading } from "@/components/ui/Heading";
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const project = getProject(params.slug);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      title: `${project.title} — Yuliia Dudareva`,
+      description: project.description,
+      url: `https://yudu.design/projects/${project.slug}`,
+      siteName: "Yuliia Dudareva Portfolio",
+      type: "website",
+      images: [
+        {
+          url: "/preview_image1.png",
+          width: 1200,
+          height: 630,
+          alt: "Yuliia Dudareva — UI/UX & Product Designer Portfolio",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Yuliia Dudareva`,
+      images: ["/preview_image1.png"],
+    },
+  };
+}
 
 interface ProjectPageProps {
   params: {

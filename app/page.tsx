@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Yuliia Dudareva — UI/UX & Product Designer",
     description: "UI/UX and Product Designer crafting clear, intentional digital experiences. Based in Munich, Germany.",
+    url: "https://yudu.design",
+    siteName: "Yuliia Dudareva Portfolio",
     type: "website",
     locale: "en_US",
     images: [
