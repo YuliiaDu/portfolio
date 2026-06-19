@@ -25,6 +25,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yudu.design"),
   title: {
     default: "Senior Product Designer & UI/UX Designer in Germany | Yuliia Dudareva",
     template: "%s — Yuliia Dudareva",
