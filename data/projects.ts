@@ -198,7 +198,7 @@ export const projects: Project[] = [
       {
         type: "text",
         heading: "What I learned",
-        body: "Redesigning the homepage taught me that clarity and motivation go hand in hand. When users instantly understand what’s offered and why it matters, they’re far more likely to take the next step. Improving sign-ups wasn’t about flashy visuals — it was about empathy, focus, and reducing friction at every click.",
+        body: "This project reminded me that onboarding is more than a starting point — it’s a chance to build trust, deliver value, and set users up for success. Even small, thoughtful changes in flow, clarity, and motivation can boost engagement. And often, the best results come not from reinventing the wheel, but from listening to users and applying proven best practices.",
         gap: 80,
       },
     ],
