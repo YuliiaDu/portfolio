@@ -6,8 +6,8 @@ import { useRef } from "react";
 import { EASE_OUT_EXPO, fadeUp, staggerContainer } from "@/lib/motion";
 import { HomeCTA } from "@/components/sections/HomeCTA";
 import { Button } from "@/components/buttons/Button";
-import portraitImage from "@/data/yu_dudareva_photo.jpeg";
 import { Heading } from "@/components/ui/Heading";
+import portraitImage from "@/data/IMG_6599.JPG";
 
 const EXPERTISE = [
   {
