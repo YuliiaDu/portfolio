@@ -7,7 +7,7 @@ import { EASE_OUT_EXPO, fadeUp, staggerContainer } from "@/lib/motion";
 import { HomeCTA } from "@/components/sections/HomeCTA";
 import { Button } from "@/components/buttons/Button";
 import { Heading } from "@/components/ui/Heading";
-import portraitImage from "@/data/IMG_6599.JPG";
+import portraitImage from "@/data/yu_dudareva_photo.JPG";
 
 const EXPERTISE = [
   {
